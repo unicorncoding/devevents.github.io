@@ -4,63 +4,66 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
-const continents = {
-  "": "Any continent",
-  "AF": "Africa",
-  "AN": "Antarctica",
-  "AS": "Asia",
-  "EU": "Europe",
-  "NA": "North America",
-  "OC": "Oceania",
-  "SA": "South America"
-};
+const api = "http://localhost:5555";
 
 export default new Vuex.Store({
   state: {
-    continents: continents,
+    isLoading: false,
+    continents: [],
+    countries: [],
     hasMore: false,
+    noEvents: false,
     events: [],
-    total: 0,
-    shown: 0,
+    stats: {
+      country: undefined,
+      total: 0,
+      shown: 0
+    },
     pages: 0,
-    cursor: '',
-    continent: ''
+    cursor: "",
+    country: ""
   },
   actions: {
-    narrowEventsByContinent({ dispatch, commit }, continent) {
-      commit("narrowByContinent", continent);
-      return dispatch('fetchEvents')
-    },
     moreEvents({ commit, state }) {
       return axios
-        .get(
-          "https://us-central1-devevents.cloudfunctions.net/api/web/events-fetch",
-          { params: { start: state.cursor, continent: state.continent } }
-        )
-        .then(response => commit("eventsFetched", { data: response.data, merge: true }))
-        .catch(error => console.log(error));
+        .get(`${api}/events/search`, {
+          params: {
+            ...{ start: state.cursor }, ...state.route.params,
+          }
+        })
+        .then(response =>
+          commit("eventsFetched", { data: response.data, merge: true })
+        );
+    },
+    fetchLocations({ commit }) {
+      return axios
+        .get(`${api}/locations/search`)
+        .then(response => commit("locationsFetched", response.data));
     },
     fetchEvents({ commit, state }) {
       return axios
-        .get(
-          "https://us-central1-devevents.cloudfunctions.net/api/web/events-fetch",
-          { params: { continent: state.continent } }
-        )
-        .then(response => commit("eventsFetched", { data: response.data }))
-        .catch(error => console.log(error));
+        .get(`${api}/events/search`, {
+          params: state.route.params
+        })
+        .then(response => commit("eventsFetched", { data: response.data }));
     }
   },
   mutations: {
-    narrowByContinent(state, continent) {
-      state.continent = continent;
+    locationsFetched(state, data) {
+      const [continents, countries] = data;
+      continents.sort((it, that) => that.count - it.count);
+      countries.sort((it, that) => it.name.localeCompare(that.name));
+      state.continents = continents;
+      state.countries = countries;
     },
     eventsFetched(state, { data, merge = false }) {
       const [events, meta] = data;
       const info = meta.info;
       state.events = merge ? state.events.concat(events) : events;
-      state.shown = state.events.length;
-      state.total = meta.total;
-      state.hasMore = info.moreResults != "NO_MORE_RESULTS"
+      state.stats.total = meta.total;
+      state.stats.shown = state.events.length;
+      state.noEvents = state.events.length == 0;
+      state.hasMore = info.moreResults != "NO_MORE_RESULTS";
       state.cursor = info.endCursor;
     }
   }

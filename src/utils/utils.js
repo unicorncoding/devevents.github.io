@@ -4,9 +4,21 @@ export function geekify(topic) {
       icon: "https://img.icons8.com/ios/50/000000/javascript.png",
       topic: "JavaScript"
     },
+    elixir: {
+      icon: "https://img.icons8.com/wired/64/000000/mana.png",
+      topic: "Elixir"
+    },
+    cpp: {
+      icon: "https://img.icons8.com/wired/64/000000/c-plus-plus.png",
+      topic: "C/C++"
+    },
+    clojure: {
+      icon: "https://img.icons8.com/wired/64/000000/lambda.png",
+      topic: "Clojure"
+    },
     data: {
       icon: "https://img.icons8.com/wired/64/000000/database.png",
-      topic: "Data"
+      topic: "Data / AI / ML"
     },
     general: {
       icon: "https://img.icons8.com/ios/50/000000/stackoverflow.png",
@@ -15,6 +27,10 @@ export function geekify(topic) {
     python: {
       icon: "https://img.icons8.com/wired/64/000000/python.png",
       topic: "Python"
+    },
+    iot: {
+      icon: "https://img.icons8.com/ios/50/000000/bios--v1.png",
+      topic: "IoT / Hardware"
     },
     devops: {
       icon: "https://img.icons8.com/wired/64/000000/docker.png",
