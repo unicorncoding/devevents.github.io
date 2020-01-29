@@ -5,11 +5,15 @@
       <Papers />
     </Header>
     <div class="container">
-          <section class="section is-size-1 is-size-5-mobile has-text-grey" v-if="noEvents">
-            <!-- ¯\_(ツ)_/¯ 404. -->
-            There are
-            <Stats />. Try adjusting or <router-link :to="{ path: '/'}">resetting</router-link> your search criteria.
-          </section>      
+      <section
+        class="section is-size-1 is-size-5-mobile has-text-grey has-text-centered"
+        v-if="noEvents"
+      >
+        ¯\_(ツ)_/¯ <br />There are no events matching your criteria. Try
+        adjusting or
+        <router-link :to="{ path: '/' }">resetting</router-link> your search
+        criteria.
+      </section>
       <div class="columns" v-else>
         <div class="column is-one-third">
           <section class="section">

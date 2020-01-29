@@ -6,7 +6,12 @@
         :key="code"
         :class="{ 'is-active': code == $route.params.continent }"
       >
-        <router-link :to="{ name: 'events', params: { continent: code, cfp: $route.params.cfp } }">
+        <router-link
+          :to="{
+            name: 'events',
+            params: { continent: code, cfp: $route.params.cfp }
+          }"
+        >
           {{ name }}
         </router-link>
       </li>

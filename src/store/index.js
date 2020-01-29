@@ -15,7 +15,6 @@ export default new Vuex.Store({
       AF: "Africa",
       OC: "Oceania"
     },
-    isLoading: false,
     countries: [],
     more: false,
     noEvents: false,

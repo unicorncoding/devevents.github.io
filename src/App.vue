@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <notifications position="bottom" width="100%" max="1" />
     <loading :active.sync="isLoading"></loading>
     <router-view />
   </div>
@@ -18,10 +19,19 @@ export default {
       isLoading: false
     };
   },
-  mounted() {
+  created() {
     this.enableInterceptor();
   },
   methods: {
+    httpError(e) {
+      this.$notify({
+        ignoreDuplicates: true,
+        title: "Something went wrong while talking to the server:",
+        type: "error",
+        duration: -1,
+        text: e
+      });
+    },
     enableInterceptor() {
       axios.interceptors.request.use(
         config => {
@@ -30,6 +40,7 @@ export default {
         },
         error => {
           this.isLoading = false;
+          this.httpError(error);
           return Promise.reject(error);
         }
       );
@@ -38,8 +49,9 @@ export default {
           this.isLoading = false;
           return response;
         },
-        function(error) {
+        error => {
           this.isLoading = false;
+          this.httpError(error);
           return Promise.reject(error);
         }
       );
