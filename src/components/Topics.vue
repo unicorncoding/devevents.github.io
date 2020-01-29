@@ -1,0 +1,59 @@
+<template>
+  <div class="columns is-multiline is-gapless">
+    <div
+      v-for="topic in topics"
+      :key="topic.code"
+      class="topic column is-full"
+      :class="{ 'is-active': isActive(topic.code) }"
+    >
+      <router-link :to="hover(topic.code)">{{ topic.name }}</router-link>
+      &nbsp;
+      <router-link
+        :to="hover(topic.code)"
+        class="icon is-invisible has-text-danger"
+        v-if="isActive(topic.code)"
+      >
+        <i class="fas fa-times"></i>
+      </router-link>
+      <span v-else class="tag">{{ topic.count }}</span>
+    </div>
+  </div>
+</template>
+<script>
+import { prettyIcon } from "@/utils/topics";
+import { mapState } from "vuex";
+import mixins from "@/mixins/navigation";
+export default {
+  mixins: mixins,
+  methods: {
+    prettyIcon,
+    isActive(topic) {
+      return topic == this.$route.params.topic;
+    },
+    hover(topic) {
+      if (this.isActive(topic)) {
+        return this.route("events", { topic: undefined });
+      } else {
+        return this.route("events", { topic: topic });
+      }
+    }
+  },
+  computed: {
+    ...mapState(["topics"])
+  }
+};
+</script>
+<style scoped lang="scss">
+.column {
+  margin-bottom: 0.3em !important;
+}
+
+.topic {
+  &.is-active {
+    .icon {
+      visibility: visible !important;
+    }
+    font-weight: bold;
+  }
+}
+</style>

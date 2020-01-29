@@ -6,10 +6,14 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/:cfp(cfp)?/:continent([A-Z]{2})?/:country([A-Z]{2})?",
+    path: "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic(\\w+)?",
     name: "events",
     component: Events
   },
+  {
+    path: "/",
+    redirect: "/EU"
+  }
 ];
 
 const router = new VueRouter({

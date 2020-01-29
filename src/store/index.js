@@ -8,12 +8,19 @@ const api = "http://localhost:5555";
 
 export default new Vuex.Store({
   state: {
+    continents: {
+      EU: "Europe",
+      AM: "Americas",
+      AS: "Asia",
+      AF: "Africa",
+      OC: "Oceania"
+    },
     isLoading: false,
-    continents: [],
     countries: [],
-    hasMore: false,
+    more: false,
     noEvents: false,
     events: [],
+    topics: [],
     stats: {
       country: undefined,
       total: 0,
@@ -28,17 +35,13 @@ export default new Vuex.Store({
       return axios
         .get(`${api}/events/search`, {
           params: {
-            ...{ start: state.cursor }, ...state.route.params,
+            ...{ start: state.cursor },
+            ...state.route.params
           }
         })
         .then(response =>
           commit("eventsFetched", { data: response.data, merge: true })
         );
-    },
-    fetchLocations({ commit }) {
-      return axios
-        .get(`${api}/locations/search`)
-        .then(response => commit("locationsFetched", response.data));
     },
     fetchEvents({ commit, state }) {
       return axios
@@ -49,22 +52,16 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    locationsFetched(state, data) {
-      const [continents, countries] = data;
-      continents.sort((it, that) => that.count - it.count);
-      countries.sort((it, that) => it.name.localeCompare(that.name));
-      state.continents = continents;
-      state.countries = countries;
-    },
     eventsFetched(state, { data, merge = false }) {
       const [events, meta] = data;
-      const info = meta.info;
       state.events = merge ? state.events.concat(events) : events;
+      state.topics = meta.topics;
+      state.countries = meta.countries;
       state.stats.total = meta.total;
       state.stats.shown = state.events.length;
       state.noEvents = state.events.length == 0;
-      state.hasMore = info.moreResults != "NO_MORE_RESULTS";
-      state.cursor = info.endCursor;
+      state.more = meta.more;
+      state.cursor = meta.cursor;
     }
   }
 });

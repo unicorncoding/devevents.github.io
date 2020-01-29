@@ -17,9 +17,9 @@ const topics = {
   },
   data: {
     icon: "https://img.icons8.com/wired/64/000000/database.png",
-    topic: "Data, AI, and ML"
+    topic: "Data science"
   },
-  general: {
+  fullstack: {
     icon: "https://img.icons8.com/ios/50/000000/stackoverflow.png",
     topic: "Full-stack"
   },
@@ -29,7 +29,7 @@ const topics = {
   },
   iot: {
     icon: "https://img.icons8.com/ios/50/000000/bios--v1.png",
-    topic: "IoT and Hardware"
+    topic: "IoT"
   },
   devops: {
     icon: "https://img.icons8.com/wired/64/000000/docker.png",
@@ -59,9 +59,9 @@ const topics = {
     icon: "https://img.icons8.com/ios/50/000000/security-time.png",
     topic: "Security"
   },
-  android: {
-    icon: "https://img.icons8.com/wired/64/000000/android.png",
-    topic: "Android"
+  mobile: {
+    icon: "https://img.icons8.com/wired/50/000000/two-smartphones.png",
+    topic: "Mobile"
   },
   networking: {
     icon: "https://img.icons8.com/ios/50/000000/safety-collection-place.png",
@@ -71,9 +71,9 @@ const topics = {
     icon: "https://img.icons8.com/wired/64/000000/ios-logo.png",
     topic: "iOS"
   },
-  css: {
-    icon: "https://img.icons8.com/wired/64/000000/css3.png",
-    topic: "CSS"
+  web: {
+    icon: "https://img.icons8.com/dotty/80/000000/internet.png",
+    topic: "Web"
   },
   product: {
     icon: "https://img.icons8.com/wired/64/000000/idea.png",
@@ -90,10 +90,6 @@ const topics = {
   }
 };
 
-export function prettyTopic(topic) {
-  return topics[topic] ? topics[topic].topic : topic;
-}
-
 export function prettyIcon(topic) {
   return topics[topic] ? topics[topic].icon : "";
-};
+}
