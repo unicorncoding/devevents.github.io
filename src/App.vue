@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <notifications position="bottom" width="100%" max="1" />
+    <notifications position="bottom" width="100%" :max="1" />
     <loading :active.sync="isLoading"></loading>
     <router-view />
   </div>

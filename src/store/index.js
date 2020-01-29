@@ -4,7 +4,11 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
-const api = "http://localhost:5555";
+const api = window.location.href.includes('localhost') 
+  ? 
+    '//localhost:5555/api' 
+  : 
+    '//dev.events/api'
 
 export default new Vuex.Store({
   state: {
