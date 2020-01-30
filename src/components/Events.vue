@@ -115,22 +115,22 @@ export default {
   components: { Header, Continents, Countries, Topics, Papers, Stats },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {
-    this.fetchEvents().then(() => this.$emit('updateHead'));
+    this.fetchEvents().then(() => this.$emit("updateHead"));
   },
   watch: {
-    '$route'() {
-      this.fetchEvents().then(() => this.$emit('updateHead'));
+    $route() {
+      this.fetchEvents().then(() => this.$emit("updateHead"));
     }
   },
   head: {
-    title: function () {
+    title: function() {
       return {
-        separator: ' ',
-        complement: ' ',
+        separator: " ",
+        complement: " ",
         inner: (this.topicName() || "dev") + " events in " + this.locationName()
-      }
-    },    
-  },  
+      };
+    }
+  },
   methods: {
     formatRange,
     formatCfp,
