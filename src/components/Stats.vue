@@ -8,20 +8,12 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import mixins from "@/mixins/filtering";
 export default {
-  methods: {
-    topic() {
-      const info = this.topics.find(it => it.code === this.$route.params.topic);
-      return info ? info.name : "";
-    }
-  },
+  mixins: mixins,
   computed: {
     where() {
-      const country = this.countries.find(
-        it => it.code == this.$route.params.country
-      );
-      const continentName = this.continents[this.$route.params.continent];
-      return country ? country.name : continentName;
+      return this.locationName();
     },
     cfp() {
       const cfp = this.$route.params.cfp;
@@ -29,7 +21,7 @@ export default {
     },
     what() {
       const stats = this.stats;
-      const topic = this.topic();
+      const topic = this.topicName();
       if (stats.total == 1) return `a single ${topic} event`;
       if (stats.total == 0) return `no ${topic} events`;
       if (stats.shown == stats.total) return `${stats.shown} ${topic} events`;

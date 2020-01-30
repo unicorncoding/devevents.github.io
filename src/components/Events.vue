@@ -100,7 +100,8 @@
 <script>
 import { prettyIcon } from "@/utils/topics";
 import { formatRange, formatCfp } from "@/utils/dates";
-import mixins from "@/mixins/navigation";
+import navigationMixins from "@/mixins/navigation";
+import filteringMixins from "@/mixins/filtering";
 
 import { mapState, mapActions } from "vuex";
 import Topics from "./Topics";
@@ -112,17 +113,23 @@ import Papers from "./Papers";
 
 export default {
   components: { Header, Continents, Countries, Topics, Papers, Stats },
-  mixins: mixins,
+  mixins: [...filteringMixins, ...navigationMixins],
   created() {
-    this.fetchEvents();
+    this.fetchEvents().then(() => this.$emit('updateHead'));
   },
   watch: {
     '$route'() {
-      this.fetchEvents();
-      this.$emit('updateHead');
+      this.fetchEvents().then(() => this.$emit('updateHead'));
     }
   },
   head: {
+    title: function () {
+      return {
+        separator: ' ',
+        complement: ' ',
+        inner: (this.topicName() || "dev") + " events in " + this.locationName()
+      }
+    },    
   },  
   methods: {
     formatRange,
@@ -136,12 +143,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.switch[type="checkbox"]:focus + label::after,
-.switch[type="checkbox"]:focus + label::before,
-.switch[type="checkbox"]:focus + label:after,
-.switch[type="checkbox"]:focus + label:before {
-  outline: none;
-}
 a {
   color: #42b983;
 }
