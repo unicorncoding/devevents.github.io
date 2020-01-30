@@ -117,8 +117,13 @@ export default {
     this.fetchEvents();
   },
   watch: {
-    $route: "fetchEvents"
+    '$route'() {
+      this.fetchEvents();
+      this.$emit('updateHead');
+    }
   },
+  head: {
+  },  
   methods: {
     formatRange,
     formatCfp,

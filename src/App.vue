@@ -60,6 +60,7 @@ export default {
 };
 </script>
 <style lang="scss">
+
 a {
   color: #4a4a4a;
 }
