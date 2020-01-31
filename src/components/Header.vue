@@ -17,7 +17,7 @@
               <div class="column is-narrow">
                 <a
                   class="icon"
-                  href="https://github.com/unicorncoding/devevents.github.io/"
+                  href="https://github.com/unicorncoding/devevents-web"
                   rel="nofollow"
                   target="_blank"
                 >
