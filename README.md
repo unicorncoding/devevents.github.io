@@ -1,24 +1,41 @@
-# devevents
+[![Build Status](https://travis-ci.org/unicorncoding/devevents-web.svg?branch=master)](https://travis-ci.org/unicorncoding/devevents-web)
+# dev.events Web
 
-## Project setup
+```
+dev.events
+```
+
+👩‍💻 Written in JavaScript. 
+
+🚀 Powered by Vue.js.
+
+🌎 Hosted on Firebase Hosting.
+
+
+### Running in dev mode
+
+> This app depends talks to an API server (aka backend). Make sure you have [API server](https://github.com/unicorncoding/devevents-api) running locally.
+
+Install dependencies:
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+Run dev server with hot-reload:
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Running on production
 
-### Lints and fixes files
+Lint and fix files:
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Compile and minify:
+```
+npm run build
+```
+
+Push and wait for the app to be deployed.
