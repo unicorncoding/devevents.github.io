@@ -14,7 +14,7 @@ dev.events
 
 ### Running in dev mode
 
-> This app depends talks to an API server (aka backend). Make sure you have [API server](https://github.com/unicorncoding/devevents-api) running locally.
+> This app talks to an API server aka backend. Make sure you have [API server](https://github.com/unicorncoding/devevents-api) running locally.
 
 Install dependencies:
 ```
