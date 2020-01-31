@@ -31,6 +31,11 @@
                 >
                   <i class="fab fa-twitter"></i>
                 </a>
+                <a href="mailto:hello@dev.events">
+                  <span class="icon">
+                    <i class="far fa-envelope"></i>
+                  </span>
+                </a>                
                 <a class="icon" @click="copyRssLink()">
                   <i class="fas fa-rss"></i>
                 </a>

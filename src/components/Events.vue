@@ -94,7 +94,6 @@
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -109,12 +108,11 @@ import Topics from "./Topics";
 import Continents from "./Continents";
 import Countries from "./Countries";
 import Header from "./Header";
-import Footer from "./Footer";
 import Stats from "./Stats";
 import Papers from "./Papers";
 
 export default {
-  components: { Header, Footer, Continents, Countries, Topics, Papers, Stats },
+  components: { Header, Continents, Countries, Topics, Papers, Stats },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {
     this.fetchEvents().then(() => this.$emit("updateHead"));
