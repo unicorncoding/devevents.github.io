@@ -55,8 +55,7 @@
 export default {
   methods: {
     copyRssLink() {
-      const rssLink =
-        "https://dev.events/api/events/rss/" + this.$route.params.continent;
+      const rssLink = "https://dev.events/api/events/rss" + this.$route.fullPath;
       this.$copyText(rssLink).then(
         () => {
           this.$notify({
