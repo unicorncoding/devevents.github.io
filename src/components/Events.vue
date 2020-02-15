@@ -94,6 +94,7 @@
         </div>
       </div>
     </div>
+    <PopupMessage />
   </div>
 </template>
 
@@ -107,12 +108,13 @@ import { mapState, mapActions } from "vuex";
 import Topics from "./Topics";
 import Continents from "./Continents";
 import Countries from "./Countries";
+import PopupMessage from "./PopupMessage";
 import Header from "./Header";
 import Stats from "./Stats";
 import Papers from "./Papers";
 
 export default {
-  components: { Header, Continents, Countries, Topics, Papers, Stats },
+  components: { PopupMessage, Header, Continents, Countries, Topics, Papers, Stats },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {
     this.fetchEvents().then(() => this.$emit("updateHead"));

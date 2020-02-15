@@ -9,8 +9,8 @@
             <div class="columns is-vcentered">
               <div class="column is-narrow">
                 <h1 class="title is-size-5-mobile">
-                  <a href="/"
-                    >dev<span class="has-text-success">.</span>events</a
+                  <router-link :to="{ path: '/'}"
+                    >dev<span class="has-text-success">.</span>events</router-link
                   >
                 </h1>
               </div>
