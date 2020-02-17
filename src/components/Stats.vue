@@ -1,32 +1,39 @@
 <template>
-  <span>
+  <span class="is-pulled-right is-size-7">
     {{ what }}
     in
     {{ where }}
-    {{ cfp }}
+
+    <slot />
+    <div class="has-text-right is-hidden-mobile">
+      <br />
+      <CalendarLink />
+      <br />
+      <RssLink />
+    </div>
   </span>
 </template>
 <script>
 import { mapState } from "vuex";
+import RssLink from "./RssLink";
+import CalendarLink from "./CalendarLink";
 import mixins from "@/mixins/filtering";
 export default {
   mixins: mixins,
+  components: { RssLink, CalendarLink },
+  props: {
+    numbers: {
+      type: Boolean,
+      default: true
+    }
+  },
   computed: {
     where() {
       return this.locationName();
     },
-    cfp() {
-      const cfp = this.$route.params.cfp;
-      return cfp ? " with call for papers" : "";
-    },
     what() {
-      const stats = this.stats;
       const topic = this.topicName();
-      if (stats.total == 1) return `a single ${topic} event`;
-      if (stats.total == 0) return `no ${topic} events`;
-      if (stats.shown == stats.total) return `${stats.shown} ${topic} events`;
-      else
-        return `showing ${stats.shown} out of ${stats.total} ${topic} events`;
+      return `${topic} events`;
     },
     ...mapState(["stats", "countries", "continents", "topics"])
   }

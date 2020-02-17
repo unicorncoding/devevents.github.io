@@ -51,6 +51,9 @@ const topics = {
     icon: "https://img.icons8.com/wired/64/000000/java-coffee-cup-logo.png",
     topic: "Java"
   },
+  kotlin: {
+    icon: "https://img.icons8.com/wired/64/000000/java-coffee-cup-logo.png"
+  },
   ux: {
     icon: "https://img.icons8.com/wired/64/000000/paint.png",
     topic: "UX"
@@ -62,10 +65,6 @@ const topics = {
   mobile: {
     icon: "https://img.icons8.com/wired/50/000000/two-smartphones.png",
     topic: "Mobile"
-  },
-  networking: {
-    icon: "https://img.icons8.com/ios/50/000000/safety-collection-place.png",
-    topic: "Networking"
   },
   ios: {
     icon: "https://img.icons8.com/wired/64/000000/ios-logo.png",

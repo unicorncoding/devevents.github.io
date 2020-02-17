@@ -2,16 +2,15 @@ const mixin = {
   methods: {
     topicName() {
       const state = this.$store.state;
-      const params = this.$route.params;
-      const info = state.topics.find(it => it.code === params.topic);
-      return info ? info.name : "";
+      const topicName = state.topicName;
+      return topicName || "";
     },
     locationName() {
       const state = this.$store.state;
       const params = this.$route.params;
-      const country = state.countries.find(it => it.code == params.country);
+      const country = state.countryName;
       const continentName = state.continents[params.continent];
-      return country ? country.name : continentName;
+      return country || continentName || "";
     }
   }
 };

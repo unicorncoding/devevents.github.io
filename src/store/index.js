@@ -18,12 +18,13 @@ export default new Vuex.Store({
       OC: "Oceania"
     },
     countries: [],
+    countryName: undefined,
     more: false,
     noEvents: false,
     events: [],
     topics: [],
+    topicName: undefined,
     stats: {
-      country: undefined,
       total: 0,
       shown: 0
     },
@@ -58,6 +59,8 @@ export default new Vuex.Store({
       state.events = merge ? state.events.concat(events) : events;
       state.topics = meta.topics;
       state.countries = meta.countries;
+      state.countryName = meta.countryName;
+      state.topicName = meta.topicName;
       state.stats.total = meta.total;
       state.stats.shown = state.events.length;
       state.noEvents = state.events.length == 0;

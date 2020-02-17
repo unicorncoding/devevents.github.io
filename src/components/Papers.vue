@@ -1,21 +1,18 @@
 <template>
-  <div class="is-pulled-right is-size-7">
+  <span>
     <router-link
       v-if="!$route.params.cfp"
       :to="route('events', { cfp: 'cfp' })"
-      class="has-text-grey"
+      :class="{ 'line-through': !$route.params.cfp }"
+      >with call for papers</router-link
     >
-      call for papers
-    </router-link>
     <router-link
-      v-else
+      v-if="$route.params.cfp"
       :to="route('events', { cfp: undefined })"
-      class="has-text-grey"
+      :class="{ 'line-through': !$route.params.cfp }"
+      >with call for papers</router-link
     >
-      <i class="fas fa-times has-text-danger"></i>
-      call for papers
-    </router-link>
-  </div>
+  </span>
 </template>
 <script>
 import mixins from "@/mixins/navigation";
@@ -23,3 +20,11 @@ export default {
   mixins: mixins
 };
 </script>
+<style lang="scss" scoped>
+a {
+  color: #42b983;
+}
+.line-through {
+  text-decoration: line-through;
+}
+</style>

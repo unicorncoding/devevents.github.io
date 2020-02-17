@@ -2,16 +2,27 @@
   <div>
     <Header>
       <Continents />
-      <Papers />
+      <Stats>
+        <Papers />
+      </Stats>
       <div class="is-pulled-left">
         <div class="is-hidden-tablet is-size-7">
-          <a class="has-text-grey"  @click="toggleCategories()" v-if="categoriesVisible">
-          <i class="fas fa-eye-slash"></i> 
-          Hide categories
-            </a>
+          <a
+            class="has-text-grey"
+            @click="toggleCategories()"
+            v-if="categoriesVisible"
+          >
+            <i class="fas fa-eye-slash"></i>
+            Hide categories
+          </a>
         </div>
         <div class="is-hidden-tablet is-size-7">
-          <a class="has-text-grey" @click="toggleCategories()" v-if="!categoriesVisible"><i class="fa fa-eye"></i> Show categories </a>
+          <a
+            class="has-text-grey"
+            @click="toggleCategories()"
+            v-if="!categoriesVisible"
+            ><i class="fa fa-eye"></i> Show categories
+          </a>
         </div>
       </div>
     </Header>
@@ -27,7 +38,11 @@
       </section>
       <div class="columns" v-else>
         <div class="column is-one-third">
-          <section class="section" :class="{ 'is-hidden-mobile': !forceShowCategories }" v-observe-visibility="categoryVisibilityChanged">          
+          <section
+            class="section"
+            :class="{ 'is-hidden-mobile': !forceShowCategories }"
+            v-observe-visibility="categoryVisibilityChanged"
+          >
             <Topics />
             <Countries />
           </section>
@@ -56,7 +71,7 @@
               </div>
               <div class="column is-narrow">
                 <figure class="image is-32x32">
-                  <img :src="prettyIcon(event.topicCode)" />
+                  <img :src="prettyIcon(event.topicCode)" :alt="event.topic" />
                 </figure>
               </div>
               <div class="column">
@@ -96,7 +111,7 @@
                 </div>
                 <div class="column">
                   <span class="is-size-7 is-pulled-right">
-                    <Stats />
+                    <PagingStats />
                   </span>
                 </div>
               </div>
@@ -122,6 +137,7 @@ import Countries from "./Countries";
 import PopupMessage from "./PopupMessage";
 import Header from "./Header";
 import Stats from "./Stats";
+import PagingStats from "./PagingStats";
 import Papers from "./Papers";
 
 export default {
@@ -132,6 +148,7 @@ export default {
     Countries,
     Topics,
     Papers,
+    PagingStats,
     Stats
   },
   mixins: [...filteringMixins, ...navigationMixins],
@@ -142,7 +159,7 @@ export default {
     return {
       categoriesVisible: true,
       forceShowCategories: false
-    }
+    };
   },
   watch: {
     $route() {
@@ -160,11 +177,11 @@ export default {
   },
   methods: {
     categoryVisibilityChanged(categoriesVisible) {
-      this.categoriesVisible = categoriesVisible
+      this.categoriesVisible = categoriesVisible;
     },
     toggleCategories() {
-      this.forceShowCategories = !this.forceShowCategories
-    },    
+      this.forceShowCategories = !this.forceShowCategories;
+    },
     formatRange,
     formatCfp,
     prettyIcon,
