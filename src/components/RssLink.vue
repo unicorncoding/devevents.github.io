@@ -16,7 +16,7 @@ export default {
         () => {
           this.$notify({
             ignoreDuplicates: true,
-            title: "Copied",
+            title: "RSS link copied to clipboard",
             type: "success",
             text: rssLink
           });
