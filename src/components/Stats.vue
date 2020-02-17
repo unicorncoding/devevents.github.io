@@ -3,7 +3,6 @@
     {{ what }}
     in
     {{ where }}
-
     <slot />
     <div class="has-text-right is-hidden-mobile">
       <br />

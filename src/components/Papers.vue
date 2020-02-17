@@ -1,8 +1,6 @@
 <template>
   <span>
-    <router-link
-      v-if="!$route.params.cfp"
-      :to="route('events', { cfp: 'cfp' })"
+    <router-link v-if="!$route.params.cfp" :to="route('events', { cfp: 'cfp' })"
       ><i class="far fa-circle"></i> with call for papers</router-link
     >
     <router-link
@@ -19,6 +17,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+span {
+  margin-left: 0.5em;
+}
 a {
   color: #42b983;
 }

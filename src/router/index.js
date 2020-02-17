@@ -1,10 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Events from "../components/Events";
+import NewEvent from "../components/NewEvent";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/new",
+    name: "create",
+    component: NewEvent
+  },
   {
     path: "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic(\\w+)?",
     name: "events",
