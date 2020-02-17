@@ -3,14 +3,12 @@
     <router-link
       v-if="!$route.params.cfp"
       :to="route('events', { cfp: 'cfp' })"
-      :class="{ 'line-through': !$route.params.cfp }"
-      >with call for papers</router-link
+      ><i class="far fa-circle"></i> with call for papers</router-link
     >
     <router-link
       v-if="$route.params.cfp"
       :to="route('events', { cfp: undefined })"
-      :class="{ 'line-through': !$route.params.cfp }"
-      >with call for papers</router-link
+      ><i class="far fa-check-circle"></i> with call for papers</router-link
     >
   </span>
 </template>
@@ -23,8 +21,5 @@ export default {
 <style lang="scss" scoped>
 a {
   color: #42b983;
-}
-.line-through {
-  text-decoration: line-through;
 }
 </style>
