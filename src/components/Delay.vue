@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'Delay',
+  name: "Delay",
   props: {
     wait: {
       type: Number,
@@ -23,12 +23,12 @@ export default {
 
   created() {
     this.timer = setTimeout(() => {
-      this.waiting = false
-    }, this.from - Date.now() + this.wait)
+      this.waiting = false;
+    }, this.from - Date.now() + this.wait);
   },
 
   destroyed() {
-    clearTimeout(this.timer)
-  },
-}
+    clearTimeout(this.timer);
+  }
+};
 </script>

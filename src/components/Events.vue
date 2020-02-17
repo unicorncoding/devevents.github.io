@@ -114,7 +114,15 @@ import Stats from "./Stats";
 import Papers from "./Papers";
 
 export default {
-  components: { PopupMessage, Header, Continents, Countries, Topics, Papers, Stats },
+  components: {
+    PopupMessage,
+    Header,
+    Continents,
+    Countries,
+    Topics,
+    Papers,
+    Stats
+  },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {
     this.fetchEvents().then(() => this.$emit("updateHead"));

@@ -9,8 +9,9 @@
             <div class="columns is-vcentered">
               <div class="column is-narrow">
                 <h1 class="title is-size-5-mobile">
-                  <router-link :to="{ path: '/'}"
-                    >dev<span class="has-text-success">.</span>events</router-link
+                  <router-link :to="{ path: '/' }"
+                    >dev<span class="has-text-success">.</span
+                    >events</router-link
                   >
                 </h1>
               </div>
@@ -35,9 +36,12 @@
                   <span class="icon">
                     <i class="far fa-envelope"></i>
                   </span>
-                </a>                
+                </a>
                 <a class="icon" @click="copyRssLink()">
                   <i class="fas fa-rss"></i>
+                </a>
+                <a class="icon" @click="copyCalendarLink()">
+                  <i class="far fa-calendar-alt"></i>
                 </a>
               </div>
             </div>
@@ -54,8 +58,32 @@
 <script>
 export default {
   methods: {
+    copyCalendarLink() {
+      const rssLink =
+        "https://dev.events/api/events/cal" + this.$route.fullPath;
+      this.$copyText(rssLink).then(
+        () => {
+          this.$notify({
+            ignoreDuplicates: true,
+            title: "Copied",
+            type: "success",
+            text: rssLink
+          });
+        },
+        () => {
+          this.$notify({
+            ignoreDuplicates: true,
+            title: "Unable to copy the link",
+            type: "error",
+            duration: -1,
+            text: rssLink
+          });
+        }
+      );
+    },
     copyRssLink() {
-      const rssLink = "https://dev.events/api/events/rss" + this.$route.fullPath;
+      const rssLink =
+        "https://dev.events/api/events/rss" + this.$route.fullPath;
       this.$copyText(rssLink).then(
         () => {
           this.$notify({
