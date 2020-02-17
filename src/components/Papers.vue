@@ -1,5 +1,5 @@
 <template>
-  <div class="field is-pulled-right is-size-7">
+  <div class="is-pulled-right is-size-7">
     <router-link
       v-if="!$route.params.cfp"
       :to="route('events', { cfp: 'cfp' })"

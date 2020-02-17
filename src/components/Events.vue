@@ -3,6 +3,17 @@
     <Header>
       <Continents />
       <Papers />
+      <div class="is-pulled-left">
+        <div class="is-hidden-tablet is-size-7">
+          <a class="has-text-grey"  @click="toggleCategories()" v-if="categoriesVisible">
+          <i class="fas fa-eye-slash"></i> 
+          Hide categories
+            </a>
+        </div>
+        <div class="is-hidden-tablet is-size-7">
+          <a class="has-text-grey" @click="toggleCategories()" v-if="!categoriesVisible"><i class="fa fa-eye"></i> Show categories </a>
+        </div>
+      </div>
     </Header>
     <div class="container">
       <section
@@ -16,7 +27,7 @@
       </section>
       <div class="columns" v-else>
         <div class="column is-one-third">
-          <section class="section">
+          <section class="section" :class="{ 'is-hidden-mobile': !forceShowCategories }" v-observe-visibility="categoryVisibilityChanged">          
             <Topics />
             <Countries />
           </section>
@@ -127,6 +138,12 @@ export default {
   created() {
     this.fetchEvents().then(() => this.$emit("updateHead"));
   },
+  data: () => {
+    return {
+      categoriesVisible: true,
+      forceShowCategories: false
+    }
+  },
   watch: {
     $route() {
       this.fetchEvents().then(() => this.$emit("updateHead"));
@@ -142,6 +159,12 @@ export default {
     }
   },
   methods: {
+    categoryVisibilityChanged(categoriesVisible) {
+      this.categoriesVisible = categoriesVisible
+    },
+    toggleCategories() {
+      this.forceShowCategories = !this.forceShowCategories
+    },    
     formatRange,
     formatCfp,
     prettyIcon,

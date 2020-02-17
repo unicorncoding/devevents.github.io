@@ -3,8 +3,13 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import 'intersection-observer';
+
 import Notifications from "vue-notification";
 Vue.use(Notifications);
+
+import VueObserveVisibility from 'vue-observe-visibility';
+Vue.use(VueObserveVisibility);
 
 import VueHead from "vue-head";
 Vue.use(VueHead);

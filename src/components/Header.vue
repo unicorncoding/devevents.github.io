@@ -15,7 +15,7 @@
                   >
                 </h1>
               </div>
-              <div class="column is-narrow">
+              <div class="column is-narrow is-hidden-touch">
                 <a
                   class="icon"
                   href="https://github.com/unicorncoding/devevents-web"
