@@ -9,7 +9,7 @@
             <div class="columns is-vcentered">
               <div class="column is-narrow">
                 <h1 class="title is-size-5-mobile">
-                  <router-link :to="{ path: '/' }"
+                  <router-link :to="{ name: 'events', params: { continent: $route.params.continent } }"
                     >dev<span class="has-text-success">.</span
                     >events</router-link
                   >

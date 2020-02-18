@@ -8,9 +8,7 @@ async function handleRequest(request) {
   const { method, url } = request;
   const continent = resolveContinent(request);
   const isHttpGet = method === "GET";
-  console.log(request);
   const isRootUrl = url === "https://dev.events" || url === "https://dev.events/";
-  console.log("" + isHttpGet + isRootUrl + continent)
   if (isHttpGet && isRootUrl && continent) {
     return redirect("https://dev.events/" + continent);
   } else {

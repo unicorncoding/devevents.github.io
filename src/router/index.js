@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/new",
+    path: "/:continent([A-Z]{2})/new",
     name: "create",
     component: NewEvent
   },

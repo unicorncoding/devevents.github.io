@@ -33,7 +33,7 @@
       >
         ¯\_(ツ)_/¯ <br />There are no events matching your criteria. Try
         adjusting or
-        <router-link :to="{ path: '/' }">resetting</router-link> your search
+        <router-link :to="{ name: 'events', params: { continent: $route.params.continent } }">resetting</router-link> your search
         criteria.
       </section>
       <div class="columns" v-else>

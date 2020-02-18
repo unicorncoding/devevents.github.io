@@ -146,7 +146,7 @@
 
           <hr />
           <div class="buttons is-pulled-right">
-            <router-link class="button" :to="{ path: '/' }"
+            <router-link class="button" :to="{ name: 'events', params: { continent: $route.params.continent } }"
               >back to events</router-link
             >
             <a class="button is-success">Submit</a>
