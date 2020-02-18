@@ -3,16 +3,14 @@
   "name": "worker",
   "version": "1.0.0",
   "description": "A template for kick starting a Cloudflare Workers project",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
-    "build": "webpack index.js",
     "format": "prettier --write '**/*.{js,css,json,md}'"
   },
   "author": "Coding Unicorn <co.unicorn.ding@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^1.18.2",
-    "webpack": "^4.41.6"
+    "prettier": "^1.18.2"
   },
   "dependencies": {
     "countries-list": "^2.5.1"
