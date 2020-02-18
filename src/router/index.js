@@ -18,7 +18,7 @@ const routes = [
   },
   {
     path: "/",
-    redirect: "/EU"
+    redirect: "/AM"
   }
 ];
 
