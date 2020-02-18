@@ -1,27 +1,39 @@
 const { countries } = require("countries-list");
 
 addEventListener('fetch', event => {
-  console.log(event);
   event.respondWith(handleRequest(event.request))
 })
 
 async function handleRequest(request) {
+  const { method, url } = request;
+  const continent = resolveContinent(request);
+  const isHttpGet = method === "GET";
   console.log(request);
-  const country = request.headers.get('cf-ipcountry')
-  console.log(country);
-  console.log(countries[country].continent);
-  const response = await fetch(request);
-  return response;
-  // return redirect(request)
-}
-	
-function redirect(request) {
-  const country = request.headers.get('cf-ipcountry')
-  const url = countryMap[country]
-  return Response.redirect(url)
+  const isRootUrl = url === "https://dev.events" || url === "https://dev.events/";
+  console.log("" + isHttpGet + isRootUrl + continent)
+  if (isHttpGet && isRootUrl && continent) {
+    return redirect("https://dev.events/" + continent);
+  } else {
+    const response = await fetch(request);
+    return response;
+  }
 }
 
-const countryMap = {
-  "US" : "https://example.com/us",
-  "EU": "https://eu.example.com/"
+function resolveContinent(request) {
+  const country = request.headers.get("cf-ipcountry");
+  if (!country) {
+    return undefined;
+  }
+  const continent = countries[country].continent;
+  if (!continent) {
+    return undefined;
+  }
+
+  return continent
+    .replace("SA", "AM")
+    .replace("NA", "AM");
+}
+	
+function redirect(url) {
+  return Response.redirect(url, 302);
 }
