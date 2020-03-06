@@ -33,8 +33,14 @@
       >
         ¯\_(ツ)_/¯ <br />There are no events matching your criteria. Try
         adjusting or
-        <router-link :to="{ name: 'events', params: { continent: $route.params.continent } }">resetting</router-link> your search
-        criteria.
+        <router-link
+          :to="{
+            name: 'events',
+            params: { continent: $route.params.continent }
+          }"
+          >resetting</router-link
+        >
+        your search criteria.
       </section>
       <div class="columns" v-else>
         <div class="column is-one-third">
@@ -76,15 +82,24 @@
               </div>
               <div class="column">
                 <h2 class="title is-5 is-uppercase">
+                  <span v-if="event.top">
+                    <i
+                      class="far fa-heart has-text-danger"
+                      style="margin-right: 0.3em"
+                    ></i>
+                  </span>
                   <a
                     class="has-text-dark"
                     rel="nofollow"
                     target="_blank"
                     :href="event.url"
-                    >{{ event.name }}
-                  </a>
+                    >{{ event.name }}</a
+                  >
                 </h2>
                 <h3 class="subtitle is-6">
+                  <span v-if="event.top">
+                    The top
+                  </span>
                   <router-link
                     :to="route('events', { topic: event.topicCode })"
                     >{{ event.topic }}</router-link
@@ -95,6 +110,9 @@
                   >
                     {{ event.country }}
                   </router-link>
+                  <span v-if="event.top">
+                    is the best in category.
+                  </span>
                 </h3>
               </div>
             </div>
@@ -120,7 +138,6 @@
         </div>
       </div>
     </div>
-    <PopupMessage />
   </div>
 </template>
 
@@ -134,7 +151,6 @@ import { mapState, mapActions } from "vuex";
 import Topics from "./Topics";
 import Continents from "./Continents";
 import Countries from "./Countries";
-import PopupMessage from "./PopupMessage";
 import Header from "./Header";
 import Stats from "./Stats";
 import PagingStats from "./PagingStats";
@@ -142,7 +158,6 @@ import Papers from "./Papers";
 
 export default {
   components: {
-    PopupMessage,
     Header,
     Continents,
     Countries,
