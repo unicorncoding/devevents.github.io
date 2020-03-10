@@ -120,21 +120,20 @@
           <section class="section">
             <nav class="has-text-centered">
               <div class="columns">
-                <div class="column" v-if="more">
-                  <a
-                    class="button is-small is-pulled-left"
-                    @click="moreEvents()"
-                    >Show more</a
-                  >
-                </div>
-                <div class="column">
-                  <span class="is-size-7 is-pulled-right">
+                <div class="column is-size-7">
+                  <div class="is-pulled-left has-text-left">
                     <PagingStats />
-                  </span>
+                    <br />
+                    <br />
+                    <a v-if="more" class="button is-small" @click="moreEvents()"
+                      >Show more</a
+                    >
+                  </div>
                 </div>
               </div>
             </nav>
           </section>
+          <PlusButton />
         </div>
       </div>
     </div>
@@ -153,6 +152,7 @@ import Continents from "./Continents";
 import Countries from "./Countries";
 import Header from "./Header";
 import Stats from "./Stats";
+import PlusButton from "./PlusButton";
 import PagingStats from "./PagingStats";
 import Papers from "./Papers";
 
@@ -164,6 +164,7 @@ export default {
     Topics,
     Papers,
     PagingStats,
+    PlusButton,
     Stats
   },
   mixins: [...filteringMixins, ...navigationMixins],
