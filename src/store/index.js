@@ -2,13 +2,15 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 
+import creation from "./creation";
+import api from "./api";
+
 Vue.use(Vuex);
 
-const api = window.location.href.includes("localhost")
-  ? "//localhost:5555/api"
-  : "//dev.events/api";
-
 export default new Vuex.Store({
+  modules: {
+    creation: creation
+  },
   state: {
     continents: {
       EU: "Europe",
