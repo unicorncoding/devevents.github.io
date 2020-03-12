@@ -134,7 +134,7 @@
               </div>
             </nav>
           </section>
-          <PlusButton />
+          <PlusButton class="is-hidden" />
         </div>
       </div>
     </div>
