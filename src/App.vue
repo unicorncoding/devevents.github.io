@@ -9,18 +9,29 @@
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 import axios from "axios";
+import { firebase } from "./utils/firebase"
 
 export default {
   components: {
     Loading
   },
+  computed: {
+    isLoading() {
+      return this.isFetching || this.isSigning;
+    }
+  },
   data() {
     return {
-      isLoading: false
+      isFetching: false,
+      isSigning: true
     };
   },
   created() {
     this.enableInterceptor();
+    firebase.auth().onAuthStateChanged(user => {
+      this.$store.dispatch('auth/autoSignIn', user)
+      this.isSigning = false;
+    })    
   },
   methods: {
     httpError(e) {
@@ -35,22 +46,22 @@ export default {
     enableInterceptor() {
       axios.interceptors.request.use(
         config => {
-          this.isLoading = true;
+          this.isFetching = true;
           return config;
         },
         error => {
-          this.isLoading = false;
+          this.isFetching = false;
           this.httpError(error);
           return Promise.reject(error);
         }
       );
       axios.interceptors.response.use(
         response => {
-          this.isLoading = false;
+          this.isFetching = false;
           return response;
         },
         error => {
-          this.isLoading = false;
+          this.isFetching = false;
           this.httpError(error);
           return Promise.reject(error);
         }

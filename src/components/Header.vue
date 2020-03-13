@@ -3,8 +3,8 @@
     <div role="navigation" aria-label="main navigation">
       <div class="container">
         <section class="section">
-          <div class="columns is-vcentered is-gapless">
-            <div class="column is-narrow">
+          <div class="columns is-vcentered is-gapless is-mobile">
+            <div class="column">
               <h1 class="title is-size-5">
                 <router-link
                   class="has-text-white-ter"
@@ -15,6 +15,16 @@
                   >dev<span class="has-text-success">.</span>events</router-link
                 >
               </h1>
+            </div>
+            <div class="column has-text-right" v-if="user">
+              <figure class="image is-24x24 is-pulled-right">
+                <img class="is-rounded" :src="user.photoURL">
+              </figure>      
+            </div>
+            <div class="column has-text-right" v-else>
+              <a class="has-text-light is-size-7" @click="githubSignIn()"
+                >login</a
+              >
             </div>
           </div>
         </section>
@@ -34,6 +44,19 @@
     </header>
   </div>
 </template>
+<script>
+import { mapState, mapActions } from "vuex";
+export default {
+  methods: {
+    ...mapActions("auth", ["githubSignIn"])
+  },
+  computed: {
+    ...mapState("auth", {
+      user: state => state.user
+    })
+  }
+};
+</script>
 <style lang="scss" scoped>
 h1 {
   font-family: "Ubuntu", sans-serif;

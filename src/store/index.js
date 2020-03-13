@@ -2,14 +2,17 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 
+import auth from "./auth";
 import creation from "./creation";
 import api from "./api";
+
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
-    creation: creation
+    creation: creation,
+    auth: auth
   },
   state: {
     continents: {
