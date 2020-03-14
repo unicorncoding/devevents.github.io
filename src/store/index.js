@@ -6,7 +6,6 @@ import auth from "./auth";
 import creation from "./creation";
 import api from "./api";
 
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({

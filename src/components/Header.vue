@@ -16,10 +16,19 @@
                 >
               </h1>
             </div>
-            <div class="column has-text-right" v-if="user">
-              <figure class="image is-24x24 is-pulled-right">
-                <img class="is-rounded" :src="user.photoURL">
-              </figure>      
+            <div class="column" v-if="isSignedIn">
+              <div class="columns is-mobile is-pulled-right">
+                <div class="column is-narrow">
+                  <figure class="image is-24x24">
+                    <img class="is-rounded" :src="user.photoURL" />
+                  </figure>
+                </div>
+                <div class="column">
+                  <a class="has-text-light is-size-7" @click="signOut()"
+                    >log out</a
+                  >
+                </div>
+              </div>
             </div>
             <div class="column has-text-right" v-else>
               <a class="has-text-light is-size-7" @click="githubSignIn()"
@@ -45,12 +54,13 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   methods: {
-    ...mapActions("auth", ["githubSignIn"])
+    ...mapActions("auth", ["githubSignIn", "signOut"])
   },
   computed: {
+    ...mapGetters("auth", ["isSignedIn"]),
     ...mapState("auth", {
       user: state => state.user
     })

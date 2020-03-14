@@ -1,25 +1,29 @@
-import { firebase } from "../utils/firebase"
+import { firebase } from "../utils/firebase";
 
 export default {
   namespaced: true,
   state: {
-    user: undefined
+    user: {}
+  },
+  getters: {
+    isSignedIn: state => {
+      return !!state.user.jwtToken;
+    }
   },
   actions: {
-    autoSignIn ({commit}, payload) {
-      commit('setUser', payload);
-    },      
+    autoSignIn({ commit }, user) {
+      commit("setUser", user);
+    },
     signOut() {
       firebase.auth().signOut();
-      location.reload();
-    },    
-    githubLogin() {
+      // location.reload();
+    },
+    githubSignIn() {
       const github = new firebase.auth.GithubAuthProvider();
       firebase
         .auth()
         .signInWithPopup(github)
-        .then(() => location.reload())
-        .catch(error => console.warn(error.message));      
+        .catch(error => console.warn(error.message));
     }
   },
   mutations: {
@@ -27,4 +31,4 @@ export default {
       state.user = user;
     }
   }
-}
+};
