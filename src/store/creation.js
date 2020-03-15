@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/axios";
 import api from "./api";
 import router from "../router";
 
@@ -11,8 +11,9 @@ export default {
     countries: []
   },
   actions: {
-    createNew({ commit }, event) {
-      const instance = axios.create();
+    createNew({ commit, rootState }, event) {
+      const jwtToken = rootState.auth.user.jwtToken;
+      const instance = axios(jwtToken)
       const goToNewEvent = () => {
         router.push({
           name: "events",
@@ -28,8 +29,9 @@ export default {
         .then(() => goToNewEvent())
         .catch(err => commit("creationFailed", err.response));
     },
-    fetchInfo({ commit }) {
-      return axios
+    fetchInfo({ commit, rootState }) {
+      const jwtToken = rootState.auth.user.jwtToken;
+      return axios(jwtToken)
         .get(`${api}/events/new/prepare`)
         .then(response => commit("infoFetched", response.data));
     }

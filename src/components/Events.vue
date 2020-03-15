@@ -134,7 +134,7 @@
               </div>
             </nav>
           </section>
-          <PlusButton class="is-hidden" />
+          <PlusButton v-if="isSignedIn" />
         </div>
       </div>
     </div>
@@ -147,7 +147,7 @@ import { formatRange, formatCfp } from "@/utils/dates";
 import navigationMixins from "@/mixins/navigation";
 import filteringMixins from "@/mixins/filtering";
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import Topics from "./Topics";
 import Continents from "./Continents";
 import Countries from "./Countries";
@@ -205,6 +205,7 @@ export default {
     ...mapActions(["fetchEvents", "moreEvents"])
   },
   computed: {
+    ...mapGetters("auth", ["isSignedIn"]),
     ...mapState(["events", "topics", "more", "noEvents"])
   }
 };
