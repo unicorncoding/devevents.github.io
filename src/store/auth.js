@@ -23,7 +23,6 @@ export default {
       firebase
         .auth()
         .signInWithPopup(github)
-        .catch(error => console.warn(error.message));
     }
   },
   mutations: {
