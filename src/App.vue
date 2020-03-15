@@ -39,7 +39,7 @@ export default {
       firebase.auth().onAuthStateChanged(this.signInOrOut);
     },
     async signInOrOut(user) {
-      const jwtToken = await user?.getIdToken();
+      const jwtToken = await user?.getIdToken(true);
       this.$store.dispatch("auth/autoSignIn", { ...user, jwtToken: jwtToken });
       this.isSigning = false;
     },
@@ -87,11 +87,5 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-.tag {
-  color: #7a7a7a !important;
-  background-color: #fff !important;
-  border: 1px solid #f5f5f5;
 }
 </style>

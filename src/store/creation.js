@@ -13,7 +13,7 @@ export default {
   actions: {
     createNew({ commit, rootState }, event) {
       const jwtToken = rootState.auth.user.jwtToken;
-      const instance = axios(jwtToken)
+      const instance = axios(jwtToken);
       const goToNewEvent = () => {
         router.push({
           name: "events",

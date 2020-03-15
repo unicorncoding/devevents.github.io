@@ -48,6 +48,12 @@ export default {
   margin-bottom: 0.3em !important;
 }
 
+.tag {
+  color: #7a7a7a;
+  background-color: #fff;
+  border: 1px solid #f5f5f5;
+}
+
 .topic {
   &.is-active {
     .icon {

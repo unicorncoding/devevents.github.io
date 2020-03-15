@@ -82,25 +82,24 @@
                 </figure>
               </div>
               <div class="column">
-                <h2 class="title is-5 is-uppercase">
-                  <span v-if="event.top">
-                    <i
-                      class="far fa-heart has-text-danger"
-                      style="margin-right: 0.3em"
-                    ></i>
-                  </span>
+                <h2 class="title is-5">
                   <a
-                    class="has-text-dark"
+                    class="has-text-dark is-uppercase"
                     rel="nofollow"
                     target="_blank"
                     :href="event.url"
                     >{{ event.name }}</a
                   >
+                  <span v-if="event.pending" class="tag is-borderless">
+                    <i class="fas fa-info-circle has-text-warning"></i>
+                    Awaiting confirmation
+                  </span>
+                  <span v-if="event.top" class="tag is-borderless">
+                    <i class="far fa-heart has-text-danger"></i>
+                    Best in category
+                  </span>
                 </h2>
                 <h3 class="subtitle is-6">
-                  <span v-if="event.top">
-                    The top
-                  </span>
                   <router-link
                     :to="route('events', { topic: event.topicCode })"
                     >{{ event.topic }}</router-link
@@ -111,9 +110,6 @@
                   >
                     {{ event.country }}
                   </router-link>
-                  <span v-if="event.top">
-                    is the best in category.
-                  </span>
                 </h3>
               </div>
             </div>
@@ -213,5 +209,15 @@ export default {
 <style scoped lang="scss">
 a {
   color: #42b983;
+}
+
+.tag {
+  i {
+    margin-right: 0.3em;
+  }
+  font-weight: normal;
+  color: #7a7a7a;
+  background-color: #fff;
+  // border: 1px solid #f5f5f5;
 }
 </style>

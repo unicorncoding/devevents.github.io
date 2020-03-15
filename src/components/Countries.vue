@@ -60,6 +60,13 @@ img {
   margin-right: 5px;
   filter: grayscale(40%) opacity(50%);
 }
+
+.tag {
+  color: #7a7a7a;
+  background-color: #fff;
+  border: 1px solid #f5f5f5;
+}
+
 .topic {
   &.is-active {
     img {
