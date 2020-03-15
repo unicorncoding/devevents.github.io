@@ -14,20 +14,33 @@ export default {
     autoSignIn({ commit }, user) {
       commit("setUser", user);
     },
-    signOut() {
-      firebase.auth().signOut();
-      // location.reload();
+    signOut({ commit }) {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => commit("setUser", {}))
+        .then(() => location.reload());
     },
-    githubSignIn() {
+    githubSignIn({ commit }) {
       const github = new firebase.auth.GithubAuthProvider();
       firebase
         .auth()
         .signInWithPopup(github)
+        .then(({ user }) =>
+          user.getIdToken(true).then(tkn => ({ ...user, jwtToken: tkn }))
+        )
+        .then(user => commit("setUser", user))
+        .then(() => location.reload());
     }
   },
   mutations: {
     setUser(state, user) {
-      state.user = user;
+      state.user = {
+        jwtToken: user.jwtToken,
+        photoURL: user.photoURL,
+        email: user.email,
+        uid: user.uid
+      };
     }
   }
 };

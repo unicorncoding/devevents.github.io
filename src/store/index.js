@@ -1,14 +1,17 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from "axios";
+import axios from "../utils/axios";
 
 import auth from "./auth";
 import creation from "./creation";
 import api from "./api";
 
+import createPersistedState from "vuex-persistedstate";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  plugins: [createPersistedState({ key: "devevents", paths: ["auth"] })],
   modules: {
     creation: creation,
     auth: auth
@@ -37,8 +40,9 @@ export default new Vuex.Store({
     country: ""
   },
   actions: {
-    moreEvents({ commit, state }) {
-      return axios
+    moreEvents({ commit, state, rootState }) {
+      const jwtToken = rootState.auth.user.jwtToken;
+      return axios(jwtToken)
         .get(`${api}/events/search`, {
           params: {
             ...{ start: state.cursor },
@@ -49,8 +53,9 @@ export default new Vuex.Store({
           commit("eventsFetched", { data: response.data, merge: true })
         );
     },
-    fetchEvents({ commit, state }) {
-      return axios
+    fetchEvents({ commit, state, rootState }) {
+      const jwtToken = rootState.auth.user.jwtToken;
+      return axios(jwtToken)
         .get(`${api}/events/search`, {
           params: state.route.params
         })

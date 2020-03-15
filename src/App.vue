@@ -10,7 +10,6 @@ import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 import axios from "axios";
 import { mapState } from "vuex";
-import { firebase } from "./utils/firebase";
 
 export default {
   components: {
@@ -18,7 +17,7 @@ export default {
   },
   computed: {
     isLoading() {
-      return this.isFetching || this.isSigning;
+      return this.isFetching;
     },
     ...mapState("auth", {
       jwtToken: state => state.user.jwtToken
@@ -26,23 +25,13 @@ export default {
   },
   data() {
     return {
-      isFetching: false,
-      isSigning: true
+      isFetching: false
     };
   },
   created() {
     this.enableInterceptor();
-    this.enableAuthListener();
   },
   methods: {
-    enableAuthListener() {
-      firebase.auth().onAuthStateChanged(this.signInOrOut);
-    },
-    async signInOrOut(user) {
-      const jwtToken = await user?.getIdToken(true);
-      this.$store.dispatch("auth/autoSignIn", { ...user, jwtToken: jwtToken });
-      this.isSigning = false;
-    },
     httpError(e) {
       this.$notify({
         ignoreDuplicates: true,
