@@ -1,4 +1,4 @@
-import axios from "../utils/axios";
+import lazyAxios from "../utils/axios";
 import api from "./api";
 import router from "../router";
 
@@ -11,9 +11,8 @@ export default {
     countries: []
   },
   actions: {
-    createNew({ commit, rootState }, event) {
-      const jwtToken = rootState.auth.user.jwtToken;
-      const instance = axios(jwtToken);
+    async createNew({ commit }, event) {
+      const axios = await lazyAxios();
       const goToNewEvent = () => {
         router.push({
           name: "events",
@@ -24,14 +23,14 @@ export default {
           }
         });
       };
-      return instance
+      return axios
         .post(`${api}/events/new`, event)
         .then(() => goToNewEvent())
         .catch(err => commit("creationFailed", err.response));
     },
-    fetchInfo({ commit, rootState }) {
-      const jwtToken = rootState.auth.user.jwtToken;
-      return axios(jwtToken)
+    async fetchInfo({ commit }) {
+      const axios = await lazyAxios();
+      return axios
         .get(`${api}/events/new/prepare`)
         .then(response => commit("infoFetched", response.data));
     }
@@ -43,7 +42,7 @@ export default {
       if (status === 422) {
         state.validationErrors = data;
       }
-      if (status == 409) {
+      if (status === 409) {
         state.globalError = data;
       }
     },
