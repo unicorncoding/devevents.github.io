@@ -228,6 +228,10 @@ export default {
       }
     };
   },
+  created() {
+    this.newEvent.topicCode = this.$route.params.topic || "fullstack";
+    this.newEvent.countryCode = this.$route.params.country;
+  },
   computed: {
     html() {
       return document.documentElement;

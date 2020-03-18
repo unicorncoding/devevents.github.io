@@ -94,9 +94,9 @@
                     <i class="fas fa-info-circle has-text-warning"></i>
                     Awaiting confirmation
                   </span>
-                  <span v-if="event.top" class="tag is-borderless">
+                  <span v-if="event.top" class="tag is-borderless is-uppercase">
                     <i class="far fa-heart has-text-danger"></i>
-                    Best in category
+                    Top
                   </span>
                 </h2>
                 <h3 class="subtitle is-6">
@@ -212,12 +212,13 @@ a {
 }
 
 .tag {
+  position: relative;
+  top: -1px;
   i {
     margin-right: 0.3em;
   }
   font-weight: normal;
   color: #7a7a7a;
   background-color: #fff;
-  // border: 1px solid #f5f5f5;
 }
 </style>
