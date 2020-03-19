@@ -81,7 +81,7 @@
                   <img :src="prettyIcon(event.topicCode)" :alt="event.topic" />
                 </figure>
               </div>
-              <div class="column">
+              <div class="column is-narrow">
                 <h2 class="title is-5">
                   <a
                     class="has-text-dark is-uppercase"
@@ -111,6 +111,9 @@
                     {{ event.country }}
                   </router-link>
                 </h3>
+              </div>
+              <div class="column" v-if="isAdmin">
+                1234
               </div>
             </div>
           </section>
@@ -201,7 +204,7 @@ export default {
     ...mapActions(["fetchEvents", "moreEvents"])
   },
   computed: {
-    ...mapGetters("auth", ["isSignedIn"]),
+    ...mapGetters("auth", ["isSignedIn", "isAdmin"]),
     ...mapState(["events", "topics", "more", "noEvents"])
   }
 };

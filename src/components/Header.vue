@@ -23,7 +23,10 @@
                     <img class="is-rounded" :src="user.photoURL" />
                   </figure>
                 </div>
-                <div class="column">
+                <div class="column is-narrow" v-if="isAdmin">
+                  <a class="has-text-light is-size-7">admin</a>
+                </div>
+                <div class="column is-narrow">
                   <a class="has-text-light is-size-7" @click="signOut()"
                     >log out</a
                   >
@@ -60,7 +63,7 @@ export default {
     ...mapActions("auth", ["githubSignIn", "signOut"])
   },
   computed: {
-    ...mapGetters("auth", ["isSignedIn"]),
+    ...mapGetters("auth", ["isSignedIn", "isAdmin"]),
     ...mapState("auth", {
       user: state => state.user
     })

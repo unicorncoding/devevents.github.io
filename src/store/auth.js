@@ -6,14 +6,14 @@ export default {
     user: {}
   },
   getters: {
+    isAdmin: state => {
+      return !!state.user.claims?.admin;
+    },
     isSignedIn: state => {
       return !!state.user.jwtToken;
     }
   },
   actions: {
-    autoSignIn({ commit }, user) {
-      commit("setUser", user);
-    },
     signOut({ commit }) {
       firebase
         .auth()
@@ -27,7 +27,9 @@ export default {
         .auth()
         .signInWithPopup(github)
         .then(({ user }) =>
-          user.getIdToken(true).then(tkn => ({ ...user, jwtToken: tkn }))
+          user
+            .getIdTokenResult(true)
+            .then(it => ({ ...user, claims: it.claims, jwtToken: it.token }))
         )
         .then(user => commit("setUser", user))
         .then(() => location.reload());
@@ -36,6 +38,7 @@ export default {
   mutations: {
     setUser(state, user) {
       state.user = {
+        claims: user.claims,
         jwtToken: user.jwtToken,
         photoURL: user.photoURL,
         email: user.email,

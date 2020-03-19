@@ -217,7 +217,6 @@
   </div>
 </template>
 <script>
-// import Header from "./Header";
 import { mapState, mapActions } from "vuex";
 export default {
   data: () => {
