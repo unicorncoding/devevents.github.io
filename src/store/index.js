@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import lazyAxios from "../utils/axios";
 
 import auth from "./auth";
+import admin from "./admin";
 import creation from "./creation";
 import fetching from "./fetching";
 import api from "./api";
@@ -16,6 +17,7 @@ export default new Vuex.Store({
   modules: {
     creation: creation,
     fetching: fetching,
+    admin: admin,
     auth: auth
   },
   state: {

@@ -90,9 +90,21 @@
                     :href="event.url"
                     >{{ event.name }}</a
                   >
-                  <span v-if="event.pending" class="tag is-borderless">
-                    <i class="fas fa-info-circle has-text-warning"></i>
-                    Awaiting confirmation
+                  <span v-if="event.pending && !isAdmin">
+                    <span class="tag is-borderless">
+                      <i class="fas fa-info-circle has-text-warning"></i>
+                      Awaiting confirmation
+                    </span>
+                  </span>
+                  <span v-if="event.pending && isAdmin">
+                    <a class="tag is-borderless" @click="confirm(event.id)">
+                      <i class="fas fa-check has-text-success"></i>
+                      Confirm
+                    </a>
+                    <a class="tag is-borderless" @click="reject(event.id)">
+                      <i class="fas fa-times has-text-danger"></i>
+                      Reject
+                    </a>
                   </span>
                   <span v-if="event.top" class="tag is-borderless is-uppercase">
                     <i class="far fa-heart has-text-danger"></i>
@@ -111,9 +123,6 @@
                     {{ event.country }}
                   </router-link>
                 </h3>
-              </div>
-              <div class="column" v-if="isAdmin">
-                1234
               </div>
             </div>
           </section>
@@ -201,7 +210,8 @@ export default {
     formatRange,
     formatCfp,
     prettyIcon,
-    ...mapActions(["fetchEvents", "moreEvents"])
+    ...mapActions(["fetchEvents", "moreEvents"]),
+    ...mapActions("admin", ["confirm", "reject"])
   },
   computed: {
     ...mapGetters("auth", ["isSignedIn", "isAdmin"]),
