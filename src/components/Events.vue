@@ -62,7 +62,7 @@
               :key="event.startDate + event.url"
             >
               <div class="column is-one-quarter">
-                <span class="has-text-weight-bold">
+                <span class="has-text-weight-bold is-size-7-mobile">
                   {{ formatRange(event.startDate, event.endDate) }}
                 </span>
                 <br />
@@ -81,7 +81,7 @@
                   <img :src="prettyIcon(event.topicCode)" :alt="event.topic" />
                 </figure>
               </div>
-              <div class="column is-narrow">
+              <div class="column">
                 <h2 class="title is-5">
                   <a
                     class="has-text-dark is-uppercase"
@@ -131,7 +131,7 @@
               <div class="columns">
                 <div class="column is-size-7">
                   <div class="is-pulled-left has-text-left">
-                    <PagingStats />
+                    <PagingStats v-if="doneFetching" />
                     <br />
                     <br />
                     <a v-if="more" class="button is-small" @click="moreEvents()"
@@ -215,7 +215,7 @@ export default {
   },
   computed: {
     ...mapGetters("auth", ["isSignedIn", "isAdmin"]),
-    ...mapState(["events", "topics", "more", "noEvents"])
+    ...mapState(["events", "topics", "more", "noEvents", "doneFetching"])
   }
 };
 </script>

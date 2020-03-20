@@ -32,6 +32,7 @@ export default new Vuex.Store({
     countryName: undefined,
     more: false,
     noEvents: false,
+    doneFetching: false,
     events: [],
     topics: [],
     topicName: undefined,
@@ -55,7 +56,8 @@ export default new Vuex.Store({
         })
         .then(response =>
           commit("eventsFetched", { data: response.data, merge: true })
-        );
+        )
+        .catch(() => commit("doneFetching"));
     },
     async fetchEvents({ commit, state }) {
       const axios = await lazyAxios();
@@ -63,15 +65,20 @@ export default new Vuex.Store({
         .get(`${api}/events/search`, {
           params: state.route.params
         })
-        .then(response => commit("eventsFetched", { data: response.data }));
+        .then(response => commit("eventsFetched", { data: response.data }))
+        .catch(() => commit("doneFetching"));
     }
   },
   mutations: {
+    fetchingFailed(state) {
+      state.doneFetching = true;
+    },
     eventsFetched(state, { data, merge = false }) {
       const [events, meta] = data;
       state.events = merge ? state.events.concat(events) : events;
       state.topics = meta.topics;
       state.countries = meta.countries;
+      state.doneFetching = true;
       state.countryName = meta.countryName;
       state.topicName = meta.topicName;
       state.stats.total = meta.total;
