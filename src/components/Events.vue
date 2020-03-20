@@ -130,10 +130,8 @@
             <nav class="has-text-centered">
               <div class="columns">
                 <div class="column is-size-7">
-                  <div class="is-pulled-left has-text-left">
-                    <PagingStats v-if="doneFetching" />
-                    <br />
-                    <br />
+                  <div class="has-text-left">
+                    <PagingStats v-if="doneFetching" class="is-pulled-right" />
                     <a v-if="more" class="button is-small" @click="moreEvents()"
                       >Show more</a
                     >
