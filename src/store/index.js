@@ -4,6 +4,7 @@ import lazyAxios from "../utils/axios";
 
 import auth from "./auth";
 import admin from "./admin";
+import karma from "./karma";
 import creation from "./creation";
 import fetching from "./fetching";
 import api from "./api";
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     creation: creation,
     fetching: fetching,
     admin: admin,
+    karma: karma,
     auth: auth
   },
   state: {

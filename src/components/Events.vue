@@ -142,7 +142,7 @@
               </div>
             </nav>
           </section>
-          <PlusButton v-if="isSignedIn" />
+          <PlusButton />
         </div>
       </div>
     </div>
@@ -214,7 +214,7 @@ export default {
     ...mapActions("admin", ["confirm", "reject"])
   },
   computed: {
-    ...mapGetters("auth", ["isSignedIn", "isAdmin"]),
+    ...mapGetters("auth", ["isAdmin"]),
     ...mapState(["events", "topics", "more", "noEvents", "doneFetching"])
   }
 };

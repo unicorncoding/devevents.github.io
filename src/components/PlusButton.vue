@@ -1,12 +1,37 @@
 <template>
   <router-link
+    v-if="isSignedIn"
     :to="{ path: 'new', append: true }"
     class="button has-background-success has-text-white"
   >
     <i class="fas fa-plus"></i>
   </router-link>
+  <a
+    v-else
+    class="button has-background-success has-text-white"
+    @click="loginNeeded()"
+  >
+    <i class="fas fa-plus"></i>
+  </a>
 </template>
-<script></script>
+<script>
+import { mapGetters } from "vuex";
+export default {
+  methods: {
+    loginNeeded() {
+      this.$notify({
+        ignoreDuplicates: true,
+        title: "Operation is not permitted. Please login first.",
+        type: "error",
+        duration: -1
+      });
+    }
+  },
+  computed: {
+    ...mapGetters("auth", ["isSignedIn"])
+  }
+};
+</script>
 <style lang="scss" scoped>
 .button:hover {
   text-decoration: none;
