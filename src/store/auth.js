@@ -38,6 +38,7 @@ export default {
   mutations: {
     setUser(state, user) {
       state.user = {
+        name: user.displayName,
         claims: user.claims,
         jwtToken: user.jwtToken,
         photoURL: user.photoURL,
