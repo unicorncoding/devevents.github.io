@@ -31,9 +31,6 @@
                     ></span
                   >
                 </div>
-                <div class="column is-narrow" v-if="isAdmin">
-                  <a class="has-text-light is-size-7">admin</a>
-                </div>
                 <div class="column is-narrow">
                   <a class="has-text-light is-size-7" @click="signOut()"
                     >log out</a

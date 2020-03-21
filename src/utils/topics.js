@@ -71,7 +71,7 @@ const topics = {
     topic: "iOS"
   },
   web: {
-    icon: "https://img.icons8.com/dotty/80/000000/internet.png",
+    icon: "https://img.icons8.com/wired/64/000000/html-5.png",
     topic: "Web"
   },
   product: {

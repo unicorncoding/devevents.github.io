@@ -61,6 +61,9 @@
               v-for="event in events"
               :key="event.startDate + event.url"
             >
+              <!-- <div class="column is-narrow">
+                <i class="far fa-star has-text-grey is-size-7"></i>
+              </div> -->
               <div class="column is-one-quarter">
                 <span class="has-text-weight-bold is-size-7-mobile">
                   {{ formatRange(event.startDate, event.endDate) }}
