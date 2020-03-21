@@ -234,7 +234,12 @@ export default {
   },
   created() {
     this.newEvent.topicCode = this.$route.params.topic || "fullstack";
-    this.newEvent.countryCode = this.$route.params.country;
+
+    if (this.$route.params.continent === "ON") {
+      this.newEvent.countryCode = "ON";
+    } else {
+      this.newEvent.countryCode = this.$route.params.country;
+    }
   },
   computed: {
     isOnline() {
