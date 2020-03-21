@@ -237,6 +237,7 @@ export default {
 
     if (this.$route.params.continent === "ON") {
       this.newEvent.countryCode = "ON";
+      this.newEvent.city = "Online";
     } else {
       this.newEvent.countryCode = this.$route.params.country;
     }
