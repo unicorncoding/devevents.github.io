@@ -1,8 +1,10 @@
 <template>
   <span class="is-pulled-right is-size-7">
     {{ what }}
-    in
-    {{ where }}
+    <span v-if="!isOnline">
+      in
+      {{ where }}
+    </span>
     <slot />
     <div class="has-text-right is-hidden-mobile">
       <br />
@@ -34,7 +36,7 @@ export default {
       const topic = this.topicName();
       return `${topic} events`;
     },
-    ...mapState(["stats", "countries", "continents", "topics"])
+    ...mapState(["isOnline", "stats", "countries", "continents", "topics"])
   }
 };
 </script>

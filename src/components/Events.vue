@@ -3,7 +3,7 @@
     <router-view></router-view>
     <Header>
       <Continents />
-      <Stats>
+      <Stats :class="{ 'is-invisible': !doneFetching }">
         <Papers />
       </Stats>
       <div class="is-pulled-left">
@@ -51,7 +51,7 @@
             v-observe-visibility="categoryVisibilityChanged"
           >
             <Topics />
-            <Countries />
+            <Countries v-if="!isOnline" />
           </section>
         </div>
         <div class="column is-two-thirds">
@@ -116,12 +116,16 @@
                     :to="route('events', { topic: event.topicCode })"
                     >{{ event.topic }}</router-link
                   >
-                  {{ event.category }} in {{ event.city }},
-                  <router-link
-                    :to="route('events', { country: event.countryCode })"
-                  >
-                    {{ event.country }}
-                  </router-link>
+                  {{ event.category }}
+
+                  <span v-if="!isOnline"
+                    >in {{ event.city }},
+                    <router-link
+                      :to="route('events', { country: event.countryCode })"
+                    >
+                      {{ event.country }}
+                    </router-link>
+                  </span>
                 </h3>
               </div>
             </div>
@@ -140,9 +144,9 @@
               </div>
             </nav>
           </section>
-          <PlusButton />
         </div>
       </div>
+      <PlusButton />
     </div>
   </div>
 </template>
@@ -213,7 +217,14 @@ export default {
   },
   computed: {
     ...mapGetters("auth", ["isAdmin"]),
-    ...mapState(["events", "topics", "more", "noEvents", "doneFetching"])
+    ...mapState([
+      "isOnline",
+      "events",
+      "topics",
+      "more",
+      "noEvents",
+      "doneFetching"
+    ])
   }
 };
 </script>

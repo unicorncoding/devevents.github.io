@@ -28,9 +28,11 @@ export default new Vuex.Store({
       AM: "Americas",
       AS: "Asia",
       AF: "Africa",
-      OC: "Oceania"
+      OC: "Oceania",
+      ON: "Online"
     },
     countries: [],
+    isOnline: false,
     countryName: undefined,
     more: false,
     noEvents: false,
@@ -46,8 +48,14 @@ export default new Vuex.Store({
     cursor: "",
     country: ""
   },
+  getters: {
+    // isOnline: state => {
+    // return state.route.params.continent === "ON";
+    // }
+  },
   actions: {
     async moreEvents({ commit, state }) {
+      commit("fetchingInProgress");
       const axios = await lazyAxios();
       return axios
         .get(`${api}/events/search`, {
@@ -62,6 +70,7 @@ export default new Vuex.Store({
         .catch(() => commit("doneFetching"));
     },
     async fetchEvents({ commit, state }) {
+      commit("fetchingInProgress");
       const axios = await lazyAxios();
       return axios
         .get(`${api}/events/search`, {
@@ -72,6 +81,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    fetchingInProgress(state) {
+      state.doneFetching = false;
+    },
     fetchingFailed(state) {
       state.doneFetching = true;
     },
@@ -83,6 +95,7 @@ export default new Vuex.Store({
       state.doneFetching = true;
       state.countryName = meta.countryName;
       state.topicName = meta.topicName;
+      state.isOnline = state.route.params.continent === "ON";
       state.stats.total = meta.total;
       state.stats.shown = state.events.length;
       state.noEvents = state.events.length == 0;

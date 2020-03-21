@@ -97,7 +97,10 @@
                           class="is-small select is-fullwidth"
                           :class="{ 'is-danger': validationErrors.countryCode }"
                         >
-                          <select v-model="newEvent.countryCode">
+                          <select
+                            v-model="newEvent.countryCode"
+                            @change="countrySelected()"
+                          >
                             <option disabled selected :value="undefined"
                               >Choose country...</option
                             >
@@ -118,6 +121,7 @@
                           <input
                             class="is-small input"
                             placeholder="City"
+                            :disabled="isOnline"
                             v-model="newEvent.city"
                             :class="{ 'is-danger': validationErrors.city }"
                           />
@@ -222,6 +226,7 @@ export default {
   data: () => {
     return {
       newEvent: {
+        countryCode: undefined,
         category: "conference",
         topicCode: "fullstack"
       }
@@ -232,6 +237,9 @@ export default {
     this.newEvent.countryCode = this.$route.params.country;
   },
   computed: {
+    isOnline() {
+      return this.newEvent.countryCode === "ON";
+    },
     html() {
       return document.documentElement;
     },
@@ -251,6 +259,13 @@ export default {
     this.html.classList.remove("is-clipped");
   },
   methods: {
+    countrySelected() {
+      if (this.isOnline) {
+        this.newEvent.city = "Online";
+      } else {
+        delete this.newEvent.city;
+      }
+    },
     submitForm() {
       this.createNew(this.newEvent);
     },
