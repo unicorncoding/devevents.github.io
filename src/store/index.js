@@ -7,7 +7,6 @@ import admin from "./admin";
 import karma from "./karma";
 import creation from "./creation";
 import fetching from "./fetching";
-import api from "./api";
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -58,7 +57,7 @@ export default new Vuex.Store({
       commit("fetchingInProgress");
       const axios = await lazyAxios();
       return axios
-        .get(`${api}/events/search`, {
+        .get(`/events/search`, {
           params: {
             ...{ start: state.cursor },
             ...state.route.params
@@ -73,7 +72,7 @@ export default new Vuex.Store({
       commit("fetchingInProgress");
       const axios = await lazyAxios();
       return axios
-        .get(`${api}/events/search`, {
+        .get(`/events/search`, {
           params: state.route.params
         })
         .then(response => commit("eventsFetched", { data: response.data }))

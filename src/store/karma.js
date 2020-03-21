@@ -1,5 +1,4 @@
 import lazyAxios from "../utils/axios";
-import api from "./api";
 
 export default {
   namespaced: true,
@@ -13,7 +12,7 @@ export default {
     async fetch({ commit }) {
       const axios = await lazyAxios();
       return axios
-        .get(`${api}/karma/`)
+        .get(`/karma/`)
         .then(response => commit("karmaFetched", response.data));
     }
   },

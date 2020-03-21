@@ -1,8 +1,11 @@
 import * as globalAxios from "axios";
 import store from "../store";
 import { authReady, jwtToken } from "./firebase";
-
 import Vue from "vue";
+
+const api = window.location.href.includes("localhost")
+  ? "//localhost:5555/api/"
+  : "//dev.events/api/";
 
 const httpError = e =>
   Vue.notify({
@@ -14,7 +17,9 @@ const httpError = e =>
   });
 
 const createAxios = () => {
-  const axios = globalAxios.create();
+  const axios = globalAxios.create({
+    baseURL: api
+  });
   axios.interceptors.request.use(
     async options => {
       store.dispatch("fetching/inProgress");

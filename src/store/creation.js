@@ -1,5 +1,4 @@
 import lazyAxios from "../utils/axios";
-import api from "./api";
 import router from "../router";
 
 export default {
@@ -24,7 +23,7 @@ export default {
         });
       };
       return axios
-        .post(`${api}/events/new`, event)
+        .post(`/events/new`, event)
         .then(response => {
           dispatch("karma/inc", {}, { root: true });
           goToNewEvent(response.data.continentCode);
@@ -34,7 +33,7 @@ export default {
     async fetchInfo({ commit }) {
       const axios = await lazyAxios();
       return axios
-        .get(`${api}/events/new/prepare`)
+        .get(`/events/new/prepare`)
         .then(response => commit("infoFetched", response.data));
     }
   },
