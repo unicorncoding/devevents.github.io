@@ -49,6 +49,8 @@ export default {
       }
     },
     infoFetched(state, data) {
+      state.validationErrors = []
+      state.globalError = undefined;
       state.topics = data.topics;
       state.countries = data.countries;
     }
