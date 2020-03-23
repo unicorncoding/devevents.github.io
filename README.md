@@ -1,16 +1,31 @@
 [![Build Status](https://travis-ci.org/unicorncoding/devevents-web.svg?branch=master)](https://travis-ci.org/unicorncoding/devevents-web)
-# dev.events Web
+# dev.events
 
-```
-dev.events
-```
+👉 **[dev.events](https://dev.events)** is an ad-free, opensource listing of developer conferences, meetups, and training. 
+
+What makes this listing awesome?
+
+✔️ Minimalist design
+
+✔️ iCal export support
+
+✔️ RSS feed support
+
+✔️ Karma for event contributions
+
+To keep the listing clean and relevant, all events undergo manual approval.
+
+----
 
 👩‍💻 Written in JavaScript. 
 
 🚀 Powered by Vue.js.
 
+🎨 Styled with Bulma.
+
 🌎 Hosted on Firebase Hosting.
 
+---
 
 ### Running in dev mode
 
@@ -39,3 +54,7 @@ npm run build
 ```
 
 Push and wait for the app to be deployed.
+
+### Who is behind the product?
+
+The product is developed at night by caffeinated [Coding Unicorn](https://instagram.com/coding_unicorn). For new feature requests, ideas or bugs, please create an issue [here](http://github.com/unicorncoding/devevents-web/issues).
