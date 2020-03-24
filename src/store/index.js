@@ -15,11 +15,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [createPersistedState({ key: "devevents", paths: ["auth"] })],
   modules: {
-    creation: creation,
-    fetching: fetching,
-    admin: admin,
-    karma: karma,
-    auth: auth
+    creation,
+    fetching,
+    admin,
+    karma,
+    auth
   },
   state: {
     continents: {
