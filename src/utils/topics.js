@@ -1,4 +1,8 @@
 const topics = {
+  scala: {
+    icon: "https://img.icons8.com/wired/64/000000/scala.png",
+    topic: "Scala"
+  },  
   javascript: {
     icon: "https://img.icons8.com/ios/50/000000/javascript.png",
     topic: "JavaScript"
