@@ -61,9 +61,7 @@
               v-for="event in events"
               :key="event.startDate + event.url"
             >
-              <!-- <div class="column is-narrow">
-                <i class="far fa-star has-text-grey is-size-7"></i>
-              </div> -->
+              <JsonLd :event="event" />
               <div class="column is-one-quarter">
                 <span class="has-text-weight-bold is-size-7-mobile">
                   {{ formatRange(event.startDate, event.endDate) }}
@@ -169,6 +167,7 @@ import Stats from "./Stats";
 import PlusButton from "./PlusButton";
 import PagingStats from "./PagingStats";
 import Papers from "./Papers";
+import JsonLd from "./JsonLd";
 
 export default {
   components: {
@@ -179,6 +178,7 @@ export default {
     Papers,
     PagingStats,
     PlusButton,
+    JsonLd,
     Stats
   },
   mixins: [...filteringMixins, ...navigationMixins],
