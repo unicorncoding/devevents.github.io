@@ -84,7 +84,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 h1 {
-  font-family: "Ubuntu", sans-serif;
+  font-family: sans-serif;
 }
 .has-text-success {
   color: #42b983;
