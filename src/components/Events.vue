@@ -210,7 +210,11 @@ export default {
       return {
         separator: " ",
         complement: " ",
-        inner: (this.topicName() || "dev") + " events in " + this.locationName()
+        inner:
+          "The best " +
+          (this.topicName() ? this.topicName() : "developer") +
+          " events in " +
+          this.locationName()
       };
     }
   },
