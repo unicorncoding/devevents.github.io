@@ -14,7 +14,7 @@ export default {
       if (signedIn) {
         const axios = await lazyAxios();
         axios
-          .get('/karma')
+          .get("/karma")
           .then(response => commit("karmaFetched", response.data));
       }
     }

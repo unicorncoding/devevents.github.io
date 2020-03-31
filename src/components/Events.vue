@@ -68,7 +68,7 @@
                 </span>
                 <br />
                 <a
-                  rel="nofollow"
+                  rel="nofollow noopener noreferrer"
                   target="_blank"
                   class="has-text-grey is-size-7"
                   :href="event.cfpUrl"
@@ -86,7 +86,7 @@
                 <h2 class="title is-5">
                   <a
                     class="has-text-dark is-uppercase"
-                    rel="nofollow"
+                    rel="nofollow noopener noreferrer"
                     target="_blank"
                     :href="event.url"
                     >{{ event.name }}</a
