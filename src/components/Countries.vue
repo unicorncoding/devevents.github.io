@@ -6,7 +6,7 @@
       v-for="country in countries"
       :key="country.code"
     >
-      <img :src="icon(country.code)" />
+      <img :src="icon(country.code)" :alt="country.code" />
       <router-link class="has-text-primary" :to="hover(country.code)">{{
         country.name
       }}</router-link>
