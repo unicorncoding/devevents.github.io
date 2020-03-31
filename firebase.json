@@ -14,10 +14,6 @@
       {
         "source": "**",
         "destination": "/index.html"
-      },
-      {
-        "source": "/robots.txt",
-        "destination": "/robots.txt"
       }
     ],
     "headers": [
