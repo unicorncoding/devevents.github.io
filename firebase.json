@@ -12,7 +12,7 @@
           "function": "api"
       },
       {
-        "source": "robots.txt",
+        "source": "/robots.txt",
         "destination": "/robots.txt"
       },
       {
