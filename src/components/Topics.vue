@@ -6,7 +6,9 @@
       class="topic column is-full"
       :class="{ 'is-active': isActive(topic.code) }"
     >
-      <router-link :to="hover(topic.code)">{{ topic.name }}</router-link>
+      <router-link class="has-text-primary" :to="hover(topic.code)">{{
+        topic.name
+      }}</router-link>
       &nbsp;
       <router-link
         :to="hover(topic.code)"

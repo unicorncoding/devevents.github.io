@@ -83,12 +83,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-h1 {
-  font-family: sans-serif;
-}
-.has-text-success {
-  color: #42b983;
-}
 div[role="navigation"] {
   padding: 1em;
   background-color: #363636;

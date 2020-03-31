@@ -30,6 +30,7 @@ import {
   faEye,
   faEyeSlash
 } from "@fortawesome/free-solid-svg-icons";
+
 import {
   faHeart,
   faCircle,
@@ -58,6 +59,8 @@ library.add(
   faInstagram
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+
+require("./main.scss");
 
 Vue.config.productionTip = false;
 

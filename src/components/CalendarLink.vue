@@ -1,6 +1,6 @@
 <template>
   <span>
-    <a @click="copyCalendarLink()">
+    <a @click="copyCalendarLink()" class="has-text-primary">
       <font-awesome-icon :icon="['far', 'calendar-check']" />
       export cal
     </a>

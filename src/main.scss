@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap);
+
+$orange: #ff851b;
+$green: #42b983;
+$blue: #5bb7db;
+$red: #ff4136;
+
+$primary: #4a4a4a !default;
+$link: $green;
+
+$info-invert: #fff;
+
+$family-sans-serif: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial,
+  sans-serif;
+
+$thickness: 4px;
+
+$pagination-current-border: darken($primary, 5);
+
+$navbar-item-active-color: $primary;
+
+$dropdown-content-shadow: 0 0 0 1px #dbdbdb, 0 #{$thickness} 0 1px #dbdbdb;
+
+$navbar-dropdown-boxed-shadow: $dropdown-content-shadow;
+
+$bulmaswatch-import-font: false;
+
+$box-shadow: none;
+
+@import '~bulma';
+@import '~bulmaswatch/lumen/_overrides'

@@ -7,7 +7,9 @@
       :key="country.code"
     >
       <img :src="icon(country.code)" />
-      <router-link :to="hover(country.code)">{{ country.name }}</router-link>
+      <router-link class="has-text-primary" :to="hover(country.code)">{{
+        country.name
+      }}</router-link>
       &nbsp;
       <router-link
         :to="hover(country.code)"

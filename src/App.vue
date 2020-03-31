@@ -14,6 +14,7 @@
         >
         under caffeine. No ads, open source. <br /><br />
         <a
+          class="has-text-primary"
           href="https://github.com/unicorncoding/devevents-web/issues"
           rel="nofollow"
         >
@@ -21,6 +22,7 @@
           report an issue
         </a>
         <a
+          class="has-text-primary"
           style="margin-left: 1em"
           href="mailto:hello@dev.events"
           rel="nofollow"
@@ -29,6 +31,7 @@
           email me
         </a>
         <a
+          class="has-text-primary"
           style="margin-left: 1em"
           href="https://instagram.com/coding_unicorn"
           rel="nofollow"

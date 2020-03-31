@@ -241,10 +241,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-a {
-  color: #42b983;
-}
-
 .tag {
   position: relative;
   top: -1px;
@@ -252,7 +248,6 @@ a {
     margin-right: 0.3em;
   }
   font-weight: normal;
-  color: #7a7a7a;
   background-color: #fff;
 }
 </style>
