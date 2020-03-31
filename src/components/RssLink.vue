@@ -1,7 +1,7 @@
 <template>
   <span>
     <a @click="copyRssLink()">
-      <i class="fas fa-rss"></i>
+      <font-awesome-icon icon="rss" />
       export rss
     </a>
   </span>

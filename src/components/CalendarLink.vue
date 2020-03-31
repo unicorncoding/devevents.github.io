@@ -1,7 +1,7 @@
 <template>
   <span>
     <a @click="copyCalendarLink()">
-      <i class="far fa-calendar-check"></i>
+      <font-awesome-icon :icon="['far', 'calendar-check']" />
       export cal
     </a>
   </span>

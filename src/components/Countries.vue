@@ -11,10 +11,10 @@
       &nbsp;
       <router-link
         :to="hover(country.code)"
-        class="icon is-invisible has-text-danger"
+        class="has-text-danger"
         v-if="isActive(country.code)"
       >
-        <i class="fas fa-times"></i>
+        <font-awesome-icon icon="times" />
       </router-link>
       <span v-else class="tag">{{ country.count }}</span>
     </div>

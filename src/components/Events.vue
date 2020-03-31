@@ -13,7 +13,7 @@
             @click="toggleCategories()"
             v-if="categoriesVisible"
           >
-            <i class="fas fa-eye-slash"></i>
+            <font-awesome-icon icon="eye-slash" />
             Hide categories
           </a>
         </div>
@@ -22,7 +22,7 @@
             class="has-text-grey"
             @click="toggleCategories()"
             v-if="!categoriesVisible"
-            ><i class="fa fa-eye"></i> Show categories
+            ><font-awesome-icon icon="eye" /> Show categories
           </a>
         </div>
       </div>
@@ -93,22 +93,31 @@
                   >
                   <span v-if="event.pending && !isAdmin">
                     <span class="tag is-borderless">
-                      <i class="fas fa-info-circle has-text-warning"></i>
+                      <font-awesome-icon
+                        icon="info-circle"
+                        class="has-text-warning"
+                      />
                       Awaiting confirmation
                     </span>
                   </span>
                   <span v-if="event.pending && isAdmin">
                     <a class="tag is-borderless" @click="confirm(event.id)">
-                      <i class="fas fa-check has-text-success"></i>
+                      <font-awesome-icon
+                        icon="check"
+                        class="has-text-success"
+                      />
                       Confirm
                     </a>
                     <a class="tag is-borderless" @click="reject(event.id)">
-                      <i class="fas fa-times has-text-danger"></i>
+                      <font-awesome-icon icon="times" class="has-text-danger" />
                       Reject
                     </a>
                   </span>
                   <span v-if="event.top" class="tag is-borderless is-uppercase">
-                    <i class="far fa-heart has-text-danger"></i>
+                    <font-awesome-icon
+                      :icon="['far', 'heart']"
+                      class="has-text-danger"
+                    />
                     Top
                   </span>
                 </h2>
@@ -239,7 +248,7 @@ a {
 .tag {
   position: relative;
   top: -1px;
-  i {
+  svg {
     margin-right: 0.3em;
   }
   font-weight: normal;

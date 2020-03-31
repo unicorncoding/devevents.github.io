@@ -4,14 +4,14 @@
     :to="{ path: 'new', append: true }"
     class="button has-background-success has-text-white"
   >
-    <i class="fas fa-plus"></i>
+    <font-awesome-icon icon="plus" />
   </router-link>
   <a
     v-else
     class="button has-background-success has-text-white"
     @click="loginNeeded()"
   >
-    <i class="fas fa-plus"></i>
+    <font-awesome-icon icon="plus" />
   </a>
 </template>
 <script>

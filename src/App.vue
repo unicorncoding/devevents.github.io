@@ -17,7 +17,7 @@
           href="https://github.com/unicorncoding/devevents-web/issues"
           rel="nofollow"
         >
-          <i class="fab fa-github"></i>
+          <font-awesome-icon :icon="['fab', 'github']" />
           report an issue
         </a>
         <a
@@ -25,7 +25,7 @@
           href="mailto:hello@dev.events"
           rel="nofollow"
         >
-          <i class="far fa-envelope"></i>
+          <font-awesome-icon :icon="['far', 'envelope']" />
           email me
         </a>
         <a
@@ -33,7 +33,7 @@
           href="https://instagram.com/coding_unicorn"
           rel="nofollow"
         >
-          <i class="fab fa-instagram"></i>
+          <font-awesome-icon :icon="['fab', 'instagram']" />
           follow me
         </a>
       </div>

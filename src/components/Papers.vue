@@ -1,12 +1,13 @@
 <template>
   <span>
     <router-link v-if="!$route.params.cfp" :to="route('events', { cfp: 'cfp' })"
-      ><i class="far fa-circle"></i> with cfp</router-link
+      ><font-awesome-icon :icon="['far', 'circle']" /> with cfp</router-link
     >
     <router-link
       v-if="$route.params.cfp"
       :to="route('events', { cfp: undefined })"
-      ><i class="far fa-check-circle"></i> with cfp</router-link
+      ><font-awesome-icon :icon="['far', 'check-circle']" /> with
+      cfp</router-link
     >
   </span>
 </template>
