@@ -291,7 +291,7 @@ export default {
 }
 
 .is-success {
-  background-color: #42b983;
+  background-color: #42b983 !important;
 }
 
 select {
@@ -310,8 +310,5 @@ select {
 }
 hr {
   margin-top: 0px;
-}
-.select select:not([multiple]) {
-  height: calc(2.25em);
 }
 </style>
