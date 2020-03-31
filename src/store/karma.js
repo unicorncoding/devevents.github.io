@@ -9,11 +9,14 @@ export default {
     inc({ commit }) {
       commit("karmaInc");
     },
-    async fetch({ commit }) {
-      const axios = await lazyAxios();
-      return axios
-        .get(`/karma/`)
-        .then(response => commit("karmaFetched", response.data));
+    async fetch({ commit, rootGetters }) {
+      const signedIn = rootGetters["auth/isSignedIn"];
+      if (signedIn) {
+        const axios = await lazyAxios();
+        axios
+          .get('/karma')
+          .then(response => commit("karmaFetched", response.data));
+      }
     }
   },
   mutations: {
