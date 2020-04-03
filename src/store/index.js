@@ -24,7 +24,7 @@ export default new Vuex.Store({
   state: {
     continents: {
       EU: "Europe",
-      AM: "Americas",
+      AM: "America",
       AS: "Asia",
       AF: "Africa",
       OC: "Oceania",
