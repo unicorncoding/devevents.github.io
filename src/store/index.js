@@ -47,11 +47,6 @@ export default new Vuex.Store({
     cursor: "",
     country: ""
   },
-  getters: {
-    // isOnline: state => {
-    // return state.route.params.continent === "ON";
-    // }
-  },
   actions: {
     async moreEvents({ commit, state }) {
       commit("fetchingInProgress");
