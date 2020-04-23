@@ -3,7 +3,7 @@ import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAHy4H00RVd8qFOEcSmSP_BToX54kVspI8",
-  authDomain: "devevents.firebaseapp.com",
+  authDomain: "auth.dev.events",
   databaseURL: "https://devevents.firebaseio.com",
   projectId: "devevents",
   storageBucket: "devevents.appspot.com",
