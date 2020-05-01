@@ -61,7 +61,7 @@ export default new Vuex.Store({
         .then(response =>
           commit("eventsFetched", { data: response.data, merge: true })
         )
-        .catch(() => commit("doneFetching"));
+        .catch(() => commit("fetchingFailed"));
     },
     async fetchEvents({ commit, state }) {
       commit("fetchingInProgress");
@@ -71,7 +71,7 @@ export default new Vuex.Store({
           params: state.route.params
         })
         .then(response => commit("eventsFetched", { data: response.data }))
-        .catch(() => commit("doneFetching"));
+        .catch(() => commit("fetchingFailed"));
     }
   },
   mutations: {
