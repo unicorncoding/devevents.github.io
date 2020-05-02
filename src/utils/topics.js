@@ -1,7 +1,7 @@
 const topics = {
-  architeture: {
+  architecture: {
     icon: "https://img.icons8.com/wired/64/000000/brick-wall.png",
-    topic: "Software architecture"
+    topic: "Software Architecture"
   },
   scala: {
     icon: "https://img.icons8.com/wired/64/000000/scala.png",
