@@ -1,4 +1,8 @@
 const topics = {
+  softskills: {
+    icon: "https://img.icons8.com/wired/64/000000/communication-skill.png",
+    topic: "Soft Skills"
+  },
   architecture: {
     icon: "https://img.icons8.com/wired/64/000000/brick-wall.png",
     topic: "Software Architecture"
@@ -44,11 +48,11 @@ const topics = {
     topic: "DevOps"
   },
   leadership: {
-    icon: "https://img.icons8.com/ios/50/000000/leadership.png",
+    icon: "https://img.icons8.com/wired/64/000000/conference.png",
     topic: "Leadership"
   },
   management: {
-    icon: "https://img.icons8.com/ios/50/000000/leadership.png",
+    icon: "https://img.icons8.com/wired/64/000000/conference.png",
     topic: "Management"
   },
   dotnet: {
