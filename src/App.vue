@@ -12,7 +12,7 @@
           rel="nofollow noopener noreferrer"
           >Coding Unicorn</a
         >
-        under caffeine. No ads, open source. <br /><br />
+        under caffeine (｡◕‿◕｡) . No ads, open source. <br /><br />
         <a
           class="has-text-primary"
           href="https://github.com/unicorncoding/devevents-web/issues"

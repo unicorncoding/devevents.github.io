@@ -30,14 +30,13 @@
               </div>
               <br />
               <article class="message is-danger" v-if="globalError">
-                <div class="message-body">
-                  {{ globalError }}
-                </div>
+                <div class="message-body">{{ globalError }}</div>
               </article>
               <div class="columns is-marginless">
                 <div class="column is-one-third">
                   <h2 class="subtitle is-5 has-text-grey">
-                    Main info <span class="has-text-danger">*</span>
+                    Main info
+                    <span class="has-text-danger">*</span>
                   </h2>
                 </div>
                 <div class="column is-two-thirds">
@@ -80,13 +79,25 @@
                       />
                     </div>
                   </div>
+
+                  <div class="field">
+                    <div class="control">
+                      <input
+                        class="is-small input"
+                        placeholder="@twitter"
+                        v-model="newEvent.twitter"
+                        :class="{ 'is-danger': validationErrors.twitter }"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div class="columns is-marginless">
                 <div class="column is-one-third">
                   <h2 class="subtitle is-5 has-text-grey">
-                    Location <span class="has-text-danger">*</span>
+                    Location
+                    <span class="has-text-danger">*</span>
                   </h2>
                 </div>
                 <div class="column is-two-thirds">
@@ -134,7 +145,8 @@
               <div class="columns is-marginless">
                 <div class="column is-one-third">
                   <h2 class="subtitle is-5 has-text-grey">
-                    Date (from - to) <span class="has-text-danger">*</span>
+                    Date (from - to)
+                    <span class="has-text-danger">*</span>
                   </h2>
                 </div>
                 <div class="column is-two-thirds">
