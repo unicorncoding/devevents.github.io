@@ -1,4 +1,8 @@
 const topics = {
+  architeture: {
+    icon: "https://img.icons8.com/wired/64/000000/brick-wall.png",
+    topic: "Software architecture"
+  },
   scala: {
     icon: "https://img.icons8.com/wired/64/000000/scala.png",
     topic: "Scala"
@@ -42,6 +46,10 @@ const topics = {
   leadership: {
     icon: "https://img.icons8.com/ios/50/000000/leadership.png",
     topic: "Leadership"
+  },
+  management: {
+    icon: "https://img.icons8.com/ios/50/000000/leadership.png",
+    topic: "Management"
   },
   dotnet: {
     icon: "https://img.icons8.com/ios/50/000000/microsoft.png",
