@@ -213,7 +213,7 @@ export default {
         inner:
           "The best " +
           (this.topicName() ? this.topicName() : "developer") +
-          " events in " +
+          " conferences, meetups, and training in " +
           this.locationName()
       };
     }
