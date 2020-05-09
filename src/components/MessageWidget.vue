@@ -1,8 +1,8 @@
 <template>
-  <Delay :wait="10000">
+  <Delay :wait="10000" v-if="!closed">
     <div class="message-widget">
       <div class="buttons">
-        <a v-on:click.stop="this.closed = true">
+        <a v-on:click.stop="close()">
           <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
         </a>
       </div>
@@ -63,6 +63,11 @@ export default {
     return {
       closed: false
     };
+  },
+  methods: {
+    close() {
+      this.closed = true;
+    }
   }
 };
 </script>
