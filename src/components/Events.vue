@@ -165,7 +165,6 @@
       </div>
       <PlusButton />
     </div>
-    <MessageWidget />
   </div>
 </template>
 
@@ -179,7 +178,6 @@ import { mapState, mapActions, mapGetters } from "vuex";
 import Topics from "./Topics";
 import Continents from "./Continents";
 import Countries from "./Countries";
-import MessageWidget from "./MessageWidget";
 import Header from "./Header";
 import Stats from "./Stats";
 import PlusButton from "./PlusButton";
@@ -198,7 +196,6 @@ export default {
     PlusButton,
     JsonLd,
     Stats,
-    MessageWidget
   },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {
