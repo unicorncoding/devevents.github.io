@@ -79,7 +79,14 @@
               </div>
               <div class="column is-narrow">
                 <figure class="image is-32x32">
-                  <img :src="prettyIcon(event.topicCode)" :alt="event.topic" />
+                  <router-link
+                    :to="route('events', { topic: event.topicCode })"
+                  >
+                    <img
+                      :src="prettyIcon(event.topicCode)"
+                      :alt="event.topic"
+                    />
+                  </router-link>
                 </figure>
               </div>
               <div class="column">
