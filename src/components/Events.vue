@@ -213,11 +213,13 @@ export default {
       return {
         separator: " ",
         complement: " ",
-        inner:
-          "The best " +
-          (this.topicName() ? this.topicName() : "developer") +
-          " conferences, meetups, and training in " +
-          this.locationName()
+        inner: !this.isOnline
+          ? (this.topicName() ? this.topicName() : "Developer") +
+            " conferences, meetups, and training in " +
+            this.locationName()
+          : "Online " +
+            (this.topicName() ? this.topicName() : "developer") +
+            " conferences, meetups, and training"
       };
     }
   },
