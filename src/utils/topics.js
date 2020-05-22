@@ -1,11 +1,11 @@
 const topics = {
   softskills: {
     icon: "https://img.icons8.com/wired/64/000000/communication-skill.png",
-    topic: "Soft Skills"
+    topic: "Soft skills"
   },
   architecture: {
     icon: "https://img.icons8.com/wired/64/000000/brick-wall.png",
-    topic: "Software Architecture"
+    topic: "Software architecture"
   },
   scala: {
     icon: "https://img.icons8.com/wired/64/000000/scala.png",
@@ -102,6 +102,10 @@ const topics = {
   golang: {
     icon: "https://img.icons8.com/ios/50/000000/golang.png",
     topic: "Golang"
+  },
+  qa: {
+    icon: "https://img.icons8.com/wired/64/000000/bug.png",
+    topic: "Testing and QA"
   }
 };
 
