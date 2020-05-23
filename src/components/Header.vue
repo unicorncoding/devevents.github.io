@@ -5,14 +5,17 @@
         <section class="section">
           <div class="columns is-vcentered is-gapless is-mobile">
             <div class="column">
-              <h1 class="title is-size-5">
+              <h1 class="title is-size-4" style="letter-spacing: -2px">
                 <router-link
-                  class="has-text-white-ter"
+                  class="has-text-white"
                   :to="{
                     name: 'events',
                     params: { continent: $route.params.continent }
                   }"
-                  >dev<span class="has-text-success">.</span>events</router-link
+                  >dev<span class="has-text-success">.</span
+                  ><span class="has-text-weight-normal"
+                    >events</span
+                  ></router-link
                 >
               </h1>
             </div>
@@ -83,9 +86,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.title {
-  font-family: 'Helvetica';
-}
 div[role="navigation"] {
   padding: 1em;
   background-color: #363636;
