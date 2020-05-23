@@ -23,9 +23,6 @@
                   >
                     <a @click="newEvent.category = 'training'">Training</a>
                   </li>
-                  <li :class="{ 'is-active': newEvent.category === 'meetup' }">
-                    <a @click="newEvent.category = 'meetup'">Meetup</a>
-                  </li>
                 </ul>
               </div>
               <br />

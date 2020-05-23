@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/unicorncoding/devevents-web.svg?branch=master)](https://travis-ci.org/unicorncoding/devevents-web)
 # dev.events
 
-👉 **[dev.events](https://dev.events)** is an ad-free, opensource listing of developer conferences, meetups, and training. 
+👉 **[dev.events](https://dev.events)** is an ad-free, opensource listing of developer conferences and training. 
 
 What makes this listing awesome?
 

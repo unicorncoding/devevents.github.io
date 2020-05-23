@@ -219,11 +219,11 @@ export default {
         complement: " ",
         inner: !this.isOnline
           ? (this.topicName() ? this.topicName() : "Developer") +
-            " conferences, meetups, and training in " +
+            " conferences and training in " +
             this.locationName()
           : "Online " +
             (this.topicName() ? this.topicName() : "developer") +
-            " conferences, meetups, and training"
+            " conferences and training"
       };
     }
   },
