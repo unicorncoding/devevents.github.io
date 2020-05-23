@@ -83,6 +83,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.title {
+  font-family: 'Helvetica';
+}
 div[role="navigation"] {
   padding: 1em;
   background-color: #363636;
