@@ -1,4 +1,4 @@
-import { firebase } from "../utils/firebase";
+import { firebase, ui, auth, noCredentialsHelper } from "../utils/firebase";
 
 export default {
   namespaced: true,
@@ -6,6 +6,10 @@ export default {
     user: {}
   },
   getters: {
+    username: state => {
+      const [firstName] = state.user.name.split(" ");
+      return firstName;
+    },
     isAdmin: state => {
       return !!state.user.claims?.admin;
     },
@@ -14,24 +18,34 @@ export default {
     }
   },
   actions: {
+    signIn({ commit }, containerSelector) {
+      const signInSuccessWithAuthResult = ({ user }) => {
+        user
+          .getIdTokenResult(true)
+          .then(it => ({ ...user, claims: it.claims, jwtToken: it.token }))
+          .then(it => commit("setUser", it))
+          .then(() => location.reload());
+      };
+      const uiConfig = {
+        callbacks: {
+          signInSuccessWithAuthResult
+        },
+        signInFlow: "popup",
+        credentialHelper: noCredentialsHelper,
+        signInSuccessUrl: window.location.href,
+        signInOptions: [
+          auth.GithubAuthProvider.PROVIDER_ID,
+          auth.TwitterAuthProvider.PROVIDER_ID,
+          auth.EmailAuthProvider.PROVIDER_ID
+        ]
+      };
+      ui.start(containerSelector, uiConfig);
+    },
     signOut({ commit }) {
       firebase
         .auth()
         .signOut()
         .then(() => commit("setUser", {}))
-        .then(() => location.reload());
-    },
-    githubSignIn({ commit }) {
-      const github = new firebase.auth.GithubAuthProvider();
-      firebase
-        .auth()
-        .signInWithPopup(github)
-        .then(({ user }) =>
-          user
-            .getIdTokenResult(true)
-            .then(it => ({ ...user, claims: it.claims, jwtToken: it.token }))
-        )
-        .then(user => commit("setUser", user))
         .then(() => location.reload());
     }
   },

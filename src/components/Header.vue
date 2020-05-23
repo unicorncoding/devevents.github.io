@@ -24,8 +24,8 @@
                   </figure>
                 </div>
                 <div class="column is-narrow">
-                  <span class="has-text-light is-size-7"
-                    >karma
+                  <span class="has-text-light is-size-7">
+                    {{ username }}
                     <span class="has-text-weight-bold"
                       >({{ karma }})</span
                     ></span
@@ -39,9 +39,7 @@
               </div>
             </div>
             <div class="column has-text-right" v-else>
-              <a class="has-text-light is-size-7" @click="githubSignIn()"
-                >login</a
-              >
+              <Login />
             </div>
           </div>
         </section>
@@ -62,24 +60,26 @@
   </div>
 </template>
 <script>
+import Login from "../components/Login";
 import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   methods: {
     ...mapActions("karma", ["fetch"]),
-    ...mapActions("auth", ["githubSignIn", "signOut"])
+    ...mapActions("auth", ["signOut"])
   },
   created() {
     this.fetch();
   },
   computed: {
-    ...mapGetters("auth", ["isSignedIn", "isAdmin"]),
+    ...mapGetters("auth", ["isSignedIn", "isAdmin", "username"]),
     ...mapState("karma", {
       karma: state => state.karma
     }),
     ...mapState("auth", {
       user: state => state.user
     })
-  }
+  },
+  components: { Login }
 };
 </script>
 <style lang="scss" scoped>

@@ -195,7 +195,7 @@ export default {
     PagingStats,
     PlusButton,
     JsonLd,
-    Stats,
+    Stats
   },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {

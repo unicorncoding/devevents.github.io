@@ -19,6 +19,7 @@
     "core-js": "^3.4.3",
     "dayjs": "^1.8.18",
     "firebase": "^7.11.0",
+    "firebaseui": "^4.5.0",
     "intersection-observer": "^0.7.0",
     "vue": "^2.6.10",
     "vue-clipboard2": "^0.3.1",

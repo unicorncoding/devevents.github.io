@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import "firebaseui/dist/firebaseui.css";
+
 import "intersection-observer";
 
 import Notifications from "vue-notification";

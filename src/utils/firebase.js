@@ -1,4 +1,5 @@
 import * as firebase from "firebase/app";
+import { auth as firebaseAuthUi } from "firebaseui";
 import "firebase/auth";
 import AuthConfig from "../../firebase.auth.json";
 
@@ -30,4 +31,8 @@ const jwtToken = () =>
     );
   });
 
-export { firebase, authReady, jwtToken };
+const ui = new firebaseAuthUi.AuthUI(firebase.auth());
+const auth = firebase.auth;
+const noCredentialsHelper = firebaseAuthUi.CredentialHelper.NONE;
+
+export { firebase, authReady, jwtToken, ui, auth, noCredentialsHelper };
