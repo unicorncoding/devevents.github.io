@@ -7,8 +7,7 @@ export default {
   },
   getters: {
     username: state => {
-      const [firstName] = state.user.name.split(" ");
-      return firstName;
+      return state.user.name;
     },
     isAdmin: state => {
       return !!state.user.claims?.admin;
