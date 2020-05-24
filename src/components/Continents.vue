@@ -8,8 +8,7 @@
       >
         <router-link
           :to="{
-            name: 'events',
-            params: { continent: code, cfp: $route.params.cfp }
+            params: { continent: code, country: undefined, topic: undefined }
           }"
         >
           {{ name }}

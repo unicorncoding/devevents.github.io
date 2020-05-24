@@ -30,7 +30,9 @@ import {
   faRss,
   faInfoCircle,
   faEye,
-  faEyeSlash
+  faEyeSlash,
+  faSquare,
+  faCheckSquare
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -40,7 +42,11 @@ import {
   faEnvelope,
   faCalendarCheck
 } from "@fortawesome/free-regular-svg-icons";
-import { faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faInstagram,
+  faTwitter
+} from "@fortawesome/free-brands-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -49,6 +55,8 @@ library.add(
   faTimes,
   faCheck,
   faCircle,
+  faSquare,
+  faCheckSquare,
   faCheckCircle,
   faEye,
   faEyeSlash,
@@ -58,6 +66,7 @@ library.add(
   faEnvelope,
   faHeart,
   faGithub,
+  faTwitter,
   faInstagram
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);

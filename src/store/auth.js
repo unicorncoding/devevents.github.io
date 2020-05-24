@@ -1,4 +1,5 @@
 import { firebase, ui, auth, noCredentialsHelper } from "../utils/firebase";
+import emojiStrip from "emoji-strip";
 
 export default {
   namespaced: true,
@@ -7,7 +8,7 @@ export default {
   },
   getters: {
     username: state => {
-      return state.user.name;
+      return emojiStrip(state.user.name);
     },
     isAdmin: state => {
       return !!state.user.claims?.admin;

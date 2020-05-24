@@ -11,21 +11,6 @@
         <section class="section is-marginless is-paddingless">
           <div class="columns is-centered">
             <div class="column has-background-white" style="padding: 50px">
-              <div class="tabs is-centered is-fullwidth">
-                <ul>
-                  <li
-                    :class="{ 'is-active': newEvent.category === 'conference' }"
-                  >
-                    <a @click="newEvent.category = 'conference'">Conference</a>
-                  </li>
-                  <li
-                    :class="{ 'is-active': newEvent.category === 'training' }"
-                  >
-                    <a @click="newEvent.category = 'training'">Training</a>
-                  </li>
-                </ul>
-              </div>
-              <br />
               <article class="message is-danger" v-if="globalError">
                 <div class="message-body">{{ globalError }}</div>
               </article>
@@ -177,10 +162,7 @@
               </div>
 
               <hr style="margin-top: 0" />
-              <div
-                class="columns is-marginless"
-                v-if="newEvent.category !== 'training'"
-              >
+              <div class="columns is-marginless">
                 <div class="column is-one-third">
                   <h2 class="subtitle is-5 has-text-grey">Call for papers</h2>
                 </div>

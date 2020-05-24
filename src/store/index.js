@@ -32,6 +32,7 @@ export default new Vuex.Store({
     },
     countries: [],
     isOnline: false,
+    isCfps: false,
     countryName: undefined,
     more: false,
     noEvents: false,
@@ -89,6 +90,7 @@ export default new Vuex.Store({
       state.doneFetching = true;
       state.countryName = meta.countryName;
       state.topicName = meta.topicName;
+      state.isCfps = !!state.route.params.cfp;
       state.isOnline = state.route.params.continent === "ON";
       state.stats.total = meta.total;
       state.stats.shown = state.events.length;

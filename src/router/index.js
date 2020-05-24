@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic(\\w+)?",
-    name: "events",
+    name: "confs",
     component: Events,
     children: [
       {

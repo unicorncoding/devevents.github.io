@@ -3,9 +3,6 @@
     <router-view></router-view>
     <Header>
       <Continents />
-      <Stats :class="{ 'is-invisible': !doneFetching }">
-        <Papers />
-      </Stats>
       <div class="is-pulled-left">
         <div class="is-hidden-tablet is-size-7">
           <a
@@ -36,8 +33,11 @@
         adjusting or
         <router-link
           :to="{
-            name: 'events',
-            params: { continent: $route.params.continent }
+            params: {
+              continent: $route.params.continent,
+              country: undefined,
+              topic: undefined
+            }
           }"
           >resetting</router-link
         >
@@ -179,10 +179,8 @@ import Topics from "./Topics";
 import Continents from "./Continents";
 import Countries from "./Countries";
 import Header from "./Header";
-import Stats from "./Stats";
 import PlusButton from "./PlusButton";
 import PagingStats from "./PagingStats";
-import Papers from "./Papers";
 import JsonLd from "./JsonLd";
 
 export default {
@@ -191,11 +189,9 @@ export default {
     Continents,
     Countries,
     Topics,
-    Papers,
     PagingStats,
     PlusButton,
-    JsonLd,
-    Stats
+    JsonLd
   },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {
@@ -219,11 +215,14 @@ export default {
         complement: " ",
         inner: !this.isOnline
           ? (this.topicName() ? this.topicName() : "Developer") +
-            " conferences and training in " +
+            (this.isCfps
+              ? " conferences with call for papers"
+              : " conferences") +
+            " in " +
             this.locationName()
           : "Online " +
             (this.topicName() ? this.topicName() : "developer") +
-            " conferences and training"
+            (this.isCfps ? " conferences with call for papers" : " conferences")
       };
     }
   },
@@ -244,6 +243,7 @@ export default {
     ...mapGetters("auth", ["isAdmin"]),
     ...mapState([
       "isOnline",
+      "isCfps",
       "events",
       "topics",
       "more",
