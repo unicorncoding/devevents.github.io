@@ -267,8 +267,7 @@ export default {
       this.createNew(this.newEvent);
     },
     close() {
-      const back = { path: this.$route.path.replace("/new", "") };
-      this.$router.push(back);
+      this.$router.go(-1);
     },
     ...mapActions("creation", ["createNew", "fetchInfo"])
   }
