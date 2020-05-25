@@ -14,9 +14,9 @@ export default {
       const axios = await lazyAxios();
       const goToNewEvent = continent => {
         router.push({
-          name: "events",
+          name: "confs",
           params: {
-            continent: continent,
+            continent,
             country: event.countryCode,
             topic: event.topicCode
           }

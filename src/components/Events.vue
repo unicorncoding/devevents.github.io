@@ -107,17 +107,21 @@
                       Awaiting confirmation
                     </span>
                   </span>
-                  <span v-if="event.pending && isAdmin">
-                    <a class="tag is-borderless" @click="confirm(event.id)">
+                  <span v-if="isAdmin">
+                    <a
+                      v-if="event.pending"
+                      class="tag is-borderless"
+                      @click="confirm(event.id)"
+                    >
                       <font-awesome-icon
                         icon="check"
                         class="has-text-success"
                       />
                       Confirm
                     </a>
-                    <a class="tag is-borderless" @click="reject(event.id)">
+                    <a class="tag is-borderless" @click="del(event.id)">
                       <font-awesome-icon icon="times" class="has-text-danger" />
-                      Reject
+                      Delete
                     </a>
                   </span>
                   <span v-if="event.top" class="tag is-borderless is-uppercase">
@@ -227,6 +231,9 @@ export default {
     }
   },
   methods: {
+    showInfo(event) {
+      alert(JSON.stringify(event.id));
+    },
     categoryVisibilityChanged(categoriesVisible) {
       this.categoriesVisible = categoriesVisible;
     },
@@ -237,7 +244,7 @@ export default {
     formatCfp,
     prettyIcon,
     ...mapActions(["fetchEvents", "moreEvents"]),
-    ...mapActions("admin", ["confirm", "reject"])
+    ...mapActions("admin", ["confirm", "del"])
   },
   computed: {
     ...mapGetters("auth", ["isAdmin"]),

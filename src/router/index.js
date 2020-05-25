@@ -1,11 +1,17 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Events from "../components/Events";
+import ConferenceInfo from "../components/ConferenceInfo";
 import NewEvent from "../components/NewEvent";
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: "/conference/:id",
+    name: "conf",
+    component: ConferenceInfo
+  },
   {
     path: "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic(\\w+)?",
     name: "confs",

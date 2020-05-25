@@ -9,10 +9,10 @@ export default {
         .post(`/admin/${eventId}/confirm`)
         .then(() => location.reload());
     },
-    async reject(undefined, eventId) {
+    async del(undefined, eventId) {
       const axios = await lazyAxios();
       return axios
-        .post(`/admin/${eventId}/reject`)
+        .post(`/admin/${eventId}/delete`)
         .then(() => location.reload());
     }
   }
