@@ -98,27 +98,7 @@
                     :href="event.url"
                     >{{ event.name }}</a
                   >
-                  <span v-if="event.pending && !isAdmin">
-                    <span class="tag is-borderless">
-                      <font-awesome-icon
-                        icon="info-circle"
-                        class="has-text-warning"
-                      />
-                      Awaiting confirmation
-                    </span>
-                  </span>
                   <span v-if="isAdmin">
-                    <a
-                      v-if="event.pending"
-                      class="tag is-borderless"
-                      @click="confirm(event.id)"
-                    >
-                      <font-awesome-icon
-                        icon="check"
-                        class="has-text-success"
-                      />
-                      Confirm
-                    </a>
                     <a class="tag is-borderless" @click="del(event.id)">
                       <font-awesome-icon icon="times" class="has-text-danger" />
                       Delete
