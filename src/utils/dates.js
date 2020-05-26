@@ -10,6 +10,10 @@ export function formatCfp(cfpDate) {
   return "";
 }
 
+export function formatCreationDate(startDate) {
+  return dayjs(startDate).fromNow();
+}
+
 export function formatRange(startDate, endDate) {
   const fmtWithYearIfNeeded = (date, pattern) => {
     const thisYear = date.year() === dayjs().year();

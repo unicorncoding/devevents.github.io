@@ -13,7 +13,7 @@ $info-invert: #fff;
 $family-sans-serif: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial,
   sans-serif;
 
-$thickness: 4px;
+$thickness: 1px;
 
 $pagination-current-border: darken($primary, 5);
 
@@ -27,5 +27,13 @@ $bulmaswatch-import-font: false;
 
 $box-shadow: none;
 
+.button {
+  &.is-hovered,
+  &:hover {
+    border-bottom-width: $thickness !important;
+  }
+}
+
 @import '~bulma';
 @import '~bulmaswatch/lumen/_overrides'
+

@@ -3,6 +3,14 @@
     <router-view></router-view>
     <Header>
       <Continents />
+      <div class="is-pulled-right">
+        <div class="select is-small" @change="sortingChanged()">
+          <select v-model="$store.state.sorting" class="is-borderless">
+            <option value="-creationDate">Newest first</option>
+            <option value="startDate">Sort by date</option>
+          </select>
+        </div>
+      </div>
       <div class="is-pulled-left">
         <div class="is-hidden-tablet is-size-7">
           <a
@@ -63,6 +71,16 @@
             >
               <JsonLd :event="event" />
               <div class="column is-one-quarter">
+                <span
+                  class="has-text-grey is-size-7"
+                  v-if="$store.state.sorting === '-creationDate'"
+                >
+                  <span>
+                    added
+                    {{ formatCreationDate(event.creationDate) }}
+                  </span>
+                  <br />
+                </span>
                 <span class="has-text-weight-bold is-size-7-mobile">
                   {{ formatRange(event.startDate, event.endDate) }}
                 </span>
@@ -72,7 +90,7 @@
                   target="_blank"
                   class="has-text-grey is-size-7"
                   :href="event.cfpUrl"
-                  v-if="event.cfpEndDate"
+                  v-if="isCfps && event.cfpEndDate"
                 >
                   {{ formatCfp(event.cfpEndDate) }}
                 </a>
@@ -154,7 +172,7 @@
 
 <script>
 import { prettyIcon } from "@/utils/topics";
-import { formatRange, formatCfp } from "@/utils/dates";
+import { formatRange, formatCfp, formatCreationDate } from "@/utils/dates";
 import navigationMixins from "@/mixins/navigation";
 import filteringMixins from "@/mixins/filtering";
 
@@ -211,8 +229,8 @@ export default {
     }
   },
   methods: {
-    showInfo(event) {
-      alert(JSON.stringify(event.id));
+    sortingChanged() {
+      this.fetchEvents();
     },
     categoryVisibilityChanged(categoriesVisible) {
       this.categoriesVisible = categoriesVisible;
@@ -221,6 +239,7 @@ export default {
       this.forceShowCategories = !this.forceShowCategories;
     },
     formatRange,
+    formatCreationDate,
     formatCfp,
     prettyIcon,
     ...mapActions(["fetchEvents", "moreEvents"]),
@@ -241,6 +260,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.is-borderless {
+  border: none;
+}
 .tag {
   position: relative;
   top: -1px;

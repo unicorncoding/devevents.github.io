@@ -33,6 +33,7 @@ export default new Vuex.Store({
     countries: [],
     isOnline: false,
     isCfps: false,
+    sorting: "startDate",
     countryName: undefined,
     more: false,
     noEvents: false,
@@ -56,7 +57,8 @@ export default new Vuex.Store({
         .get(`/events/search`, {
           params: {
             ...{ start: state.cursor },
-            ...state.route.params
+            ...state.route.params,
+            sorting: state.sorting
           }
         })
         .then(response =>
@@ -69,7 +71,7 @@ export default new Vuex.Store({
       const axios = await lazyAxios();
       return axios
         .get(`/events/search`, {
-          params: state.route.params
+          params: { ...state.route.params, sorting: state.sorting }
         })
         .then(response => commit("eventsFetched", { data: response.data }))
         .catch(() => commit("fetchingFailed"));
