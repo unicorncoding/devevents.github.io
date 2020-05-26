@@ -138,7 +138,7 @@
 
                   <span v-if="!isOnline"
                     >in
-                    {{ event.city + (event.state ? `, ${event.state}` : "") }},
+                    {{ event.city + (event.stateCode ? `, ${event.stateCode}` : "") }},
                     <router-link
                       :to="route('events', { country: event.countryCode })"
                     >
