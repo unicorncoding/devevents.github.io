@@ -25,10 +25,13 @@
                   <div class="field">
                     <div class="control">
                       <div
-                        class=" select is-fullwidth"
+                        class="select"
                         :class="{ 'is-danger': validationErrors.topicCode }"
                       >
-                        <select v-model="newEvent.topicCode">
+                        <select
+                          v-model="newEvent.topicCode"
+                          class="is-borderless"
+                        >
                           <option
                             v-for="topic in topics"
                             :key="topic.code"
@@ -43,7 +46,7 @@
                   <div class="field">
                     <div class="control">
                       <input
-                        class=" input"
+                        class=" input is-borderless is-shadowless"
                         placeholder="Name"
                         v-model="newEvent.name"
                         :class="{ 'is-danger': validationErrors.name }"
@@ -54,7 +57,7 @@
                   <div class="field">
                     <div class="control">
                       <input
-                        class=" input"
+                        class=" input is-borderless is-shadowless"
                         placeholder="Website"
                         v-model="newEvent.url"
                         :class="{ 'is-danger': validationErrors.url }"
@@ -65,7 +68,7 @@
                   <div class="field">
                     <div class="control">
                       <input
-                        class=" input"
+                        class=" input is-borderless is-shadowless"
                         placeholder="@twitter"
                         v-model="newEvent.twitter"
                         :class="{ 'is-danger': validationErrors.twitter }"
@@ -87,10 +90,11 @@
                     <div class="field">
                       <p class="control">
                         <span
-                          class=" select is-fullwidth"
+                          class=" select is-fullwidth "
                           :class="{ 'is-danger': validationErrors.countryCode }"
                         >
                           <select
+                            class="is-borderless"
                             v-model="newEvent.countryCode"
                             @change="countrySelected()"
                           >
@@ -115,7 +119,10 @@
                             class=" select is-fullwidth"
                             :class="{ 'is-danger': validationErrors.stateCode }"
                           >
-                            <select v-model="newEvent.stateCode">
+                            <select
+                              v-model="newEvent.stateCode"
+                              class="is-borderless is-shadowless"
+                            >
                               <option disabled selected :value="undefined"
                                 >Choose state...</option
                               >
@@ -135,7 +142,7 @@
                       <div class="field">
                         <p class="control">
                           <input
-                            class=" input"
+                            class=" input is-borderless is-shadowless"
                             placeholder="City"
                             :disabled="isOnline"
                             v-model="newEvent.city"
@@ -161,7 +168,7 @@
                         <p class="control">
                           <input
                             v-model="newEvent.startDate"
-                            class=" input"
+                            class=" input is-borderless is-shadowless"
                             type="text"
                             placeholder="YYYY-MM-DD"
                             :class="{ 'is-danger': validationErrors.startDate }"
@@ -172,7 +179,7 @@
                         <p class="control">
                           <input
                             v-model="newEvent.endDate"
-                            class=" input"
+                            class=" input is-borderless is-shadowless"
                             type="text"
                             placeholder="YYYY-MM-DD"
                             :class="{ 'is-danger': validationErrors.endDate }"
@@ -194,7 +201,7 @@
                     <div class="field">
                       <p class="control">
                         <input
-                          class=" input"
+                          class=" input is-borderless is-shadowless"
                           type="text"
                           placeholder="URL"
                           v-model="newEvent.cfpUrl"
@@ -207,7 +214,7 @@
                     <div class="field">
                       <p class="control">
                         <input
-                          class=" input"
+                          class=" input is-borderless is-shadowless"
                           type="text"
                           placeholder="YYYY-MM-DD"
                           v-model="newEvent.cfpEndDate"
@@ -243,7 +250,6 @@ export default {
       states: states,
       newEvent: {
         countryCode: undefined,
-        category: "conference",
         topicCode: "fullstack"
       }
     };
@@ -312,6 +318,11 @@ export default {
   background-color: #42b983 !important;
 }
 
+.modal-close::before,
+.modal-close::after {
+  background-color: black !important;
+}
+
 input,
 select {
   background-color: hsl(0, 0%, 98%) !important;
@@ -321,6 +332,10 @@ select {
 }
 .field {
   margin-bottom: 1em;
+}
+.is-danger {
+  border: 1px solid red !important;
+  border-radius: 4px;
 }
 hr {
   margin-top: 0px;

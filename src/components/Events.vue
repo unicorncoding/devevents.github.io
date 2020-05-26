@@ -261,10 +261,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.is-borderless {
-  border: none;
-}
-
 .icon {
   filter: grayscale(100%);
 }

@@ -40,6 +40,10 @@ $modal-background-background-color: white;
   }
 }
 
+.is-borderless {
+  border: none !important;
+}
+
 @import '~bulma';
 @import '~bulmaswatch/lumen/_overrides'
 
