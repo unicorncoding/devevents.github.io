@@ -27,6 +27,12 @@ $bulmaswatch-import-font: false;
 
 $box-shadow: none;
 
+$modal-content-spacing-tablet: 0px;
+$modal-content-width: 90%;
+$modal-content-margin-mobile: 0px;
+$modal-content-spacing-mobile: 0px;
+$modal-background-background-color: white;
+
 .button {
   &.is-hovered,
   &:hover {

@@ -227,7 +227,7 @@
         </section>
         <button
           @click="close()"
-          class="modal-close is-large"
+          class="modal-close is-large has-background-white"
           aria-label="close"
         ></button>
       </div>
@@ -312,13 +312,9 @@ export default {
   background-color: #42b983 !important;
 }
 
-select {
-  border-width: 1px;
-}
-
 input,
 select {
-  background-color: hsl(0, 0%, 98%);
+  background-color: hsl(0, 0%, 98%) !important;
 }
 .select:not(.is-multiple):not(.is-loading)::after {
   border-color: hsl(0, 0%, 86%);
