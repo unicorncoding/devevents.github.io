@@ -135,7 +135,7 @@
                     :to="route('events', { topic: event.topicCode })"
                     >{{ event.topic }}</router-link
                   >
-                  {{ event.category }}
+                  conference
 
                   <span v-if="!isOnline"
                     >in {{ event.city }},
