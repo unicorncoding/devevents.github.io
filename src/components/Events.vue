@@ -117,7 +117,7 @@
                     >{{ event.name }}</a
                   >
                   <span v-if="isAdmin">
-                    <a class="tag is-borderless" @click="del(event.id)">
+                    <a class="tag is-borderless" @click="deleteEvent(event.id)">
                       <font-awesome-icon icon="times" class="has-text-danger" />
                       Delete
                     </a>
@@ -240,8 +240,7 @@ export default {
     formatRange,
     formatCreationDate,
     formatCfp,
-    ...mapActions(["fetchEvents", "moreEvents"]),
-    ...mapActions("admin", ["del"])
+    ...mapActions(["fetchEvents", "moreEvents", "deleteEvent"])
   },
   computed: {
     ...mapGetters("auth", ["isAdmin"]),

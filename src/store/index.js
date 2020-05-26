@@ -3,7 +3,6 @@ import Vuex from "vuex";
 import lazyAxios from "../utils/axios";
 
 import auth from "./auth";
-import admin from "./admin";
 import karma from "./karma";
 import creation from "./creation";
 import fetching from "./fetching";
@@ -17,7 +16,6 @@ export default new Vuex.Store({
   modules: {
     creation,
     fetching,
-    admin,
     karma,
     auth
   },
@@ -75,6 +73,12 @@ export default new Vuex.Store({
         })
         .then(response => commit("eventsFetched", { data: response.data }))
         .catch(() => commit("fetchingFailed"));
+    },
+    async deleteEvent({ commit }, eventId) {
+      const axios = await lazyAxios();
+      return axios
+        .post(`/admin/${eventId}/delete`)
+        .then(() => commit("excludeOne", eventId));
     }
   },
   mutations: {
@@ -83,6 +87,9 @@ export default new Vuex.Store({
     },
     fetchingFailed(state) {
       state.doneFetching = true;
+    },
+    excludeOne(state, eventId) {
+      state.events = state.events.filter(({ id }) => id !== eventId);
     },
     eventsFetched(state, { data, merge = false }) {
       const [events, meta] = data;
