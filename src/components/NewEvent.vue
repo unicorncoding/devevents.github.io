@@ -108,6 +108,29 @@
                       </p>
                     </div>
 
+                    <div class="field" v-if="isUSA">
+                      <div class="field">
+                        <p class="control">
+                          <span
+                            class="is-small select is-fullwidth"
+                            :class="{ 'is-danger': validationErrors.stateCode }"
+                          >
+                            <select v-model="newEvent.stateCode">
+                              <option disabled selected :value="undefined"
+                                >Choose state...</option
+                              >
+                              <option
+                                v-for="(stateName, stateCode) in states"
+                                :key="stateCode"
+                                :value="stateName"
+                                >{{ stateName }}</option
+                              >
+                            </select>
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+
                     <div class="field">
                       <div class="field">
                         <p class="control">
@@ -213,9 +236,11 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
+import states from "../utils/states";
 export default {
   data: () => {
     return {
+      states: states,
       newEvent: {
         countryCode: undefined,
         category: "conference",
@@ -237,6 +262,9 @@ export default {
     isOnline() {
       return this.newEvent.countryCode === "ON";
     },
+    isUSA() {
+      return this.newEvent.countryCode === "US";
+    },
     html() {
       return document.documentElement;
     },
@@ -257,10 +285,10 @@ export default {
   },
   methods: {
     countrySelected() {
+      delete this.newEvent.stateCode;
+      delete this.newEvent.city;
       if (this.isOnline) {
         this.newEvent.city = "Online";
-      } else {
-        delete this.newEvent.city;
       }
     },
     submitForm() {
