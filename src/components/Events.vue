@@ -241,7 +241,7 @@ export default {
     formatCreationDate,
     formatCfp,
     ...mapActions(["fetchEvents", "moreEvents"]),
-    ...mapActions("admin", ["confirm", "del"])
+    ...mapActions("admin", ["del"])
   },
   computed: {
     ...mapGetters("auth", ["isAdmin"]),
