@@ -103,6 +103,7 @@
                     <img
                       :src="'/icons/topics/' + event.topicCode + '.png'"
                       :alt="event.topic"
+                      class="icon"
                     />
                   </router-link>
                 </figure>
@@ -263,6 +264,11 @@ export default {
 .is-borderless {
   border: none;
 }
+
+.icon {
+  filter: grayscale(100%);
+}
+
 .tag {
   position: relative;
   top: -1px;
