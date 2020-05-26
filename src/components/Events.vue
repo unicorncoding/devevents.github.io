@@ -119,7 +119,6 @@
                   <span v-if="isAdmin">
                     <a class="tag is-borderless" @click="deleteEvent(event.id)">
                       <font-awesome-icon icon="times" class="has-text-danger" />
-                      Delete
                     </a>
                   </span>
                   <span v-if="event.top" class="tag is-borderless is-uppercase">
@@ -138,7 +137,8 @@
                   conference
 
                   <span v-if="!isOnline"
-                    >in {{ event.city }},
+                    >in
+                    {{ event.city + (event.state ? `, ${event.state}` : "") }},
                     <router-link
                       :to="route('events', { country: event.countryCode })"
                     >

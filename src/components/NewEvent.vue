@@ -122,7 +122,7 @@
                               <option
                                 v-for="(stateName, stateCode) in states"
                                 :key="stateCode"
-                                :value="stateName"
+                                :value="stateCode"
                                 >{{ stateName }}</option
                               >
                             </select>
