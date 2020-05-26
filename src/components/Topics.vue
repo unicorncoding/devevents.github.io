@@ -22,13 +22,11 @@
   </div>
 </template>
 <script>
-import { prettyIcon } from "@/utils/topics";
 import { mapState } from "vuex";
 import mixins from "@/mixins/navigation";
 export default {
   mixins: mixins,
   methods: {
-    prettyIcon,
     isActive(topic) {
       return topic == this.$route.params.topic;
     },

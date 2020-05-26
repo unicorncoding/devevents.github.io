@@ -101,7 +101,7 @@
                     :to="route('events', { topic: event.topicCode })"
                   >
                     <img
-                      :src="prettyIcon(event.topicCode)"
+                      :src="'/icons/topics/' + event.topicCode + '.png'"
                       :alt="event.topic"
                     />
                   </router-link>
@@ -171,7 +171,6 @@
 </template>
 
 <script>
-import { prettyIcon } from "@/utils/topics";
 import { formatRange, formatCfp, formatCreationDate } from "@/utils/dates";
 import navigationMixins from "@/mixins/navigation";
 import filteringMixins from "@/mixins/filtering";
@@ -241,7 +240,6 @@ export default {
     formatRange,
     formatCreationDate,
     formatCfp,
-    prettyIcon,
     ...mapActions(["fetchEvents", "moreEvents"]),
     ...mapActions("admin", ["confirm", "del"])
   },
