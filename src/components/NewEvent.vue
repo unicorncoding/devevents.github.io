@@ -25,7 +25,7 @@
                   <div class="field">
                     <div class="control">
                       <div
-                        class="is-small select is-fullwidth"
+                        class=" select is-fullwidth"
                         :class="{ 'is-danger': validationErrors.topicCode }"
                       >
                         <select v-model="newEvent.topicCode">
@@ -43,7 +43,7 @@
                   <div class="field">
                     <div class="control">
                       <input
-                        class="is-small input"
+                        class=" input"
                         placeholder="Name"
                         v-model="newEvent.name"
                         :class="{ 'is-danger': validationErrors.name }"
@@ -54,7 +54,7 @@
                   <div class="field">
                     <div class="control">
                       <input
-                        class="is-small input"
+                        class=" input"
                         placeholder="Website"
                         v-model="newEvent.url"
                         :class="{ 'is-danger': validationErrors.url }"
@@ -65,7 +65,7 @@
                   <div class="field">
                     <div class="control">
                       <input
-                        class="is-small input"
+                        class=" input"
                         placeholder="@twitter"
                         v-model="newEvent.twitter"
                         :class="{ 'is-danger': validationErrors.twitter }"
@@ -87,7 +87,7 @@
                     <div class="field">
                       <p class="control">
                         <span
-                          class="is-small select is-fullwidth"
+                          class=" select is-fullwidth"
                           :class="{ 'is-danger': validationErrors.countryCode }"
                         >
                           <select
@@ -112,7 +112,7 @@
                       <div class="field">
                         <p class="control">
                           <span
-                            class="is-small select is-fullwidth"
+                            class=" select is-fullwidth"
                             :class="{ 'is-danger': validationErrors.stateCode }"
                           >
                             <select v-model="newEvent.stateCode">
@@ -135,7 +135,7 @@
                       <div class="field">
                         <p class="control">
                           <input
-                            class="is-small input"
+                            class=" input"
                             placeholder="City"
                             :disabled="isOnline"
                             v-model="newEvent.city"
@@ -161,7 +161,7 @@
                         <p class="control">
                           <input
                             v-model="newEvent.startDate"
-                            class="is-small input"
+                            class=" input"
                             type="text"
                             placeholder="YYYY-MM-DD"
                             :class="{ 'is-danger': validationErrors.startDate }"
@@ -172,7 +172,7 @@
                         <p class="control">
                           <input
                             v-model="newEvent.endDate"
-                            class="is-small input"
+                            class=" input"
                             type="text"
                             placeholder="YYYY-MM-DD"
                             :class="{ 'is-danger': validationErrors.endDate }"
@@ -194,11 +194,11 @@
                     <div class="field">
                       <p class="control">
                         <input
-                          class="is-small input"
+                          class=" input"
                           type="text"
-                          placeholder="YYYY-MM-DD"
-                          v-model="newEvent.cfpEndDate"
-                          :class="{ 'is-danger': validationErrors.cfpEndDate }"
+                          placeholder="URL"
+                          v-model="newEvent.cfpUrl"
+                          :class="{ 'is-danger': validationErrors.cfpUrl }"
                         />
                       </p>
                     </div>
@@ -207,11 +207,11 @@
                     <div class="field">
                       <p class="control">
                         <input
-                          class="is-small input"
+                          class=" input"
                           type="text"
-                          placeholder="URL"
-                          v-model="newEvent.cfpUrl"
-                          :class="{ 'is-danger': validationErrors.cfpUrl }"
+                          placeholder="YYYY-MM-DD"
+                          v-model="newEvent.cfpEndDate"
+                          :class="{ 'is-danger': validationErrors.cfpEndDate }"
                         />
                       </p>
                     </div>
