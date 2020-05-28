@@ -162,28 +162,38 @@
                   </h2>
                 </div>
                 <div class="column is-two-thirds">
-                  <div class="field is-horizontal">
+                  <div class="field">
                     <div class="field-body">
                       <div class="field">
                         <p class="control">
-                          <input
-                            v-model="newEvent.startDate"
-                            class=" input is-borderless is-shadowless"
-                            type="text"
-                            placeholder="YYYY-MM-DD"
-                            :class="{ 'is-danger': validationErrors.startDate }"
-                          />
-                        </p>
-                      </div>
-                      <div class="field">
-                        <p class="control">
-                          <input
-                            v-model="newEvent.endDate"
-                            class=" input is-borderless is-shadowless"
-                            type="text"
-                            placeholder="YYYY-MM-DD"
-                            :class="{ 'is-danger': validationErrors.endDate }"
-                          />
+                          <DatePicker
+                            mode="range"
+                            v-model="datePickerDates"
+                            color="green"
+                            :masks="{ input: ['D MMM YYYY'] }"
+                            :input-props="{
+                              placeholder: 'Date (from - to)',
+                              readonly: true
+                            }"
+                            :min-date="tomorrow()"
+                            :columns="$screens({ default: 1, lg: 2 })"
+                          >
+                            <input
+                              id="date"
+                              slot-scope="{
+                                inputProps,
+                                inputEvents,
+                                isDragging
+                              }"
+                              :class="[
+                                'input is-borderless is-shadowless',
+                                { 'has-text-grey-lighter': isDragging },
+                                { 'is-danger': validationErrors.dates }
+                              ]"
+                              v-bind="inputProps"
+                              v-on="inputEvents"
+                            />
+                          </DatePicker>
                         </p>
                       </div>
                     </div>
@@ -242,13 +252,18 @@
   </div>
 </template>
 <script>
+import DatePicker from "v-calendar/lib/components/date-picker.umd";
+import { Locale } from "v-calendar";
 import { mapState, mapActions } from "vuex";
+import { tomorrow } from "../utils/dates";
 import states from "../utils/states";
+const locale = new Locale();
 export default {
   data: () => {
     return {
       states: states,
       newEvent: {
+        dates: undefined,
         countryCode: undefined,
         topicCode: undefined
       }
@@ -265,6 +280,22 @@ export default {
     }
   },
   computed: {
+    datePickerDates: {
+      get() {
+        return this.newEvent.dates
+          ? {
+              start: locale.parse(this.newEvent.dates.start, "YYYY-MM-DD"),
+              end: locale.parse(this.newEvent.dates.end, "YYYY-MM-DD")
+            }
+          : undefined;
+      },
+      set({ start, end }) {
+        this.newEvent.dates = {
+          start: locale.format(start, "YYYY-MM-DD"),
+          end: locale.format(end, "YYYY-MM-DD")
+        };
+      }
+    },
     isOnline() {
       return this.newEvent.countryCode === "ON";
     },
@@ -290,6 +321,7 @@ export default {
     this.html.classList.remove("is-clipped");
   },
   methods: {
+    tomorrow,
     countrySelected() {
       delete this.newEvent.stateCode;
       delete this.newEvent.city;
@@ -304,7 +336,8 @@ export default {
       this.$router.go(-1);
     },
     ...mapActions("creation", ["createNew", "fetchInfo"])
-  }
+  },
+  components: { DatePicker }
 };
 </script>
 <style lang="scss" scoped>
@@ -323,13 +356,6 @@ export default {
   background-color: black !important;
 }
 
-input,
-select {
-  background-color: hsl(0, 0%, 98%) !important;
-}
-.select:not(.is-multiple):not(.is-loading)::after {
-  border-color: hsl(0, 0%, 86%);
-}
 .field {
   margin-bottom: 1em;
 }

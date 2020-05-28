@@ -5,7 +5,10 @@
       <Continents />
       <div class="is-pulled-right">
         <div class="select is-small" @change="sortingChanged()">
-          <select v-model="$store.state.sorting" class="is-borderless">
+          <select
+            v-model="$store.state.sorting"
+            class="is-borderless has-background-white"
+          >
             <option value="-creationDate">Newest first</option>
             <option value="startDate">Sort by date</option>
           </select>

@@ -10,6 +10,12 @@ export function formatCfp(cfpDate) {
   return "";
 }
 
+export function tomorrow() {
+  return dayjs()
+    .add(1, "day")
+    .toDate();
+}
+
 export function formatCreationDate(startDate) {
   return dayjs(startDate).fromNow();
 }

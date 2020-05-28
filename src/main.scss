@@ -44,6 +44,14 @@ $modal-background-background-color: white;
   border: none !important;
 }
 
+input,
+select {
+  background-color: hsl(0, 0%, 98%) !important;
+}
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-color: hsl(0, 0%, 86%) !important;
+}
+
 @import '~bulma';
 @import '~bulmaswatch/lumen/_overrides'
 
