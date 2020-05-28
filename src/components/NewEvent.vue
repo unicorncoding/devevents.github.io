@@ -25,7 +25,7 @@
                   <div class="field">
                     <div class="control">
                       <div
-                        class="select"
+                        class="select is-fullwidth"
                         :class="{ 'is-danger': validationErrors.topicCode }"
                       >
                         <select
@@ -36,7 +36,7 @@
                             v-for="topic in topics"
                             :key="topic.code"
                             :value="topic.code"
-                            >{{ topic.name }} {{ newEvent.category }}</option
+                            >{{ topic.name }} conference</option
                           >
                         </select>
                       </div>
@@ -250,7 +250,7 @@ export default {
       states: states,
       newEvent: {
         countryCode: undefined,
-        topicCode: "fullstack"
+        topicCode: undefined
       }
     };
   },
