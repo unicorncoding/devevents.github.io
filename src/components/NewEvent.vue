@@ -179,7 +179,6 @@
                             :columns="$screens({ default: 1, lg: 2 })"
                           >
                             <input
-                              id="date"
                               slot-scope="{
                                 inputProps,
                                 inputEvents,
@@ -223,13 +222,25 @@
                   <div class="field">
                     <div class="field">
                       <p class="control">
-                        <input
-                          class=" input is-borderless is-shadowless"
-                          type="text"
-                          placeholder="YYYY-MM-DD"
-                          v-model="newEvent.cfpEndDate"
-                          :class="{ 'is-danger': validationErrors.cfpEndDate }"
-                        />
+                        <DatePicker
+                          v-model="datePickerCfpEndDate"
+                          color="green"
+                          :masks="{ input: ['D MMM YYYY'] }"
+                          :input-props="{
+                            placeholder: 'CFP end date'
+                          }"
+                          :min-date="tomorrow()"
+                        >
+                          <input
+                            slot-scope="{ inputProps, inputEvents }"
+                            :class="[
+                              'input is-borderless is-shadowless',
+                              { 'is-danger': validationErrors.cfpEndDate }
+                            ]"
+                            v-bind="inputProps"
+                            v-on="inputEvents"
+                          />
+                        </DatePicker>
                       </p>
                     </div>
                   </div>
@@ -280,6 +291,16 @@ export default {
     }
   },
   computed: {
+    datePickerCfpEndDate: {
+      get() {
+        return this.newEvent.cfpEndDate
+          ? locale.parse(this.newEvent.cfpEndDate, "YYYY-MM-DD")
+          : undefined;
+      },
+      set(cfpEndDate) {
+        this.newEvent.cfpEndDate = locale.format(cfpEndDate, "YYYY-MM-DD");
+      }
+    },
     datePickerDates: {
       get() {
         return this.newEvent.dates
