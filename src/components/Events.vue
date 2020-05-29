@@ -153,6 +153,17 @@
                     </router-link>
                   </span>
                 </h3>
+                <h3 class="title is-7 has-text-grey-light">
+                  <span v-if="event.free === true">
+                    FREE
+                  </span>
+                  <span v-if="event.free === false" class="">
+                    {{ event.priceCurrency }}
+                    {{ event.priceFrom }}
+                    —
+                    {{ event.priceTo }}
+                  </span>
+                </h3>
               </div>
             </div>
           </section>

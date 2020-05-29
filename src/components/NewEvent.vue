@@ -47,7 +47,7 @@
                     <div class="control">
                       <input
                         class=" input is-borderless is-shadowless"
-                        placeholder="Name"
+                        placeholder="name"
                         v-model="newEvent.name"
                         :class="{ 'is-danger': validationErrors.name }"
                       />
@@ -58,7 +58,7 @@
                     <div class="control">
                       <input
                         class=" input is-borderless is-shadowless"
-                        placeholder="Website"
+                        placeholder="url"
                         v-model="newEvent.url"
                         :class="{ 'is-danger': validationErrors.url }"
                       />
@@ -99,7 +99,7 @@
                             @change="countrySelected()"
                           >
                             <option disabled selected :value="undefined"
-                              >Choose country...</option
+                              >choose country...</option
                             >
                             <option
                               v-for="country in countries"
@@ -124,7 +124,7 @@
                               class="is-borderless is-shadowless"
                             >
                               <option disabled selected :value="undefined"
-                                >Choose state...</option
+                                >choose state...</option
                               >
                               <option
                                 v-for="(stateName, stateCode) in states"
@@ -143,7 +143,7 @@
                         <p class="control">
                           <input
                             class=" input is-borderless is-shadowless"
-                            placeholder="City"
+                            placeholder="city"
                             :disabled="isOnline"
                             v-model="newEvent.city"
                             :class="{ 'is-danger': validationErrors.city }"
@@ -157,7 +157,7 @@
               <div class="columns is-marginless">
                 <div class="column is-one-third">
                   <h2 class="subtitle is-5 has-text-grey">
-                    Date (from - to)
+                    Date
                     <span class="has-text-danger">*</span>
                   </h2>
                 </div>
@@ -170,9 +170,10 @@
                             mode="range"
                             v-model="datePickerDates"
                             color="green"
+                            :popover="{ visibility: 'click' }"
                             :masks="{ input: ['D MMM YYYY'] }"
                             :input-props="{
-                              placeholder: 'Date (from - to)',
+                              placeholder: 'date (from - to)',
                               readonly: true
                             }"
                             :min-date="tomorrow()"
@@ -200,7 +201,73 @@
                 </div>
               </div>
 
-              <hr style="margin-top: 0" />
+              <div class="columns is-marginless">
+                <div class="column is-one-third">
+                  <h2 class="subtitle is-5 has-text-grey">
+                    Price
+                  </h2>
+                </div>
+                <div class="column is-two-thirds">
+                  <div class="field">
+                    <div class="field has-addons">
+                      <a @click="toggleFree()" class="has-text-grey">
+                        <font-awesome-icon
+                          :icon="[
+                            'far',
+                            this.newEvent.price.free ? 'check-circle' : 'circle'
+                          ]"
+                        />
+                        this is a free event
+                      </a>
+                    </div>
+                    <div class="field-body" v-if="!newEvent.price.free">
+                      <div class="field">
+                        <p class="control">
+                          <input
+                            class="input"
+                            placeholder="from"
+                            :class="{ 'is-danger': validationErrors.price }"
+                            v-model="newEvent.price.from"
+                          />
+                        </p>
+                      </div>
+                      <div class="field">
+                        <p class="control">
+                          <input
+                            class="input"
+                            placeholder="to"
+                            :class="{ 'is-danger': validationErrors.price }"
+                            v-model="newEvent.price.to"
+                          />
+                        </p>
+                      </div>
+                      <div class="field">
+                        <div class="control">
+                          <div
+                            class="select is-fullwidth"
+                            :class="{ 'is-danger': validationErrors.price }"
+                          >
+                            <select
+                              v-model="newEvent.price.currency"
+                              class="is-borderless"
+                            >
+                              <option
+                                v-for="curr in currencies"
+                                :key="curr"
+                                :value="curr"
+                                >{{ curr }}</option
+                              >
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr style="margin: top: 0" />
+
               <div class="columns is-marginless">
                 <div class="column is-one-third">
                   <h2 class="subtitle is-5 has-text-grey">Call for papers</h2>
@@ -212,7 +279,7 @@
                         <input
                           class=" input is-borderless is-shadowless"
                           type="text"
-                          placeholder="URL"
+                          placeholder="url"
                           v-model="newEvent.cfpUrl"
                           :class="{ 'is-danger': validationErrors.cfpUrl }"
                         />
@@ -225,9 +292,10 @@
                         <DatePicker
                           v-model="datePickerCfpEndDate"
                           color="green"
+                          :popover="{ visibility: 'click' }"
                           :masks="{ input: ['D MMM YYYY'] }"
                           :input-props="{
-                            placeholder: 'CFP end date'
+                            placeholder: 'end date'
                           }"
                           :min-date="tomorrow()"
                         >
@@ -274,6 +342,9 @@ export default {
     return {
       states: states,
       newEvent: {
+        price: {
+          free: false
+        },
         dates: undefined,
         countryCode: undefined,
         topicCode: undefined
@@ -282,7 +353,8 @@ export default {
   },
   created() {
     this.newEvent.topicCode = this.$route.params.topic || "fullstack";
-
+    this.newEvent.price.currency =
+      this.$route.params.continent === "EU" ? "EUR" : "USD";
     if (this.$route.params.continent === "ON") {
       this.newEvent.countryCode = "ON";
       this.newEvent.city = "Online";
@@ -330,7 +402,14 @@ export default {
       validationErrors: state => state.validationErrors,
       globalError: state => state.globalError,
       topics: state => state.topics,
-      countries: state => state.countries
+      countries: state => state.countries,
+      currencies: state =>
+        new Set(
+          state.countries
+            .map(({ currency }) => currency)
+            .filter(Boolean)
+            .sort()
+        )
     })
   },
   mounted() {
@@ -343,9 +422,22 @@ export default {
   },
   methods: {
     tomorrow,
+    toggleFree() {
+      this.newEvent.price.free = !this.newEvent.price.free;
+      delete this.newEvent.price.from;
+      delete this.newEvent.price.to;
+    },
     countrySelected() {
       delete this.newEvent.stateCode;
       delete this.newEvent.city;
+
+      const countrySpecificCurrency = this.countries.find(
+        ({ code }) => code === this.newEvent.countryCode
+      ).currency;
+      if (countrySpecificCurrency) {
+        this.newEvent.price.currency = countrySpecificCurrency;
+      }
+
       if (this.isOnline) {
         this.newEvent.city = "Online";
       }
