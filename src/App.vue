@@ -33,7 +33,7 @@
         <a
           class="has-text-primary"
           style="margin-left: 1em"
-          href="https://instagram.com/coding_unicorn"
+          href="https://twitter.com/dev_events"
           rel="nofollow noopener noreferrer"
         >
           <font-awesome-icon :icon="['fab', 'twitter']" />
