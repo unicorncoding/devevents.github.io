@@ -66,11 +66,11 @@
               </div>
             </div>
           </div>
-
+          <hr/>
           <div class="columns is-marginless">
             <div class="column is-one-third">
               <h2 class="subtitle is-5 has-text-grey">
-                Location
+                Location and date
                 <span class="has-text-danger">*</span>
               </h2>
             </div>
@@ -127,7 +127,7 @@
                   </div>
                 </div>
 
-                <div class="field">
+                <div class="field" v-if="!isOnline">
                   <div class="field">
                     <p class="control">
                       <input
@@ -140,70 +140,63 @@
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="columns is-marginless">
-            <div class="column is-one-third">
-              <h2 class="subtitle is-5 has-text-grey">
-                Date
-                <span class="has-text-danger">*</span>
-              </h2>
-            </div>
-            <div class="column is-two-thirds">
-              <div class="field">
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <DatePicker
-                        mode="range"
-                        v-model="datePickerDates"
-                        color="green"
-                        :popover="{ visibility: 'click' }"
-                        :masks="{ input: ['D MMM YYYY'] }"
-                        :input-props="{
-                          placeholder: 'Date (from - to)',
-                          readonly: true
-                        }"
-                        :min-date="tomorrow()"
-                        :columns="$screens({ default: 1, lg: 2 })"
-                      >
-                        <input
-                          slot-scope="{ inputProps, inputEvents, isDragging }"
-                          :class="[
-                            'input is-borderless is-shadowless',
-                            { 'has-text-grey-lighter': isDragging },
-                            { 'is-danger': validationErrors.dates }
-                          ]"
-                          v-bind="inputProps"
-                          v-on="inputEvents"
-                        />
-                      </DatePicker>
-                    </p>
+                <div class="field">
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <DatePicker
+                          mode="range"
+                          v-model="datePickerDates"
+                          color="green"
+                          :popover="{ visibility: 'click' }"
+                          :masks="{ input: ['D MMM YYYY'] }"
+                          :input-props="{
+                            placeholder: 'Date (from - to)',
+                            readonly: true
+                          }"
+                          :min-date="tomorrow()"
+                          :columns="$screens({ default: 1, lg: 2 })"
+                        >
+                          <input
+                            slot-scope="{ inputProps, inputEvents, isDragging }"
+                            :class="[
+                              'input is-borderless is-shadowless',
+                              { 'has-text-grey-lighter': isDragging },
+                              { 'is-danger': validationErrors.dates }
+                            ]"
+                            v-bind="inputProps"
+                            v-on="inputEvents"
+                          />
+                        </DatePicker>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+          <hr/>
           <div class="columns is-marginless">
             <div class="column is-one-third">
               <h2 class="subtitle is-5 has-text-grey">
                 Price
+                <span class="has-text-danger">*</span>
               </h2>
             </div>
             <div class="column is-two-thirds">
               <div class="field">
                 <div class="field has-addons">
-                  <a @click="toggleFree()" class="has-text-grey">
+                  <button @click="toggleFree()" class="button is-small">
+                    <span class="icon is-small">
                     <font-awesome-icon
                       :icon="[
                         'far',
                         this.newEvent.price.free ? 'check-circle' : 'circle'
                       ]"
                     />
-                    Free event
-                  </a>
+                    </span>
+                    <span>Free event</span>
+                  </button>
                 </div>
                 <div class="field-body" v-if="!newEvent.price.free">
                   <div class="field">
@@ -251,7 +244,7 @@
             </div>
           </div>
 
-          <hr style="margin: top: 0" />
+          <hr/>
 
           <div class="columns is-marginless">
             <div class="column is-one-third">
@@ -325,7 +318,6 @@ export default {
     return {
       states: states,
       newEvent: {
-        // twitter: "@"
         price: {
           free: false
         },
