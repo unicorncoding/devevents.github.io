@@ -35,7 +35,7 @@
               <div class="field">
                 <div class="control">
                   <input
-                    class=" input is-borderless is-shadowless"
+                    class="input is-borderless is-shadowless"
                     placeholder="Name"
                     v-model="newEvent.name"
                     :class="{ 'is-danger': validationErrors.name }"
@@ -55,18 +55,20 @@
               </div>
 
               <div class="field">
-                <div class="control">
+                <div class="control has-icons-left">
                   <input
                     class=" input is-borderless is-shadowless"
-                    placeholder="@twitter"
                     v-model="newEvent.twitter"
                     :class="{ 'is-danger': validationErrors.twitter }"
                   />
+                  <span class="icon is-left">
+                    <font-awesome-icon :icon="['fab', 'twitter']" />
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-          <hr/>
+          <hr />
           <div class="columns is-marginless">
             <div class="column is-one-third">
               <h2 class="subtitle is-5 has-text-grey">
@@ -175,7 +177,7 @@
               </div>
             </div>
           </div>
-          <hr/>
+          <hr />
           <div class="columns is-marginless">
             <div class="column is-one-third">
               <h2 class="subtitle is-5 has-text-grey">
@@ -186,14 +188,17 @@
             <div class="column is-two-thirds">
               <div class="field">
                 <div class="field has-addons">
-                  <button @click="toggleFree()" class="button is-small">
+                  <button
+                    @click="toggleFree()"
+                    class="button is-small is-borderless"
+                  >
                     <span class="icon is-small">
-                    <font-awesome-icon
-                      :icon="[
-                        'far',
-                        this.newEvent.price.free ? 'check-circle' : 'circle'
-                      ]"
-                    />
+                      <font-awesome-icon
+                        :icon="[
+                          'far',
+                          this.newEvent.price.free ? 'check-circle' : 'circle'
+                        ]"
+                      />
                     </span>
                     <span>Free event</span>
                   </button>
@@ -244,7 +249,7 @@
             </div>
           </div>
 
-          <hr/>
+          <hr />
 
           <div class="columns is-marginless">
             <div class="column is-one-third">
@@ -318,6 +323,7 @@ export default {
     return {
       states: states,
       newEvent: {
+        twitter: "@",
         price: {
           free: false
         },
