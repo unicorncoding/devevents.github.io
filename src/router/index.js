@@ -8,6 +8,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/new",
+    name: "new",
+    component: NewEvent
+  },
+  {
     path: "/conference/:id",
     name: "conf",
     component: ConferenceInfo
@@ -15,13 +20,7 @@ const routes = [
   {
     path: "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic(\\w+)?",
     name: "confs",
-    component: Events,
-    children: [
-      {
-        path: "new",
-        component: NewEvent
-      }
-    ]
+    component: Events
   },
   {
     path: "/",

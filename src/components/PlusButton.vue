@@ -1,7 +1,7 @@
 <template>
   <router-link
     v-if="isSignedIn"
-    :to="{ path: 'new', append: true }"
+    :to="{ name: 'new', query: $route.params }"
     class="button has-background-success has-text-white"
   >
     <font-awesome-icon icon="plus" />
@@ -21,7 +21,7 @@ export default {
     loginNeeded() {
       this.$notify({
         ignoreDuplicates: true,
-        title: "Operation is not permitted. Please login first.",
+        title: "Guests cannot add events. Please login first.",
         type: "error",
         duration: -1
       });

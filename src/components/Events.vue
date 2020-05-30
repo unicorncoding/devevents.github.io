@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-view></router-view>
     <Header>
       <Continents />
       <div class="is-pulled-right">
