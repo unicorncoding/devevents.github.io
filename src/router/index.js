@@ -18,7 +18,7 @@ const routes = [
     component: ConferenceInfo
   },
   {
-    path: "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic(\\w+)?",
+    path: "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic([a-z]+)?",
     name: "confs",
     component: Events
   },
