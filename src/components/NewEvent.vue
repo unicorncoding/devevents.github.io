@@ -381,7 +381,11 @@ export default {
       validationErrors: state => state.validationErrors,
       globalError: state => state.globalError,
       topics: state => state.topics,
-      countries: state => state.countries,
+      countries: state =>
+        state.countries.map(({ code, name }) => ({
+          code,
+          name: code === "ON" ? name.toUpperCase() : name
+        })),
       currencies: state =>
         new Set(
           state.countries

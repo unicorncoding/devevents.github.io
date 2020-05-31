@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-multiline is-gapless">
     <div
-      class="topic column is-full"
+      class="country column is-full"
       :class="{ 'is-active': isActive(country.code) }"
       v-for="country in countries"
       :key="country.code"
@@ -18,7 +18,7 @@
       >
         <font-awesome-icon icon="times" />
       </router-link>
-      <span v-else class="tag">{{ country.count }}</span>
+      <span v-else class="tag is-light">{{ country.count }}</span>
     </div>
   </div>
 </template>
@@ -63,13 +63,7 @@ img {
   filter: grayscale(40%) opacity(50%);
 }
 
-.tag {
-  color: #7a7a7a;
-  background-color: #fff;
-  border: 1px solid #f5f5f5;
-}
-
-.topic {
+.country {
   &.is-active {
     img {
       filter: none;

@@ -56,6 +56,7 @@ export default new Vuex.Store({
           params: {
             ...{ start: state.cursor },
             ...state.route.params,
+            ...state.route.query,
             sorting: state.sorting
           }
         })
@@ -69,7 +70,11 @@ export default new Vuex.Store({
       const axios = await lazyAxios();
       return axios
         .get(`/events/search`, {
-          params: { ...state.route.params, sorting: state.sorting }
+          params: {
+            ...state.route.params,
+            ...state.route.query,
+            sorting: state.sorting
+          }
         })
         .then(response => commit("eventsFetched", { data: response.data }))
         .catch(() => commit("fetchingFailed"));
@@ -96,6 +101,7 @@ export default new Vuex.Store({
       state.events = merge ? state.events.concat(events) : events;
       state.topics = meta.topics;
       state.countries = meta.countries;
+      state.free = meta.free;
       state.doneFetching = true;
       state.countryName = meta.countryName;
       state.topicName = meta.topicName;

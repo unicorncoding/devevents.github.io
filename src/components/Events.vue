@@ -60,6 +60,7 @@
             :class="{ 'is-hidden-mobile': !forceShowCategories }"
             v-observe-visibility="categoryVisibilityChanged"
           >
+            <PriceFilter />
             <Topics />
             <Countries v-if="!isOnline" />
           </section>
@@ -194,6 +195,7 @@ import filteringMixins from "@/mixins/filtering";
 
 import { mapState, mapActions, mapGetters } from "vuex";
 import Topics from "./Topics";
+import PriceFilter from "./PriceFilter";
 import Continents from "./Continents";
 import Countries from "./Countries";
 import Header from "./Header";
@@ -209,6 +211,7 @@ export default {
     Topics,
     PagingStats,
     PlusButton,
+    PriceFilter,
     JsonLd
   },
   mixins: [...filteringMixins, ...navigationMixins],

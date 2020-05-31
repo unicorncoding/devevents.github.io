@@ -17,7 +17,7 @@
       >
         <font-awesome-icon icon="times" />
       </router-link>
-      <span v-else class="tag">{{ topic.count }}</span>
+      <span v-else class="tag is-light">{{ topic.count }}</span>
     </div>
   </div>
 </template>
@@ -46,12 +46,6 @@ export default {
 <style scoped lang="scss">
 .column {
   margin-bottom: 0.3em !important;
-}
-
-.tag {
-  color: #7a7a7a;
-  background-color: #fff;
-  border: 1px solid #f5f5f5;
 }
 
 .topic {
