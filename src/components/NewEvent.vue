@@ -3,6 +3,19 @@
     <section class="container section">
       <div class="columns is-centered">
         <div class="column">
+          <!-- <h1 class="title"></h1>
+          <p>
+            We only accept:
+            * Don't encode extra stuff in names. Just a conference name.
+            * Conferences that fits a specific category. 
+            * Conference with obvious pricing (1-3 options max.)
+            * Choose the most specific category. Don't submit conference into multiple categories; otherwise you'll get banned.
+            * Price must be visible on the website.
+            * Program must be 50% ready.
+            * Registration must be open.
+            * Only internalional conferencse w/o local talks.
+            * Conference is at least one day. Otherwise it's not a conference.
+          </p> -->
           <article class="message is-danger" v-if="globalError">
             <div class="message-body">{{ globalError }}</div>
           </article>
