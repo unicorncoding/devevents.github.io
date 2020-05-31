@@ -160,8 +160,7 @@
                   <span v-if="event.free === false" class="">
                     {{ event.priceCurrency }}
                     {{ Math.round(event.priceFrom) }}
-                    —
-                    {{ Math.round(event.priceTo) }}
+                    {{ event.priceFrom === event.priceTo ? '' : ` — ${Math.round(event.priceTo)}` }}
                   </span>
                 </h3>
               </div>
