@@ -90,7 +90,7 @@
                         @change="countrySelected()"
                       >
                         <option disabled selected :value="undefined"
-                          >choose country...</option
+                          >Choose country...</option
                         >
                         <option
                           v-for="country in countries"
@@ -142,22 +142,44 @@
                     </p>
                   </div>
                 </div>
-                <div class="field">
+                <div class="field is-horizontal">
                   <div class="field-body">
                     <div class="field">
                       <p class="control">
                         <DatePicker
-                          mode="range"
-                          v-model="datePickerDates"
+                          v-model="datePickerStartDate"
                           color="green"
                           :popover="{ visibility: 'click' }"
                           :masks="{ input: ['D MMM YYYY'] }"
                           :input-props="{
-                            placeholder: 'Date (from - to)',
-                            readonly: true
+                            placeholder: 'Date (from)'
                           }"
                           :min-date="tomorrow()"
-                          :columns="$screens({ default: 1, lg: 2 })"
+                        >
+                          <input
+                            slot-scope="{ inputProps, inputEvents, isDragging }"
+                            :class="[
+                              'input is-borderless is-shadowless',
+                              { 'has-text-grey-lighter': isDragging },
+                              { 'is-danger': validationErrors.dates }
+                            ]"
+                            v-bind="inputProps"
+                            v-on="inputEvents"
+                          />
+                        </DatePicker>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control">
+                        <DatePicker
+                          v-model="datePickerEndDate"
+                          color="green"
+                          :popover="{ visibility: 'click' }"
+                          :masks="{ input: ['D MMM YYYY'] }"
+                          :input-props="{
+                            placeholder: 'Date (to)'
+                          }"
+                          :min-date="tomorrow()"
                         >
                           <input
                             slot-scope="{ inputProps, inputEvents, isDragging }"
@@ -207,7 +229,7 @@
                   <div class="field">
                     <p class="control">
                       <input
-                        class="input"
+                        class="input is-borderless is-shadowless"
                         placeholder="From"
                         :class="{ 'is-danger': validationErrors.price }"
                         v-model="newEvent.price.from"
@@ -217,7 +239,7 @@
                   <div class="field">
                     <p class="control">
                       <input
-                        class="input"
+                        class="input is-borderless is-shadowless"
                         placeholder="To"
                         :class="{ 'is-danger': validationErrors.price }"
                         v-model="newEvent.price.to"
@@ -326,7 +348,10 @@ export default {
         price: {
           free: false
         },
-        dates: undefined,
+        dates: {
+          start: undefined,
+          end: undefined
+        },
         countryCode: undefined,
         topicCode: undefined
       }
@@ -354,20 +379,28 @@ export default {
         this.newEvent.cfpEndDate = locale.format(cfpEndDate, "YYYY-MM-DD");
       }
     },
-    datePickerDates: {
+    datePickerEndDate: {
       get() {
-        return this.newEvent.dates
-          ? {
-              start: locale.parse(this.newEvent.dates.start, "YYYY-MM-DD"),
-              end: locale.parse(this.newEvent.dates.end, "YYYY-MM-DD")
-            }
+        return this.newEvent.dates.end
+          ? locale.parse(this.newEvent.dates.end, "YYYY-MM-DD")
           : undefined;
       },
-      set({ start, end }) {
-        this.newEvent.dates = {
-          start: locale.format(start, "YYYY-MM-DD"),
-          end: locale.format(end, "YYYY-MM-DD")
-        };
+      set(endDate) {
+        this.newEvent.dates.end = endDate
+          ? locale.format(endDate, "YYYY-MM-DD")
+          : undefined;
+      }
+    },
+    datePickerStartDate: {
+      get() {
+        return this.newEvent.dates.start
+          ? locale.parse(this.newEvent.dates.start, "YYYY-MM-DD")
+          : undefined;
+      },
+      set(startDate) {
+        this.newEvent.dates.start = startDate
+          ? locale.format(startDate, "YYYY-MM-DD")
+          : undefined;
       }
     },
     isOnline() {
