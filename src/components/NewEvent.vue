@@ -179,7 +179,7 @@
                           :input-props="{
                             placeholder: 'Date (to)'
                           }"
-                          :min-date="tomorrow()"
+                          :min-date="newEvent.dates.start"
                         >
                           <input
                             slot-scope="{ inputProps, inputEvents, isDragging }"
