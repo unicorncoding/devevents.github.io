@@ -323,7 +323,6 @@ export default {
     return {
       states: states,
       newEvent: {
-        twitter: "@",
         price: {
           free: false
         },
