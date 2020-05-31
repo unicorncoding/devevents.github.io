@@ -70,7 +70,7 @@
             <div
               class="columns is-mobile"
               v-for="event in events"
-              :key="event.startDate + event.url"
+              :key="event.id"
             >
               <JsonLd :event="event" />
               <div class="column is-one-quarter">

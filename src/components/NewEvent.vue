@@ -232,7 +232,7 @@
                         class="input is-borderless is-shadowless"
                         placeholder="From"
                         :class="{ 'is-danger': validationErrors.price }"
-                        v-model="newEvent.price.from"
+                        v-model.number="newEvent.price.from"
                       />
                     </p>
                   </div>
@@ -242,7 +242,7 @@
                         class="input is-borderless is-shadowless"
                         placeholder="To"
                         :class="{ 'is-danger': validationErrors.price }"
-                        v-model="newEvent.price.to"
+                        v-model.number="newEvent.price.to"
                       />
                     </p>
                   </div>
