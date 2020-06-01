@@ -157,13 +157,13 @@
                   <span v-if="event.free === true">
                     FREE
                   </span>
-                  <span v-if="event.free === false" class="">
-                    {{ event.priceCurrency }}
-                    {{ Math.round(event.priceFrom) }}
+                  <span v-if="event.free === false">
+                    {{ event.localPrice.curr }}
+                    {{ event.localPrice.from }}
                     {{
-                      !event.priceTo || event.priceFrom === event.priceTo
+                      !event.localPrice.to || event.localPrice.from === event.localPrice.to
                         ? ""
-                        : ` — ${Math.round(event.priceTo)}`
+                        : ` — ${event.localPrice.to}`
                     }}
                   </span>
                 </h3>
