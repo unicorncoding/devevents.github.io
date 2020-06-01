@@ -157,7 +157,7 @@
                   <span v-if="event.free === true">
                     FREE
                   </span>
-                  <span v-if="event.free === false">
+                  <span v-if="event.free === false && event.localPrice">
                     {{ event.localPrice.curr }}
                     {{ event.localPrice.from }}
                     {{
