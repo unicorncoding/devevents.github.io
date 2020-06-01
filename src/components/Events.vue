@@ -161,7 +161,8 @@
                     {{ event.localPrice.curr }}
                     {{ event.localPrice.from }}
                     {{
-                      !event.localPrice.to || event.localPrice.from === event.localPrice.to
+                      !event.localPrice.to ||
+                      event.localPrice.from === event.localPrice.to
                         ? ""
                         : ` — ${event.localPrice.to}`
                     }}
