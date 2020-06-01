@@ -8,7 +8,8 @@
             v-model="$store.state.sorting"
             class="is-borderless has-background-white"
           >
-            <option value="-creationDate">Newest first</option>
+            <option value="newestFirst">Newest first</option>
+            <option value="cheapestFirst">Cheapest first</option>
             <option value="startDate">Sort by date</option>
           </select>
         </div>
@@ -76,7 +77,7 @@
               <div class="column is-one-quarter">
                 <span
                   class="has-text-grey is-size-7"
-                  v-if="$store.state.sorting === '-creationDate'"
+                  v-if="$store.state.sorting === 'newestFirst'"
                 >
                   <span>
                     added
