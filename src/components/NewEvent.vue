@@ -1,6 +1,8 @@
 <template>
   <div>
     <section class="container section">
+      <h1 class="title is-3">Add new conference</h1>
+      <hr />
       <div class="columns is-centered">
         <div class="column">
           <article class="message is-danger" v-if="globalError">
@@ -10,7 +12,6 @@
             <div class="column is-one-third">
               <h2 class="subtitle is-5 has-text-grey">
                 Main info
-                <span class="has-text-danger">*</span>
               </h2>
             </div>
             <div class="column is-two-thirds">
@@ -20,7 +21,7 @@
                     class="select is-fullwidth"
                     :class="{ 'is-danger': validationErrors.topicCode }"
                   >
-                    <select v-model="newEvent.topicCode" class="is-borderless">
+                    <select v-model="newEvent.topicCode">
                       <option
                         v-for="topic in topics"
                         :key="topic.code"
@@ -35,7 +36,7 @@
               <div class="field">
                 <div class="control">
                   <input
-                    class="input is-borderless is-shadowless"
+                    class="input  is-shadowless"
                     placeholder="Name"
                     v-model="newEvent.name"
                     :class="{ 'is-danger': validationErrors.name }"
@@ -46,7 +47,7 @@
               <div class="field">
                 <div class="control">
                   <input
-                    class=" input is-borderless is-shadowless"
+                    class=" input  is-shadowless"
                     placeholder="URL"
                     v-model="newEvent.url"
                     :class="{ 'is-danger': validationErrors.url }"
@@ -57,7 +58,7 @@
               <div class="field">
                 <div class="control has-icons-left">
                   <input
-                    class=" input is-borderless is-shadowless"
+                    class=" input  is-shadowless"
                     v-model="newEvent.twitter"
                     :class="{ 'is-danger': validationErrors.twitter }"
                   />
@@ -73,7 +74,6 @@
             <div class="column is-one-third">
               <h2 class="subtitle is-5 has-text-grey">
                 Location and date
-                <span class="has-text-danger">*</span>
               </h2>
             </div>
             <div class="column is-two-thirds">
@@ -85,7 +85,7 @@
                       :class="{ 'is-danger': validationErrors.countryCode }"
                     >
                       <select
-                        class="is-borderless"
+                        class=""
                         v-model="newEvent.countryCode"
                         @change="countrySelected()"
                       >
@@ -112,7 +112,7 @@
                       >
                         <select
                           v-model="newEvent.stateCode"
-                          class="is-borderless is-shadowless"
+                          class=" is-shadowless"
                         >
                           <option disabled selected :value="undefined"
                             >Choose state...</option
@@ -133,7 +133,7 @@
                   <div class="field">
                     <p class="control">
                       <input
-                        class=" input is-borderless is-shadowless"
+                        class=" input  is-shadowless"
                         placeholder="City"
                         :disabled="isOnline"
                         v-model="newEvent.city"
@@ -159,7 +159,7 @@
                           <input
                             slot-scope="{ inputProps, inputEvents, isDragging }"
                             :class="[
-                              'input is-borderless is-shadowless',
+                              'input  is-shadowless',
                               { 'has-text-grey-lighter': isDragging },
                               { 'is-danger': validationErrors.dates }
                             ]"
@@ -184,7 +184,7 @@
                           <input
                             slot-scope="{ inputProps, inputEvents, isDragging }"
                             :class="[
-                              'input is-borderless is-shadowless',
+                              'input  is-shadowless',
                               { 'has-text-grey-lighter': isDragging },
                               { 'is-danger': validationErrors.dates }
                             ]"
@@ -204,7 +204,6 @@
             <div class="column is-one-third">
               <h2 class="subtitle is-5 has-text-grey">
                 Price
-                <span class="has-text-danger">*</span>
               </h2>
             </div>
             <div class="column is-two-thirds">
@@ -229,7 +228,7 @@
                   <div class="field">
                     <p class="control">
                       <input
-                        class="input is-borderless is-shadowless"
+                        class="input  is-shadowless"
                         placeholder="From"
                         :class="{ 'is-danger': validationErrors.price }"
                         v-model.number="newEvent.price.from"
@@ -239,7 +238,7 @@
                   <div class="field">
                     <p class="control">
                       <input
-                        class="input is-borderless is-shadowless"
+                        class="input  is-shadowless"
                         placeholder="To"
                         :class="{ 'is-danger': validationErrors.price }"
                         v-model.number="newEvent.price.to"
@@ -252,10 +251,7 @@
                         class="select is-fullwidth"
                         :class="{ 'is-danger': validationErrors.price }"
                       >
-                        <select
-                          v-model="newEvent.price.currency"
-                          class="is-borderless"
-                        >
+                        <select v-model="newEvent.price.currency" class="">
                           <option
                             v-for="curr in currencies"
                             :key="curr"
@@ -270,55 +266,7 @@
               </div>
             </div>
           </div>
-
-          <!-- <hr />
-
-          <div class="columns is-marginless">
-            <div class="column is-one-third">
-              <h2 class="subtitle is-5 has-text-grey">Call for papers</h2>
-            </div>
-            <div class="column is-two-thirds">
-              <div class="field">
-                <div class="field">
-                  <p class="control">
-                    <input
-                      class=" input is-borderless is-shadowless"
-                      type="text"
-                      placeholder="URL"
-                      v-model="newEvent.cfpUrl"
-                      :class="{ 'is-danger': validationErrors.cfpUrl }"
-                    />
-                  </p>
-                </div>
-              </div>
-              <div class="field">
-                <div class="field">
-                  <p class="control">
-                    <DatePicker
-                      v-model="datePickerCfpEndDate"
-                      color="green"
-                      :popover="{ visibility: 'click' }"
-                      :masks="{ input: ['D MMM YYYY'] }"
-                      :input-props="{
-                        placeholder: 'Deadline'
-                      }"
-                      :min-date="tomorrow()"
-                    >
-                      <input
-                        slot-scope="{ inputProps, inputEvents }"
-                        :class="[
-                          'input is-borderless is-shadowless',
-                          { 'is-danger': validationErrors.cfpEndDate }
-                        ]"
-                        v-bind="inputProps"
-                        v-on="inputEvents"
-                      />
-                    </DatePicker>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div> -->
+          <hr />
           <div class="buttons is-pulled-right">
             <button class="button" @click="close()">close</button>
             <a class="button is-success" @click="submitForm()">Submit</a>
