@@ -271,7 +271,7 @@
             </div>
           </div>
 
-          <hr />
+          <!-- <hr />
 
           <div class="columns is-marginless">
             <div class="column is-one-third">
@@ -318,7 +318,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="buttons is-pulled-right">
             <button class="button" @click="close()">close</button>
             <a class="button is-success" @click="submitForm()">Submit</a>

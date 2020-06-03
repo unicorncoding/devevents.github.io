@@ -189,6 +189,7 @@
       </div>
       <PlusButton />
     </div>
+    <Footer v-if="doneFetching" />
   </div>
 </template>
 
@@ -205,6 +206,7 @@ import Header from "./Header";
 import PlusButton from "./PlusButton";
 import PagingStats from "./PagingStats";
 import JsonLd from "./JsonLd";
+import Footer from "./Footer";
 
 export default {
   components: {
@@ -214,7 +216,8 @@ export default {
     Topics,
     PagingStats,
     PlusButton,
-    JsonLd
+    JsonLd,
+    Footer
   },
   mixins: [...filteringMixins, ...navigationMixins],
   created() {

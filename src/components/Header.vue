@@ -27,14 +27,14 @@
                 >Conferences</router-link
               >
             </div>
-            <div class="column is-narrow">
+            <!-- <div class="column is-narrow">
               <router-link
                 class="has-text-white-ter is-size-7-mobile"
                 :class="{ 'has-text-weight-bold': $route.params.cfp }"
                 :to="{ name: 'confs', params: { cfp: 'cfp' } }"
                 >CFPs</router-link
               >
-            </div>
+            </div> -->
             <div class="column" v-if="isSignedIn">
               <div class="columns is-mobile is-pulled-right">
                 <div class="column is-narrow is-hidden-mobile">
