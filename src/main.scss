@@ -50,6 +50,11 @@ input,
 select {
   background-color: hsl(0, 0%, 98%) !important;
 }
+
+.select select:not([multiple]) {
+  height: 2.5em !important;
+}
+
 .select:not(.is-multiple):not(.is-loading)::after {
   border-color: hsl(0, 0%, 86%) !important;
 }
@@ -60,6 +65,19 @@ select {
   border: 1px solid #f5f5f5 !important;
 }
 
+$vs-component-line-height: 1.9;
+$vs-component-placeholder-color: $input-placeholder-color;
+$vs-border-color:  hsl(0, 0%, 86%);
+
+$vs-state-active-bg: $green;
+
+.is-danger .vs__dropdown-toggle {
+  border: 1px solid $red !important;
+}
+
+
+
+@import "vue-select/src/scss/vue-select.scss";
 @import '~bulma';
 @import '~bulmaswatch/lumen/_overrides'
 

@@ -16,9 +16,6 @@ Vue.use(VueObserveVisibility);
 import VueHead from "vue-head";
 Vue.use(VueHead);
 
-import VueClipboard from "vue-clipboard2";
-Vue.use(VueClipboard);
-
 import { sync } from "vuex-router-sync";
 sync(store, router);
 

@@ -17,26 +17,46 @@
             <div class="column is-two-thirds">
               <div class="field">
                 <div class="control">
-                  <div
-                    class="select is-fullwidth"
-                    :class="{ 'is-danger': validationErrors.topicCode }"
+                  <v-select
+                    multiple
+                    :options="topics"
+                    v-model="newEvent.topics"
+                    label="name"
+                    :class="{ 'is-danger': validationErrors.topics }"
+                    :selectable="() => newEvent.topics.length < 3"
+                    :reduce="item => item.code"
+                    placeholder="Specialization / emphasis on..."
                   >
-                    <select v-model="newEvent.topicCode">
-                      <option
-                        v-for="topic in topics"
-                        :key="topic.code"
-                        :value="topic.code"
-                        >{{ topic.name }} conference</option
-                      >
-                    </select>
-                  </div>
+                    <template #search="{ attributes, events }">
+                      <input
+                        maxlength="1"
+                        class="vs__search"
+                        v-bind="attributes"
+                        v-on="events"
+                      />
+                    </template>
+                    <template v-slot:option="option">
+                      <div class="columns is-mobile">
+                        <div class="column is-narrow">
+                          <img
+                            :src="'/icons/topics/' + option.code + '.png'"
+                            :alt="option.code"
+                            class="icon"
+                          />
+                        </div>
+                        <div class="column">
+                          {{ option.name }}
+                        </div>
+                      </div>
+                    </template>
+                  </v-select>
                 </div>
               </div>
 
               <div class="field">
                 <div class="control">
                   <input
-                    class="input  is-shadowless"
+                    class="input is-shadowless"
                     placeholder="Name"
                     v-model="newEvent.name"
                     :class="{ 'is-danger': validationErrors.name }"
@@ -47,7 +67,7 @@
               <div class="field">
                 <div class="control">
                   <input
-                    class=" input  is-shadowless"
+                    class="input is-shadowless"
                     placeholder="URL"
                     v-model="newEvent.url"
                     :class="{ 'is-danger': validationErrors.url }"
@@ -58,7 +78,7 @@
               <div class="field">
                 <div class="control has-icons-left">
                   <input
-                    class=" input  is-shadowless"
+                    class="input is-shadowless"
                     v-model="newEvent.twitter"
                     :class="{ 'is-danger': validationErrors.twitter }"
                   />
@@ -81,11 +101,10 @@
                 <div class="field">
                   <p class="control">
                     <span
-                      class=" select is-fullwidth "
+                      class="select is-fullwidth"
                       :class="{ 'is-danger': validationErrors.countryCode }"
                     >
                       <select
-                        class=""
                         v-model="newEvent.countryCode"
                         @change="countrySelected()"
                       >
@@ -112,7 +131,7 @@
                       >
                         <select
                           v-model="newEvent.stateCode"
-                          class=" is-shadowless"
+                          class="is-shadowless"
                         >
                           <option disabled selected :value="undefined"
                             >Choose state...</option
@@ -251,7 +270,7 @@
                         class="select is-fullwidth"
                         :class="{ 'is-danger': validationErrors.price }"
                       >
-                        <select v-model="newEvent.price.currency" class="">
+                        <select v-model="newEvent.price.currency">
                           <option
                             v-for="curr in currencies"
                             :key="curr"
@@ -282,6 +301,7 @@
   </div>
 </template>
 <script>
+import vSelect from "vue-select";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import { Locale } from "v-calendar";
 import { mapState, mapActions } from "vuex";
@@ -293,6 +313,7 @@ export default {
     return {
       states: states,
       newEvent: {
+        topics: [],
         price: {
           free: false
         },
@@ -417,17 +438,12 @@ export default {
     },
     ...mapActions("creation", ["createNew", "fetchInfo"])
   },
-  components: { DatePicker }
+  components: { DatePicker, vSelect }
 };
 </script>
 <style lang="scss" scoped>
 .modal-close::before,
 .modal-close::after {
   background-color: black !important;
-}
-
-.is-danger {
-  border: 1px solid red !important;
-  border-radius: 4px;
 }
 </style>
