@@ -33,6 +33,7 @@ $modal-content-margin-mobile: 0px;
 $modal-content-spacing-mobile: 0px;
 $modal-background-background-color: white;
 
+$input-background-color: #fafafa;
 $input-placeholder-color: #D3D3D3;
 
 .button {
@@ -48,7 +49,7 @@ $input-placeholder-color: #D3D3D3;
 
 input,
 select {
-  background-color: hsl(0, 0%, 98%) !important;
+  background-color: $input-background-color !important;
 }
 
 .select select:not([multiple]) {
@@ -73,6 +74,10 @@ $vs-state-active-bg: $green;
 
 .is-danger .vs__dropdown-toggle {
   border: 1px solid $red !important;
+}
+
+.vs__dropdown-toggle {
+  background-color: $input-background-color !important;
 }
 
 
