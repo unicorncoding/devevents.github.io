@@ -383,8 +383,9 @@ export default {
       globalError: state => state.globalError,
       topics: state => state.topics,
       countries: state =>
-        state.countries.map(({ code, name }) => ({
+        state.countries.map(({ code, currency, name }) => ({
           code,
+          currency,
           name: code === "ON" ? name.toUpperCase() : name
         })),
       currencies: state =>
@@ -422,6 +423,7 @@ export default {
       const countrySpecificCurrency = this.countries.find(
         ({ code }) => code === this.newEvent.countryCode
       ).currency;
+
       if (countrySpecificCurrency) {
         this.newEvent.price.currency = countrySpecificCurrency;
       }
