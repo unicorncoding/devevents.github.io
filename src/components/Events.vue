@@ -88,15 +88,6 @@
                   {{ formatRange(event.startDate, event.endDate) }}
                 </span>
                 <br />
-                <a
-                  rel="nofollow noopener noreferrer"
-                  target="_blank"
-                  class="has-text-grey is-size-7"
-                  :href="event.cfpUrl"
-                  v-if="isCfps && event.cfpEndDate"
-                >
-                  {{ formatCfp(event.cfpEndDate) }}
-                </a>
               </div>
               <div class="column is-narrow">
                 <figure class="image is-32x32">
@@ -189,6 +180,7 @@
 import { formatRange, formatCfp, formatCreationDate } from "@/utils/dates";
 import navigationMixins from "@/mixins/navigation";
 import filteringMixins from "@/mixins/filtering";
+import dayjs from "dayjs";
 
 import { mapState, mapActions, mapGetters } from "vuex";
 import Topics from "./Topics";
@@ -235,18 +227,24 @@ export default {
         complement: " ",
         inner: !this.isOnline
           ? (this.topicName() ? this.topicName() : "Developer") +
-            (this.isCfps
-              ? " conferences with call for papers"
-              : " conferences") +
-            " in " +
-            this.locationName()
+            " conferences in " +
+            this.locationName() +
+            ` ${this.years()}`
           : "Online " +
             (this.topicName() ? this.topicName() : "developer") +
-            (this.isCfps ? " conferences with call for papers" : " conferences")
+            " conferences" +
+            ` ${this.years()}`
       };
     }
   },
   methods: {
+    years() {
+      const yearNow = dayjs().year();
+      const yearNext = dayjs()
+        .add(1, "year")
+        .year();
+      return `${yearNow}/${yearNext}`;
+    },
     sortingChanged() {
       this.fetchEvents();
     },
@@ -265,7 +263,6 @@ export default {
     ...mapGetters("auth", ["isAdmin"]),
     ...mapState([
       "isOnline",
-      "isCfps",
       "events",
       "topics",
       "more",
@@ -276,10 +273,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.icon {
-  filter: grayscale(100%);
-}
-
 .tag {
   position: relative;
   top: -1px;

@@ -341,16 +341,6 @@ export default {
     }
   },
   computed: {
-    datePickerCfpEndDate: {
-      get() {
-        return this.newEvent.cfpEndDate
-          ? locale.parse(this.newEvent.cfpEndDate, "YYYY-MM-DD")
-          : undefined;
-      },
-      set(cfpEndDate) {
-        this.newEvent.cfpEndDate = locale.format(cfpEndDate, "YYYY-MM-DD");
-      }
-    },
     datePickerEndDate: {
       get() {
         return this.newEvent.dates.end
