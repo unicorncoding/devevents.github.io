@@ -9,7 +9,7 @@ const topics = {
     name: "Clojure"
   },
   cpp: {
-    name: "C and C++"
+    name: "C/C++"
   },
   mobile: {
     name: "Mobile"
@@ -17,8 +17,23 @@ const topics = {
   iot: {
     name: "IoT"
   },
+  api: {
+    name: "API"
+  },
+  vue: {
+    name: "Vue"
+  },
+  angular: {
+    name: "Angular"
+  },
+  hardware: {
+    name: "Hardware"
+  },
   web: {
-    name: "Frontend & web"
+    name: "Web"
+  },
+  frontend: {
+    name: "Frontend"
   },
   data: {
     name: "Data science"
@@ -57,7 +72,16 @@ const topics = {
     name: "JavaScript"
   },
   leadership: {
-    name: "Leadership & management"
+    name: "Leadership"
+  },
+  serverless: {
+    name: "Serverless"
+  },
+  scrum: {
+    name: "Scrum"
+  },
+  management: {
+    name: "Management"
   },
   game: {
     name: "Game development"
@@ -79,6 +103,12 @@ const topics = {
   },
   ruby: {
     name: "Ruby and Rails"
+  },
+  android: {
+    name: "Android"
+  },
+  ios: {
+    name: "iOS"
   },
   security: {
     name: "Security"
