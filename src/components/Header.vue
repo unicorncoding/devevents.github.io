@@ -5,36 +5,29 @@
         <section class="section">
           <div class="columns is-vcentered is-mobile">
             <div class="column is-narrow">
-              <h1
-                class="title is-size-4 is-size-6-mobile"
-                style="letter-spacing: -2px"
-              >
-                <span class="has-text-white-ter" style="white-space:nowrap"
-                  >dev<span class="has-text-success">.</span
-                  ><span class="has-text-weight-normal">events</span></span
+              <router-link :to="{ name: 'confs' }">
+                <h1
+                  class="title is-size-4 is-size-6-mobile"
+                  style="letter-spacing: -2px"
                 >
-                >
-              </h1>
+                  <span class="has-text-white-ter" style="white-space:nowrap"
+                    >dev<span class="has-text-success">.</span
+                    ><span class="has-text-weight-normal">events</span></span
+                  >
+                  >
+                </h1>
+              </router-link>
             </div>
             <div class="column is-narrow">
               <span class="has-text-white" href="#"></span>
             </div>
             <div class="column is-narrow">
               <router-link
-                class="has-text-white-ter is-size-7-mobile"
-                :class="{ 'has-text-weight-bold': !$route.params.cfp }"
+                class="has-text-white-ter is-size-7-mobile has-text-weight-bold"
                 :to="{ name: 'confs' }"
                 >Conferences</router-link
               >
             </div>
-            <!-- <div class="column is-narrow">
-              <router-link
-                class="has-text-white-ter is-size-7-mobile"
-                :class="{ 'has-text-weight-bold': $route.params.cfp }"
-                :to="{ name: 'confs', params: { cfp: 'cfp' } }"
-                >CFPs</router-link
-              >
-            </div> -->
             <div class="column" v-if="isSignedIn">
               <div class="columns is-mobile is-pulled-right">
                 <div class="column is-narrow is-hidden-mobile">

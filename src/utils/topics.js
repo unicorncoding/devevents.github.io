@@ -130,7 +130,7 @@ const topics = {
   },
   k8s: {
     name: "Kubernetes"
-  },  
+  },
   fp: {
     name: "Functional programming"
   },
