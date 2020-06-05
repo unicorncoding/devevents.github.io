@@ -19,7 +19,8 @@
                 <div class="control">
                   <v-select
                     multiple
-                    :options="topics"
+                    filterable
+                    :options="topicsOrdered"
                     v-model="newEvent.topics"
                     label="name"
                     :class="{ 'is-danger': validationErrors.topics }"
@@ -306,11 +307,13 @@ import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import { Locale } from "v-calendar";
 import { mapState, mapActions } from "vuex";
 import { tomorrow } from "../utils/dates";
+import { topicsOrdered } from "../utils/topics";
 import states from "../utils/states";
 const locale = new Locale();
 export default {
   data: () => {
     return {
+      topicsOrdered,
       states: states,
       newEvent: {
         topics: [],
@@ -321,13 +324,14 @@ export default {
           start: undefined,
           end: undefined
         },
-        countryCode: undefined,
-        topicCode: undefined
+        countryCode: undefined
       }
     };
   },
   created() {
-    this.newEvent.topicCode = this.$route.query.topic || "fullstack";
+    if (this.$route.query.topic) {
+      this.newEvent.topics.push(this.$route.query.topic);
+    }
     this.newEvent.price.currency =
       this.$route.query.continent === "EU" ? "EUR" : "USD";
     if (this.$route.query.continent === "ON") {
@@ -381,7 +385,6 @@ export default {
     ...mapState("creation", {
       validationErrors: state => state.validationErrors,
       globalError: state => state.globalError,
-      topics: state => state.topics,
       countries: state =>
         state.countries.map(({ code, currency, name }) => ({
           code,

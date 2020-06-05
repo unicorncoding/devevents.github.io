@@ -6,9 +6,9 @@
       class="topic column is-full"
       :class="{ 'is-active': isActive(topic.code) }"
     >
-      <router-link class="has-text-primary" :to="hover(topic.code)">{{
-        topic.name
-      }}</router-link>
+      <router-link class="has-text-primary" :to="hover(topic.code)">
+        {{ name(topic.code) }}
+      </router-link>
       &nbsp;
       <router-link
         :to="hover(topic.code)"
@@ -22,11 +22,16 @@
   </div>
 </template>
 <script>
+import { topics } from "../utils/topics";
 import { mapState } from "vuex";
 import mixins from "@/mixins/navigation";
 export default {
   mixins: mixins,
   methods: {
+    name(code) {
+      const topic = topics[code];
+      return topic ? topic.name : "";
+    },
     isActive(topic) {
       return topic == this.$route.params.topic;
     },

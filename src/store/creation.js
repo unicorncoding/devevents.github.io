@@ -18,7 +18,7 @@ export default {
           params: {
             continent,
             country: event.countryCode,
-            topic: event.topicCode
+            topic: event.topics[0]
           }
         });
       };

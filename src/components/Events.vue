@@ -100,15 +100,11 @@
               </div>
               <div class="column is-narrow">
                 <figure class="image is-32x32">
-                  <router-link
-                    :to="route('events', { topic: event.topicCode })"
-                  >
-                    <img
-                      :src="'/icons/topics/' + event.topicCode + '.png'"
-                      :alt="event.topic"
-                      class="icon"
-                    />
-                  </router-link>
+                  <img
+                    :src="'/icons/topics/' + event.topics[0] + '.png'"
+                    :alt="event.topic"
+                    class="icon"
+                  />
                 </figure>
               </div>
               <div class="column">
@@ -134,12 +130,8 @@
                   </span>
                 </h2>
                 <h3 class="subtitle is-6">
-                  <router-link
-                    :to="route('events', { topic: event.topicCode })"
-                    >{{ event.topic }}</router-link
-                  >
+                  <ManyTopics :topics="event.topics" />
                   conference
-
                   <span v-if="!isOnline"
                     >in
                     {{
@@ -201,6 +193,7 @@ import filteringMixins from "@/mixins/filtering";
 import { mapState, mapActions, mapGetters } from "vuex";
 import Topics from "./Topics";
 import Continents from "./Continents";
+import ManyTopics from "./ManyTopics";
 import Countries from "./Countries";
 import Header from "./Header";
 import PlusButton from "./PlusButton";
@@ -214,6 +207,7 @@ export default {
     Continents,
     Countries,
     Topics,
+    ManyTopics,
     PagingStats,
     PlusButton,
     JsonLd,
