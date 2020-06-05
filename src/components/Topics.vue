@@ -7,7 +7,7 @@
       :class="{ 'is-active': isActive(topic.code) }"
     >
       <router-link class="has-text-primary" :to="hover(topic.code)">
-        {{ name(topic.code) }}
+        {{ topic.name }}
       </router-link>
       &nbsp;
       <router-link
@@ -22,16 +22,12 @@
   </div>
 </template>
 <script>
-import { topics } from "../utils/topics";
+import { topicsOrdered } from "../utils/topics";
 import { mapState } from "vuex";
 import mixins from "@/mixins/navigation";
 export default {
   mixins: mixins,
   methods: {
-    name(code) {
-      const topic = topics[code];
-      return topic ? topic.name : "";
-    },
     isActive(topic) {
       return topic == this.$route.params.topic;
     },
@@ -43,9 +39,12 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapState(["topics"])
-  }
+  computed: mapState({
+    topics: state =>
+      topicsOrdered
+        .filter(({ code }) => state.topics[code])
+        .map(({ code, name }) => ({ code, name, count: state.topics[code] }))
+  })
 };
 </script>
 <style scoped lang="scss">
