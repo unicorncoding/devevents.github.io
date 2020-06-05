@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path:
-      "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic([a-z]+)?",
+      "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic([a-z0-9]+)?",
     caseSensitive: true,
     name: "confs",
     component: Events
