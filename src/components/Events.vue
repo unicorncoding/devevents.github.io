@@ -84,9 +84,15 @@
                   </span>
                   <br />
                 </span>
-                <span class="has-text-weight-bold is-size-7-mobile">
+                <time class="has-text-weight-bold is-size-7-mobile">
                   {{ formatRange(event.startDate, event.endDate) }}
-                </span>
+                  <span
+                    class="has-text-grey is-size-7 is-relative"
+                    style="top: -5px"
+                  >
+                    {{ year(event.startDate) }}
+                  </span>
+                </time>
                 <br />
               </div>
               <div class="column is-narrow">
@@ -238,6 +244,9 @@ export default {
     }
   },
   methods: {
+    year(date) {
+      return dayjs(date).year();
+    },
     years() {
       const yearNow = dayjs().year();
       const yearNext = dayjs()

@@ -21,25 +21,17 @@ export function formatCreationDate(startDate) {
 }
 
 export function formatRange(startDate, endDate) {
-  const fmtWithYearIfNeeded = (date, pattern) => {
-    const thisYear = date.year() === dayjs().year();
-    if (thisYear) {
-      return date.format(pattern);
-    } else {
-      return date.format(pattern + " YYYY");
-    }
-  };
   const start = dayjs(startDate);
   const oneDayEvent = !endDate || endDate === startDate;
   if (oneDayEvent) {
-    return fmtWithYearIfNeeded(start, "MMM D");
+    return start.format("MMM D");
   } else {
     const end = dayjs(endDate);
     const sameMonth = start.month() == end.month();
     if (sameMonth) {
-      return fmtWithYearIfNeeded(end, `MMM ${start.format("D")}-D`);
+      return end.format(`MMM ${start.format("D")}-D`);
     } else {
-      return start.format("MMM D") + " - " + fmtWithYearIfNeeded(end, "MMM D");
+      return start.format("MMM D") + " - " + end.format("MMM D");
     }
   }
 }
