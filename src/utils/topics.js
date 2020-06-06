@@ -125,6 +125,9 @@ const topics = {
   career: {
     name: "Career"
   },
+  vr: {
+    name: "AR/VR/XR"
+  },
   cloud: {
     name: "Cloud"
   },
