@@ -122,6 +122,9 @@ const topics = {
   blockchain: {
     name: "Blockchain"
   },
+  career: {
+    name: "Career"
+  },
   cloud: {
     name: "Cloud"
   },
