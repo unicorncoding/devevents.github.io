@@ -1,19 +1,24 @@
 <template>
   <div>
-    <div role="navigation" aria-label="main navigation">
+    <div
+      role="navigation"
+      class="has-background-black"
+      aria-label="main navigation"
+    >
       <div class="container">
         <section class="section">
           <div class="columns is-vcentered is-mobile">
             <div class="column is-narrow">
-              <router-link :to="{ name: 'confs' }">
+              <router-link
+                :to="{ path: '/' + ($route.params.continent || '') }"
+              >
                 <h1
                   class="title is-size-4 is-size-6-mobile"
                   style="letter-spacing: -2px"
                 >
-                  <span class="has-text-white-ter" style="white-space:nowrap"
+                  <span class="has-text-white-ter has-text-nowrap"
                     >dev<span class="has-text-success">.</span
                     ><span class="has-text-weight-normal">events</span></span
-                  >
                   >
                 </h1>
               </router-link>
@@ -23,9 +28,21 @@
             </div>
             <div class="column is-narrow">
               <router-link
-                class="has-text-white-ter is-size-7-mobile has-text-weight-bold"
-                :to="{ name: 'confs' }"
+                class="has-text-white-ter is-size-7-mobile"
+                :class="{ 'has-text-weight-bold': $route.name === 'confs' }"
+                :to="{ path: '/' + ($route.params.continent || '') }"
                 >Conferences</router-link
+              >
+            </div>
+            <div class="column is-narrow">
+              <router-link
+                class="has-text-white-ter is-size-7-mobile"
+                :class="{
+                  'has-text-weight-bold':
+                    $route.name === 'courses' || $route.name === 'course'
+                }"
+                :to="{ name: 'courses' }"
+                >Training &amp; certification</router-link
               >
             </div>
             <div class="column" v-if="isSignedIn">
@@ -78,18 +95,6 @@
         </section>
       </div>
     </div>
-    <header class="container">
-      <section class="section">
-        <div class="columns is-multiline is-mobile">
-          <div
-            class="column is-half-desktop is-full-mobile has-text-centered-mobile"
-          ></div>
-          <div class="column is-half-desktop is-full-mobile">
-            <slot />
-          </div>
-        </div>
-      </section>
-    </header>
   </div>
 </template>
 <script>
@@ -98,7 +103,7 @@ import Avatar from "vue-avatar";
 import { mapState, mapGetters, mapActions } from "vuex";
 import mixins from "@/mixins/navigation";
 export default {
-  mixins: mixins,
+  mixins,
   methods: {
     ...mapActions("karma", ["fetch"]),
     ...mapActions("auth", ["signOut"])
@@ -121,8 +126,7 @@ export default {
 <style lang="scss" scoped>
 div[role="navigation"] {
   padding: 1em;
-  background-color: #363636;
-  border-bottom: 1px solid hsl(0, 0%, 96%);
+  // border-bottom: 1px solid hsl(0, 0%, 96%);
   .container {
     margin-top: 0;
     margin-bottom: 0;

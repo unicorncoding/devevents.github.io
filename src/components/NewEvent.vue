@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="container section">
-      <h1 class="title is-3">Add new conference</h1>
+      <h1 class="title">Add new conference</h1>
       <hr />
       <div class="columns is-centered">
         <div class="column">

@@ -26,10 +26,10 @@ import { topicsOrdered } from "../utils/topics";
 import { mapState } from "vuex";
 import mixins from "@/mixins/navigation";
 export default {
-  mixins: mixins,
+  mixins,
   methods: {
     isActive(topic) {
-      return topic == this.$route.params.topic;
+      return topic === this.$route.params.topic;
     },
     hover(topic) {
       if (this.isActive(topic)) {

@@ -7,7 +7,7 @@
 import { mapState } from "vuex";
 import mixins from "@/mixins/filtering";
 export default {
-  mixins: mixins,
+  mixins,
   computed: {
     count() {
       const stats = this.stats;

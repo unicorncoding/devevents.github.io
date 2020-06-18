@@ -1,40 +1,50 @@
 <template>
   <div>
-    <Header>
-      <Continents />
-      <div class="is-pulled-right">
-        <div class="select is-small" @change="sortingChanged()">
-          <select
-            v-model="$store.state.sorting"
-            class="is-borderless has-background-white"
-          >
-            <option value="newestFirst">Newest first</option>
-            <option value="cheapestFirst">Cheapest first</option>
-            <option value="startDate">Sort by date</option>
-          </select>
+    <Header />
+    <header class="container">
+      <section class="section">
+        <div class="columns is-multiline is-mobile">
+          <div
+            class="column is-half-desktop is-full-mobile has-text-centered-mobile"
+          ></div>
+          <div class="column is-half-desktop is-full-mobile">
+            <Continents />
+            <div class="is-pulled-right">
+              <div class="select is-small" @change="sortingChanged()">
+                <select
+                  v-model="$store.state.sorting"
+                  class="is-borderless has-background-white"
+                >
+                  <option value="newestFirst">Newest first</option>
+                  <option value="cheapestFirst">Cheapest first</option>
+                  <option value="startDate">Sort by date</option>
+                </select>
+              </div>
+            </div>
+            <div class="is-pulled-left">
+              <div class="is-hidden-tablet is-size-7">
+                <a
+                  class="has-text-grey"
+                  @click="toggleCategories()"
+                  v-if="categoriesVisible"
+                >
+                  <font-awesome-icon icon="eye-slash" />
+                  Hide categories
+                </a>
+              </div>
+              <div class="is-hidden-tablet is-size-7">
+                <a
+                  class="has-text-grey"
+                  @click="toggleCategories()"
+                  v-if="!categoriesVisible"
+                  ><font-awesome-icon icon="eye" /> Show categories
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="is-pulled-left">
-        <div class="is-hidden-tablet is-size-7">
-          <a
-            class="has-text-grey"
-            @click="toggleCategories()"
-            v-if="categoriesVisible"
-          >
-            <font-awesome-icon icon="eye-slash" />
-            Hide categories
-          </a>
-        </div>
-        <div class="is-hidden-tablet is-size-7">
-          <a
-            class="has-text-grey"
-            @click="toggleCategories()"
-            v-if="!categoriesVisible"
-            ><font-awesome-icon icon="eye" /> Show categories
-          </a>
-        </div>
-      </div>
-    </Header>
+      </section>
+    </header>
     <div class="container">
       <section
         class="section is-size-1 is-size-5-mobile has-text-grey has-text-centered"

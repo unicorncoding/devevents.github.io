@@ -27,12 +27,6 @@ $bulmaswatch-import-font: false;
 
 $box-shadow: none;
 
-$modal-content-spacing-tablet: 0px;
-$modal-content-width: 90%;
-$modal-content-margin-mobile: 0px;
-$modal-content-spacing-mobile: 0px;
-$modal-background-background-color: white;
-
 $input-background-color: #fafafa;
 $input-placeholder-color: #D3D3D3;
 
@@ -45,6 +39,23 @@ $input-placeholder-color: #D3D3D3;
 
 .is-borderless {
   border: none !important;
+}
+
+.is-striked {
+  text-decoration: line-through;
+}
+
+.has-text-nowrap {
+  white-space: nowrap;
+}
+
+h1.is-1.title {
+  letter-spacing: -3px;
+}
+
+.is-outlined, .is-outlined:hover {
+  color: white !important;
+  background: none !important;
 }
 
 input,
@@ -80,9 +91,12 @@ $vs-state-active-bg: $green;
   background-color: $input-background-color !important;
 }
 
+.box {
+  box-shadow: none !important;
+  height: 100%;
+}
 
 
 @import "vue-select/src/scss/vue-select.scss";
 @import '~bulma';
-@import '~bulmaswatch/lumen/_overrides'
-
+@import '~bulmaswatch/lumen/_overrides';

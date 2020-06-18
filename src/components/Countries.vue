@@ -27,7 +27,7 @@ import { mapState } from "vuex";
 import mixins from "@/mixins/navigation";
 
 export default {
-  mixins: mixins,
+  mixins,
   computed: {
     ...mapState(["countries"])
   },

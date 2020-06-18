@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 User-agent: *
-Disallow: /new$
+Disallow: /new
