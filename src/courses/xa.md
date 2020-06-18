@@ -36,7 +36,7 @@ recommendations:
       head: /endorsers/jonas.png
       text: I recommend this course because everything explained here can be put into practice on a production environment the next day.
     - title: Jessica R. Automation Lead
-      head: /endorsers/luciana.jpg
+      head: /endorsers/jessr.png
       text: A MUST for every DevOps Engineer!
     - title: Sergey I. DevOps Lead 
       head: /endorsers/sergeyi.jpg
