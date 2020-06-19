@@ -38,7 +38,7 @@ recommendations:
       head: /endorsers/andrejs.jpg
       text: Content and examples - excellent! Instructors attitude and support - excellent!
     - title: Tomasz G. Senior Architect
-      head: /endorsers/tomasz.jpg
+      head: /endorsers/tomasz.png
       text: Deep, non-trivial course for experienced engineers working in large enterprises. Not for juniors, because the course requires a certain level of maturity.
 tldr: In this masterclass you will look at the relationship between Agile processes and good architecture, taking in development process models, architectural styles, requirements techniques, sufficient modeling techniques, design patterns, and testing practices.
 trainer:
