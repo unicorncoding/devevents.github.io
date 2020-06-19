@@ -193,7 +193,7 @@
 </template>
 
 <script>
-import { formatRange, formatCfp, formatCreationDate } from "@/utils/dates";
+import { formatRange, formatCreationDate, years } from "@/utils/dates";
 import navigationMixins from "@/mixins/navigation";
 import filteringMixins from "@/mixins/filtering";
 import dayjs from "dayjs";
@@ -245,24 +245,17 @@ export default {
           ? (this.topicName() ? this.topicName() : "Developer") +
             " conferences in " +
             this.locationName() +
-            ` ${this.years()}`
+            ` ${years()}`
           : "Online " +
             (this.topicName() ? this.topicName() : "developer") +
             " conferences" +
-            ` ${this.years()}`
+            ` ${years()}`
       };
     }
   },
   methods: {
     year(date) {
       return dayjs(date).year();
-    },
-    years() {
-      const yearNow = dayjs().year();
-      const yearNext = dayjs()
-        .add(1, "year")
-        .year();
-      return `${yearNow}/${yearNext}`;
     },
     sortingChanged() {
       this.fetchEvents();
@@ -275,7 +268,6 @@ export default {
     },
     formatRange,
     formatCreationDate,
-    formatCfp,
     ...mapActions(["fetchEvents", "moreEvents", "deleteEvent"])
   },
   computed: {

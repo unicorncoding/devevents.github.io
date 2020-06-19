@@ -20,6 +20,14 @@ export function formatCreationDate(startDate) {
   return dayjs(startDate).fromNow();
 }
 
+export function years() {
+  const yearNow = dayjs().year();
+  const yearNext = dayjs()
+    .add(1, "year")
+    .year();
+  return `${yearNow}/${yearNext}`;
+}
+
 export function formatRange(startDate, endDate) {
   const start = dayjs(startDate);
   const oneDayEvent = !endDate || endDate === startDate;

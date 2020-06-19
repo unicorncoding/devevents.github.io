@@ -172,6 +172,7 @@ export default {
   created() {
     const codename = this.$route.params.codename;
     this.course = courseByCodename(codename);
+    // this.$emit("updateHead")
   },
   methods: {
     toggleVideo() {
@@ -185,6 +186,15 @@ export default {
     },
     trainersName() {
       return this.course.trainer.title.split(" ")[0];
+    }
+  },
+  head: {
+    title: function() {
+      return {
+        separator: "|",
+        complement: "Training and certification course",
+        inner: `${this.course.title}`
+      };
     }
   },
   components: { Header, FiveStars, Offers }
@@ -203,7 +213,7 @@ $light-text: hsl(0, 0%, 45%);
   margin-top: 0 !important;
   background-position: center center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-color: rgba(0, 0, 0, 0.65);
   background-blend-mode: darken;
 }
@@ -259,6 +269,11 @@ $light-text: hsl(0, 0%, 45%);
 @include desktop {
   .container {
     padding: 0 150px;
+  }
+  .trainer {
+    // fixed doesn't work on iPads
+    // https://stackoverflow.com/questions/24154666/background-size-cover-not-working-on-ios
+    background-attachment: fixed !important;
   }
 }
 </style>

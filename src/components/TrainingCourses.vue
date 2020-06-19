@@ -169,6 +169,7 @@
   </div>
 </template>
 <script>
+import { years } from "@/utils/dates";
 import mixins from "@/mixins/navigation";
 import Header from "./Header";
 import Offers from "./Offers";
@@ -179,6 +180,15 @@ export default {
     return {
       courses
     };
+  },
+  head: {
+    title: function() {
+      return {
+        separator: "|",
+        complement: "dev.events",
+        inner: `Training courses for software developers ${years()}`
+      };
+    }
   },
   components: { Header, Offers }
 };
