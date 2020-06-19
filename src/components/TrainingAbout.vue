@@ -69,9 +69,7 @@
 
     <div
       class="trainer"
-      :style="
-        'background: rgba(0, 0, 0, 0.65) url(' + course.trainer.background + ')'
-      "
+      :style="'background-image: url(' + course.trainer.background + ')'"
     >
       <section class="section is-large">
         <div class="container has-text-centered has-text-white">
@@ -202,11 +200,12 @@ $light-text: hsl(0, 0%, 45%);
 }
 
 .trainer {
-  background-position: center center !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
   margin-top: 0 !important;
-  background-blend-mode: darken !important;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.65);
+  background-blend-mode: darken;
 }
 
 .videoWrapper {
