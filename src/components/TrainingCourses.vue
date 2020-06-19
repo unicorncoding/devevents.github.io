@@ -58,7 +58,7 @@
           </span>
         </div>
         <div class="column is-one-third">
-          <div class="columns is-vcentered ">
+          <div class="columns">
             <div class="column is-narrow">
               <figure class="image is-96x96">
                 <img class="is-rounded" :src="course.trainer.avatar" />
