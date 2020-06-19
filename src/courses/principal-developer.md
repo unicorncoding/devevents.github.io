@@ -63,7 +63,7 @@ recommendations:
 tldr: The Principal Developer is a two-day masterclass for experienced software developers. Here we develop skills that every successful, effective, and trusted software development team leader needs.
 trainer:
     title: Eduards Sizovs
-    subtitle: Trainer, certified Scrum Master, certified Product Owner, certified Project Management Professional (PMP), and ICF certified coach.
+    subtitle: Trainer, CSM, CSPO, Project Management Professional (PMP), and ICF certified coach.
     twitter: //twitter.com/eduardsi
     linkedin: //linkedin.com/in/eduardsi
     avatar: /trainers/eduardsi.png
