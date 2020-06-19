@@ -10,6 +10,7 @@ offers:
       date: 1 day, 4 Dec 2020
       bookingLink: https://devternity.com
       price: 300
+      priceHint: per person
     - name: Private training (online)
       date: 2 days, 9:00 – 18:00
       price: 14500
