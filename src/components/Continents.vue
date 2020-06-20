@@ -8,7 +8,7 @@
       >
         <router-link
           :to="{
-            params: { continent: code, country: undefined, topic: undefined }
+            params: { continent: code, country: undefined }
           }"
         >
           {{ name }}
