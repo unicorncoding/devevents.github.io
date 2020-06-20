@@ -95,6 +95,9 @@ const topics = {
   php: {
     name: "PHP"
   },
+  oss: {
+    name: "Open source"
+  },
   product: {
     name: "Product development"
   },
