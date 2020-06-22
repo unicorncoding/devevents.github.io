@@ -317,7 +317,8 @@ export default {
       newEvent: {
         topics: [],
         price: {
-          free: false
+          free: false,
+          currency: undefined
         },
         dates: {
           start: undefined,
@@ -328,16 +329,16 @@ export default {
     };
   },
   created() {
-    if (this.$route.query.topic) {
-      this.newEvent.topics.push(this.$route.query.topic);
+    const { topic, continent, country } = this.$route.query;
+
+    if (topic) {
+      this.newEvent.topics.push(topic);
     }
-    this.newEvent.price.currency =
-      this.$route.query.continent === "EU" ? "EUR" : "USD";
-    if (this.$route.query.continent === "ON") {
+    if (continent === "ON") {
       this.newEvent.countryCode = "ON";
       this.newEvent.city = "Online";
     } else {
-      this.newEvent.countryCode = this.$route.query.country;
+      this.newEvent.countryCode = country;
     }
   },
   computed: {
@@ -390,7 +391,8 @@ export default {
     })
   },
   mounted() {
-    this.fetchInfo();
+    const that = this;
+    this.fetchInfo().then(() => that.preselectCurrency());
   },
   head: {
     title: function() {
@@ -412,17 +414,19 @@ export default {
       delete this.newEvent.stateCode;
       delete this.newEvent.city;
 
-      const countrySpecificCurrency = this.countries.find(
-        ({ code }) => code === this.newEvent.countryCode
-      ).currency;
-
-      if (countrySpecificCurrency) {
-        this.newEvent.price.currency = countrySpecificCurrency;
-      }
+      this.preselectCurrency();
 
       if (this.isOnline) {
         this.newEvent.city = "Online";
       }
+    },
+    preselectCurrency() {
+      const countrySpecificCurrency = this.countries.find(
+        ({ code }) => code === this.newEvent.countryCode
+      )?.currency;
+
+      this.newEvent.price.currency =
+        countrySpecificCurrency || (this.continent === "EU" ? "EUR" : "USD");
     },
     submitForm() {
       this.createNew(this.newEvent);
