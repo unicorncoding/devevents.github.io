@@ -26,7 +26,7 @@ recommendations:
     - title: Andrejs V. Team Lead
       head: /endorsers/andrejs.jpg
       text: Content and examples - excellent! Instructors attitude and support - excellent!
-tldr: In this masterclass you will look at the relationship between Agile processes and good architecture, taking in development process models, architectural styles, requirements techniques, sufficient modeling techniques, design patterns, and testing practices.
+tldr: In this course you will learn how to write good unit tests (GUTs) and apply test-driven development (TDD) best practices to drive your C++ code.
 trainer:
     title: Kevlin Henney
     subtitle: Consultant, Trainer, Writer, Editor of «97 Things Every Programmer Should Know»
@@ -43,7 +43,7 @@ trainer:
 
 # Introduction
 
-In this course you will learn about good unit tests (GUTs) and test-driven development (TDD). 
+In this course you will learn how to write good unit tests (GUTs) and apply test-driven development (TDD) in C++.
 
 - What practices support readable and maintainable tests? 
 - What test pitfalls hold developers and products back? 

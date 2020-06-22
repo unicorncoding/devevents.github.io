@@ -41,7 +41,7 @@ recommendations:
     - title: Sergey Z. Full-stack Developer
       head: /endorsers/sergeyz.png
       text: This workshop has resolved all disagreements in my team on how we should approach coding, how to write tests, what to refactor and what not. Worth every penny.
-    - title: Pedron S. Software Developer
+    - title: Pedro S. Software Developer
       head: /endorsers/pedro.png
       text: I attended this workshop at DevTernity conference in Riga. Absolutely loved zero theory and 100% practice approach.
     - title: Hannah S. Senior Developer
