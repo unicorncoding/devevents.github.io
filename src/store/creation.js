@@ -39,7 +39,7 @@ export default {
   },
   mutations: {
     creationFailed(state, { data, status }) {
-      state.validationErrors = [];
+      state.validationErrors = {};
       state.globalError = undefined;
       if (status === 422) {
         state.validationErrors = data;
@@ -49,7 +49,7 @@ export default {
       }
     },
     infoFetched(state, data) {
-      state.validationErrors = [];
+      state.validationErrors = {};
       state.globalError = undefined;
       state.topics = data.topics;
       state.countries = data.countries;
