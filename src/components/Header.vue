@@ -50,13 +50,6 @@
             </div>
             <div class="column" v-if="isSignedIn">
               <div class="columns is-mobile is-pulled-right">
-                <div class="column is-narrow is-hidden-mobile">
-                  <span class="has-text-light is-size-7">
-                    <font-awesome-icon :icon="['far', 'heart']" />
-                    &nbsp;
-                    <span class="has-text-weight-bold">{{ karma }}</span></span
-                  >
-                </div>
                 <div class="column is-narrow">
                   <div class="dropdown is-hoverable is-right">
                     <div class="dropdown-trigger">
@@ -78,12 +71,6 @@
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu" role="menu">
                       <div class="dropdown-content">
-                        <div class="dropdown-item">
-                          <p>
-                            You have <strong>{{ karma }}</strong> karma points.
-                          </p>
-                        </div>
-                        <hr class="dropdown-divider" />
                         <a class="dropdown-item" @click="signOut()">log out</a>
                       </div>
                     </div>
@@ -108,17 +95,12 @@ import mixins from "@/mixins/navigation";
 export default {
   mixins,
   methods: {
-    ...mapActions("karma", ["fetch"]),
     ...mapActions("auth", ["signOut"])
   },
   created() {
-    this.fetch();
   },
   computed: {
     ...mapGetters("auth", ["isSignedIn", "isAdmin", "username"]),
-    ...mapState("karma", {
-      karma: state => state.karma
-    }),
     ...mapState("auth", {
       user: state => state.user
     })
