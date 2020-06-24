@@ -48,7 +48,7 @@ export default {
     },
     description() {
       return (
-        this.event.name + ": https://dev.events/conference/" + this.event.id
+        this.event.name + ": https://dev.events/conferences/" + this.event.id
       );
     },
     location() {
