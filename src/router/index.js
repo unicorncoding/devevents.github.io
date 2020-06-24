@@ -32,7 +32,7 @@ const routes = [
     component: Events
   },
   {
-    path: "/conference/:id",
+    path: "/conferences/:id",
     name: "conf",
     component: ConferenceAbout
   },
