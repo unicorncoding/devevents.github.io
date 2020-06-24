@@ -54,7 +54,7 @@
         :is-full-page="false"
         :active="!frameLoaded"
       ></loading>
-      <iframe :src="event.url" @load="iframeLoaded" />
+      <iframe :src="normalized(event.url)" @load="iframeLoaded" />
     </div>
   </div>
 </template>
@@ -69,6 +69,7 @@
 }
 </style>
 <script>
+import normalizeUrl from "normalize-url";
 import dayjs from "dayjs";
 import Avatar from "vue-avatar";
 import lazyAxios from "../utils/axios";
@@ -93,6 +94,9 @@ export default {
       .then(({ data }) => (this.event = data));
   },
   methods: {
+    normalized(url) {
+      return normalizeUrl(url, { forceHttp: true });
+    },
     iframeLoaded() {
       this.frameLoaded = true;
     },
