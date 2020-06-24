@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     normalized(url) {
-      return normalizeUrl(url, { forceHttp: true });
+      return normalizeUrl(url, { forceHttps: true });
     },
     iframeLoaded() {
       this.frameLoaded = true;
