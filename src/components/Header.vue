@@ -97,8 +97,7 @@ export default {
   methods: {
     ...mapActions("auth", ["signOut"])
   },
-  created() {
-  },
+  created() {},
   computed: {
     ...mapGetters("auth", ["isSignedIn", "isAdmin", "username"]),
     ...mapState("auth", {

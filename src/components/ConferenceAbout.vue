@@ -27,8 +27,11 @@
                   {{ event.name }}
                 </h1>
                 <h2 class="subtitle" style="margin-bottom: 10px">
-                  <ManyTopics :topics="event.topics" /> conference in
-                  {{ event.city }}, {{ event.country }}
+                  <ManyTopics :topics="event.topics" /> conference
+                  <span v-if="event.countryCode !== 'ON'">
+                    in {{ event.city }}, {{ event.country }}</span
+                  >
+                  <span v-else> in Online</span>
                   <br />
                   <time class="has-text-weight-bold is-size-6">
                     {{ formatRange(event.startDate, event.endDate) }}
@@ -54,7 +57,11 @@
         :is-full-page="false"
         :active="!frameLoaded"
       ></loading>
-      <iframe :src="normalized(event.url)" @load="iframeLoaded" />
+      <iframe
+        sandbox="allow-same-origin allow-popups allow-scripts"
+        :src="normalized(event.url)"
+        @load="iframeLoaded"
+      />
     </div>
   </div>
 </template>
