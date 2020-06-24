@@ -4,11 +4,9 @@
       <span v-if="topics.length !== 1 && index === topics.length - 1">
         and
       </span>
-      <router-link
-        class="has-text-grey has-text-weight-bold"
-        :to="route('events', { topic: topic })"
-        >{{ topicName(topic) }}</router-link
-      >
+      <router-link :class="classes" :to="route('confs', { topic })">{{
+        topicName(topic)
+      }}</router-link>
       <span v-if="topics.length !== 2 && index !== topics.length - 1">, </span>
     </span>
   </span>
@@ -19,8 +17,12 @@ import { topics } from "../utils/topics";
 export default {
   mixins: navigationMixins,
   props: {
+    classes: {
+      default: () => "",
+      type: String
+    },
     topics: {
-      required: true,
+      default: () => [],
       type: Array
     }
   },

@@ -116,13 +116,12 @@
               </div>
               <div class="column">
                 <h2 class="title is-5">
-                  <a
+                  <router-link
                     class="has-text-dark is-uppercase"
-                    rel="nofollow noopener noreferrer"
-                    target="_blank"
-                    :href="event.url"
-                    >{{ event.name }}</a
+                    :to="{ name: 'conf', params: { id: event.id } }"
+                    >{{ event.name }}</router-link
                   >
+
                   <span v-if="isAdmin">
                     <a class="tag is-borderless" @click="deleteEvent(event.id)">
                       <font-awesome-icon icon="times" class="has-text-danger" />
@@ -137,7 +136,10 @@
                   </span>
                 </h2>
                 <h3 class="subtitle is-6">
-                  <ManyTopics :topics="event.topics" />
+                  <ManyTopics
+                    classes="has-text-grey has-text-weight-bold"
+                    :topics="event.topics"
+                  />
                   conference
                   <span v-if="!isOnline"
                     >in
@@ -146,7 +148,7 @@
                         (event.stateCode ? `, ${event.stateCode}` : "")
                     }},
                     <router-link
-                      :to="route('events', { country: event.countryCode })"
+                      :to="route('confs', { country: event.countryCode })"
                     >
                       {{ event.country }}
                     </router-link>

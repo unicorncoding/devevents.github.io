@@ -91,7 +91,7 @@
                   <font-awesome-icon :icon="['fab', 'linkedin']" />
                 </a>
               </h2>
-              <p style="white-space: pre-line" v-html="course.trainer.about" />
+              <p class="is-space-preline" v-html="course.trainer.about" />
               <hr />
               <blockquote v-if="course.trainer.quote">
                 "{{ course.trainer.quote }}"
@@ -172,7 +172,6 @@ export default {
   created() {
     const codename = this.$route.params.codename;
     this.course = courseByCodename(codename);
-    // this.$emit("updateHead")
   },
   methods: {
     toggleVideo() {

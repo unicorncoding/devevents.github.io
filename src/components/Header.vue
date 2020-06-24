@@ -29,7 +29,10 @@
             <div class="column is-narrow">
               <router-link
                 class="has-text-white-ter is-size-7-mobile"
-                :class="{ 'has-text-weight-bold': $route.name === 'confs' }"
+                :class="{
+                  'has-text-weight-bold':
+                    $route.name === 'confs' || $route.name === 'conf'
+                }"
                 :to="{ path: '/' + ($route.params.continent || '') }"
                 >Conferences</router-link
               >

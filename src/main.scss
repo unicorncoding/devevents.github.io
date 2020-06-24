@@ -45,6 +45,10 @@ $input-placeholder-color: #D3D3D3;
   text-decoration: line-through;
 }
 
+.is-space-preline {
+  white-space: pre-line;
+}
+
 .has-text-nowrap {
   white-space: nowrap;
 }
@@ -97,6 +101,7 @@ $vs-state-active-bg: $green;
 }
 
 
+@import "vue-loading-overlay/dist/vue-loading";
 @import "vue-select/src/scss/vue-select.scss";
 @import '~bulma';
 @import '~bulmaswatch/lumen/_overrides';

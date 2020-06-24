@@ -33,9 +33,9 @@ export default {
     },
     hover(topic) {
       if (this.isActive(topic)) {
-        return this.route("events", { topic: undefined });
+        return this.route("confs", { topic: undefined });
       } else {
-        return this.route("events", { topic: topic });
+        return this.route("confs", { topic });
       }
     }
   },

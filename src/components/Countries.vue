@@ -37,9 +37,11 @@ export default {
     },
     hover(country) {
       if (this.isActive(country)) {
-        return this.route("events", { country: undefined });
+        const params = { ...this.$route.params, country: undefined };
+        return { params };
       } else {
-        return this.route("events", { country: country });
+        const params = { ...this.$route.params, country };
+        return { params };
       }
     },
     icon(country) {

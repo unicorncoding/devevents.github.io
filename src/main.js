@@ -10,6 +10,9 @@ import "intersection-observer";
 import Notifications from "vue-notification";
 Vue.use(Notifications);
 
+import VueSocialSharing from "vue-social-sharing";
+Vue.use(VueSocialSharing);
+
 import VueObserveVisibility from "vue-observe-visibility";
 Vue.use(VueObserveVisibility);
 
@@ -30,6 +33,7 @@ import {
   faEyeSlash,
   faSquare,
   faStar,
+  faShare,
   faDollarSign,
   faCertificate,
   faCheckSquare
@@ -41,7 +45,8 @@ import {
   faCircle,
   faCheckCircle,
   faGem,
-  faCalendarCheck
+  faCalendarCheck,
+  faCalendarPlus
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faGithub,
@@ -57,6 +62,7 @@ library.add(
   faPlus,
   faTimes,
   faCheck,
+  faShare,
   faCircle,
   faLinkedin,
   faSquare,
@@ -68,6 +74,7 @@ library.add(
   faEyeSlash,
   faInfoCircle,
   faCalendarCheck,
+  faCalendarPlus,
   faDollarSign,
   faCertificate,
   faRss,

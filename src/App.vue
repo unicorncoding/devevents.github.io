@@ -7,7 +7,6 @@
 </template>
 <script>
 import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
 import { mapState } from "vuex";
 
 export default {
@@ -15,7 +14,6 @@ export default {
     Loading
   },
   computed: {
-    ...mapState(["doneFetching"]),
     ...mapState("fetching", { isFetching: state => state.isFetching })
   }
 };

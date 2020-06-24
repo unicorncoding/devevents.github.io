@@ -310,7 +310,7 @@
           </div>
         </div>
       </div>
-      <hr />
+      <!-- <hr />
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label"
@@ -323,20 +323,30 @@
           <div class="field">
             <textarea
               class="textarea is-shadowless is-medium"
+              v-bind:class="{ 'is-danger': isDescriptionTooLong() }"
               v-model.trim="newEvent.description"
               placeholder="A well-written description with program highlights makes the event stand out."
               rows="10"
             />
+            <p class="help has-text-danger" v-if="isDescriptionTooLong()">
+              The maximum description is {{ descriptionLimit }} chars.
+            </p>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <hr />
       <div class="buttons is-pulled-right">
         <button class="button" @click="close()">
           close
         </button>
-        <button class="button is-success" @click="submitForm()">Submit</button>
+        <button
+          class="button is-success"
+          :disabled="isDescriptionTooLong()"
+          @click="submitForm()"
+        >
+          Submit
+        </button>
       </div>
     </section>
     <button
@@ -358,6 +368,7 @@ const locale = new Locale();
 export default {
   data: () => {
     return {
+      descriptionLimit: 1500,
       topicsOrdered,
       states: states,
       newEvent: {
@@ -452,6 +463,9 @@ export default {
   },
   methods: {
     tomorrow,
+    isDescriptionTooLong() {
+      return this.newEvent.description.length > this.descriptionLimit;
+    },
     toggleFree() {
       delete this.newEvent.price.from;
       delete this.newEvent.price.to;

@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Events from "../components/Events";
 import TrainingCourses from "../components/TrainingCourses";
 import TrainingAbout from "../components/TrainingAbout";
+import ConferenceAbout from "../components/ConferenceAbout";
 import NewEvent from "../components/NewEvent";
 
 Vue.use(VueRouter);
@@ -29,6 +30,11 @@ const routes = [
     caseSensitive: true,
     name: "confs",
     component: Events
+  },
+  {
+    path: "/conference/:id",
+    name: "conf",
+    component: ConferenceAbout
   },
   {
     path: "/",
