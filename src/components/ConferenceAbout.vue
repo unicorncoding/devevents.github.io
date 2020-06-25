@@ -27,11 +27,13 @@
                   {{ event.name }}
                 </h1>
                 <h2 class="subtitle" style="margin-bottom: 10px">
+                  <span v-if="event.countryCode === 'ON'">
+                    Online / virtual
+                  </span>
                   <ManyTopics :topics="event.topics" /> conference
                   <span v-if="event.countryCode !== 'ON'">
                     in {{ event.city }}, {{ event.country }}</span
                   >
-                  <span v-else> in Online</span>
                   <br />
                   <time class="has-text-weight-bold is-size-6">
                     {{ formatRange(event.startDate, event.endDate) }}
@@ -52,6 +54,7 @@
     <div class="iframe-wrapper is-relative" v-if="event.previewAvailable">
       <loading
         background-color="#000000"
+        color="#ffffff"
         :height="250"
         :width="250"
         :is-full-page="false"
