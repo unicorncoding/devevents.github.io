@@ -30,7 +30,7 @@
                     </h1>
                     <h2 class="subtitle" style="margin-bottom: 10px">
                       <span v-if="event.countryCode === 'ON'">
-                        Online / virtual
+                        Online
                       </span>
                       <ManyTopics :topics="event.topics" /> conference
                       <span v-if="event.countryCode !== 'ON'">
@@ -54,6 +54,7 @@
                 <span class="has-text-grey">Website: </span>
                 <a
                   style="margin-right: 1.5em"
+                  class="has-text-white"
                   rel="nofolllow"
                   target="_blank"
                   :href="event.url"
@@ -64,6 +65,7 @@
                 </span>
                 <a
                   rel="nofolllow"
+                  class="has-text-white"
                   target="_blank"
                   :href="'https://twitter.com/' + event.twitter"
                   >@{{ event.twitter }}</a
@@ -93,8 +95,8 @@
       <section
         class="has-text-white section is-size-1 is-size-3-mobile has-text-centered"
       >
-        ¯\_(ツ)_/¯ <br /><br />Preview is not available.
-        <br>Visit conference's website directly:
+        ¯\_(ツ)_/¯ <br /><br />Preview is not available. <br />Visit
+        conference's website directly:
         <br />
         <br />
         <a
@@ -144,7 +146,17 @@ export default {
     const id = this.$route.params.id;
     lazyAxios()
       .then(axios => axios.get(`/events/fetch/${id}`))
-      .then(({ data }) => (this.event = data));
+      .then(({ data }) => (this.event = data))
+      .then(() => this.$emit("updateHead"));
+  },
+  head: {
+    title: function() {
+      return {
+        separator: "|",
+        complement: "dev.events",
+        inner: this.event ? this.event.name : ""
+      };
+    }
   },
   methods: {
     normalized(url) {
