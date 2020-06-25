@@ -1,5 +1,5 @@
 <template>
-  <div class="conference-about has-background-black-bis" v-if="event">
+  <div class="conference-about has-background-black" v-if="event">
     <div>
       <Header />
       <section class="hero is-black">
@@ -49,7 +49,7 @@
         </div>
       </section>
     </div>
-    <div class="iframe-wrapper is-relative">
+    <div class="iframe-wrapper is-relative" v-if="event.previewAvailable">
       <loading
         background-color="#000000"
         :height="250"
@@ -63,9 +63,29 @@
         @load="iframeLoaded"
       />
     </div>
+    <div v-else>
+      <section
+        class="has-text-white section is-size-1 is-size-3-mobile has-text-centered"
+      >
+        ¯\_(ツ)_/¯ <br /><br />Preview for {{ event.name }} is not available.
+        Visit conference's website directly:
+        <br />
+        <br />
+        <a
+          class="button is-large is-link is-outlined"
+          :href="event.url"
+          rel="nofollow"
+          target="_blank"
+          >Website</a
+        >
+      </section>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">
+.conference-about {
+  height: 100vh;
+}
 .iframe-wrapper {
   height: 1200px;
   width: 100%;
