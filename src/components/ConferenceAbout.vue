@@ -93,8 +93,8 @@
       <section
         class="has-text-white section is-size-1 is-size-3-mobile has-text-centered"
       >
-        ¯\_(ツ)_/¯ <br /><br />Preview for {{ event.name }} is not available.
-        Visit conference's website directly:
+        ¯\_(ツ)_/¯ <br /><br />Preview is not available.
+        <br>Visit conference's website directly:
         <br />
         <br />
         <a
