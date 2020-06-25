@@ -5,46 +5,69 @@
       <section class="hero is-black">
         <div class="hero-body">
           <div class="container">
-            <div class="columns is-mobile">
-              <div class="column is-narrow">
-                <figure class="image is-96x96" v-if="event.twitter">
-                  <img
-                    class="is-rounded"
-                    style="border: 3px solid white"
-                    :src="'https://twitter-avatar.now.sh/' + event.twitter"
-                  />
-                </figure>
-                <avatar
-                  v-else
-                  :username="event.name"
-                  :size="128"
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                ></avatar>
-              </div>
+            <div class="columns" style="align-items: flex-end; !important">
               <div class="column">
-                <h1 class="title is-3 has-text-weight-normal">
-                  {{ event.name }}
-                </h1>
-                <h2 class="subtitle" style="margin-bottom: 10px">
-                  <span v-if="event.countryCode === 'ON'">
-                    Online / virtual
-                  </span>
-                  <ManyTopics :topics="event.topics" /> conference
-                  <span v-if="event.countryCode !== 'ON'">
-                    in {{ event.city }}, {{ event.country }}</span
-                  >
-                  <br />
-                  <time class="has-text-weight-bold is-size-6">
-                    {{ formatRange(event.startDate, event.endDate) }}
-                    {{ year(event.startDate) }}
-                  </time>
-                </h2>
-                <br />
-                <div class="buttons">
-                  <AddToCalendar :event="event" />
-                  <ShareButtons :event="event" />
+                <div class="columns is-mobile">
+                  <div class="column is-narrow">
+                    <figure class="image is-96x96" v-if="event.twitter">
+                      <img
+                        class="is-rounded"
+                        style="border: 3px solid white"
+                        :src="'https://twitter-avatar.now.sh/' + event.twitter"
+                      />
+                    </figure>
+                    <avatar
+                      v-else
+                      :username="event.name"
+                      :size="128"
+                      aria-haspopup="true"
+                      aria-controls="dropdown-menu"
+                    ></avatar>
+                  </div>
+                  <div class="column">
+                    <h1 class="title is-3 has-text-weight-normal">
+                      {{ event.name }}
+                    </h1>
+                    <h2 class="subtitle" style="margin-bottom: 10px">
+                      <span v-if="event.countryCode === 'ON'">
+                        Online / virtual
+                      </span>
+                      <ManyTopics :topics="event.topics" /> conference
+                      <span v-if="event.countryCode !== 'ON'">
+                        in {{ event.city }}, {{ event.country }}</span
+                      >
+                      <br />
+                      <time class="has-text-weight-bold is-size-6">
+                        {{ formatRange(event.startDate, event.endDate) }}
+                        {{ year(event.startDate) }}
+                      </time>
+                    </h2>
+                    <br />
+                    <div class="buttons">
+                      <AddToCalendar :event="event" />
+                      <ShareButtons :event="event" />
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div class="column has-text-centered has-text-right-desktop">
+                <span class="has-text-grey">Website: </span>
+                <a
+                  style="margin-right: 1.5em"
+                  rel="nofolllow"
+                  target="_blank"
+                  :href="event.url"
+                  >{{ noProtocol(event.url) }}</a
+                >
+                <span v-if="event.twitter" class="has-text-grey"
+                  >Twitter:
+                </span>
+                <a
+                  rel="nofolllow"
+                  target="_blank"
+                  :href="'https://twitter.com/' + event.twitter"
+                  >@{{ event.twitter }}</a
+                >
               </div>
             </div>
           </div>
@@ -126,6 +149,9 @@ export default {
   methods: {
     normalized(url) {
       return normalizeUrl(url, { forceHttps: true });
+    },
+    noProtocol(url) {
+      return normalizeUrl(url, { stripProtocol: true });
     },
     iframeLoaded() {
       this.frameLoaded = true;
