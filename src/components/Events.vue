@@ -109,7 +109,7 @@
                 <figure class="image is-32x32">
                   <img
                     :src="'/icons/topics/' + event.topics[0] + '.png'"
-                    :alt="event.topic"
+                    :alt="event.topics[0]"
                     class="icon"
                   />
                 </figure>

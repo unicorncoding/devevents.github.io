@@ -192,7 +192,7 @@ export default {
       return {
         separator: "|",
         complement: "Training and certification course",
-        inner: `${this.course.title}`
+        inner: `${this.course.title} by ${this.course.trainer.title}`
       };
     }
   },
