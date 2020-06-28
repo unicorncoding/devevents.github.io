@@ -1,5 +1,6 @@
 <template>
   <div class="conference-about has-background-black" v-if="event">
+    <JsonLd :event="event" />
     <div>
       <Header />
       <section class="hero is-black">
@@ -130,6 +131,7 @@ import Avatar from "vue-avatar";
 import lazyAxios from "../utils/axios";
 import Header from "./Header";
 import ShareButtons from "./ShareButtons";
+import JsonLd from "./JsonLd";
 import AddToCalendar from "./AddToCalendar";
 import Loading from "vue-loading-overlay";
 import ManyTopics from "./ManyTopics";
@@ -179,7 +181,8 @@ export default {
     ManyTopics,
     Loading,
     AddToCalendar,
-    ShareButtons
+    ShareButtons,
+    JsonLd
   }
 };
 </script>
