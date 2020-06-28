@@ -3,14 +3,18 @@
     <button
       class="button is-small is-outlined"
       aria-haspopup="true"
-      aria-controls="dropdown-menu"
+      aria-controls="add-to-calendar-menu"
     >
       <span class="icon"
         ><font-awesome-icon :icon="['far', 'calendar-plus']"
       /></span>
       <span>Add to calendar</span>
     </button>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div
+      class="dropdown-menu add-to-calendar-menu"
+      id="add-to-calendar-menu"
+      role="menu"
+    >
       <div class="dropdown-content">
         <a class="dropdown-item" @click="exportTo('appleical')">
           Apple/iCal

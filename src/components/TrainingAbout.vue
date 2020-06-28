@@ -41,7 +41,11 @@
               <div class="columns is-multiline">
                 <div class="column is-narrow">
                   <figure class="image is-32x32">
-                    <img class="is-rounded" :src="recommendation.head" />
+                    <img
+                      class="is-rounded"
+                      :src="recommendation.head"
+                      :alt="'Face of an endorser named ' + recommendation.title"
+                    />
                   </figure>
                 </div>
                 <div class="column has-text-weight-bold">
@@ -84,11 +88,17 @@
               >
                 Consultant, Trainer, Speaker
                 <a class="has-text-white" :href="course.trainer.twitter">
-                  <font-awesome-icon :icon="['fab', 'twitter']" />
+                  <font-awesome-icon
+                    :icon="['fab', 'twitter']"
+                    title="Link to Twitter profile"
+                  />
                 </a>
                 &nbsp;
                 <a class="has-text-white" :href="course.trainer.linkedin">
-                  <font-awesome-icon :icon="['fab', 'linkedin']" />
+                  <font-awesome-icon
+                    :icon="['fab', 'linkedin']"
+                    title="Link to LinkedIn profile"
+                  />
                 </a>
               </h2>
               <p class="is-space-preline" v-html="course.trainer.about" />
@@ -97,7 +107,9 @@
                 "{{ course.trainer.quote }}"
               </blockquote>
               <img
+                v-if="course.trainer.signature"
                 class="is-pulled-right"
+                alt="Signature of the trainer"
                 style="width: 70px; filter: invert(100%)"
                 :src="course.trainer.signature"
               />

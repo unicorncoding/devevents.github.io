@@ -9,7 +9,7 @@
           Math.round(offer.price + (offer.price * 20) / 100)
         }}</span>
         <br />
-        <h2 class="subtitle has-text-grey is-size-7">
+        <h2 class="subtitle has-text-grey-dark is-size-7">
           <span>{{ offer.priceHint }}</span>
         </h2>
         <button v-if="offer.soldOut" disabled class="button is-link">

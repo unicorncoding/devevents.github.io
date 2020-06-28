@@ -93,6 +93,11 @@ require("./main.scss");
 
 Vue.config.productionTip = false;
 
+if (process.env.NODE_ENV === "development") {
+  const VueAxe = require("vue-axe").default;
+  Vue.use(VueAxe);
+}
+
 new Vue({
   router,
   store,

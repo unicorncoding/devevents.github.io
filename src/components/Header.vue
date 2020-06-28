@@ -57,19 +57,27 @@
                         class="image is-24x24"
                         v-if="user.photoURL"
                         aria-haspopup="true"
-                        aria-controls="dropdown-menu"
+                        aria-controls="user-menu"
                       >
-                        <img class="is-rounded" :src="user.photoURL" />
+                        <img
+                          class="is-rounded"
+                          alt="Your avatar"
+                          :src="user.photoURL"
+                        />
                       </figure>
                       <avatar
                         v-else
                         :username="username"
                         :size="24"
                         aria-haspopup="true"
-                        aria-controls="dropdown-menu"
+                        aria-controls="user-menu"
                       ></avatar>
                     </div>
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div
+                      class="dropdown-menu user-menu"
+                      id="user-menu"
+                      role="menu"
+                    >
                       <div class="dropdown-content">
                         <a class="dropdown-item" @click="signOut()">log out</a>
                       </div>

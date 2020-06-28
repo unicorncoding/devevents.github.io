@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="content has-text-centered">
       Developed at night by
       <a

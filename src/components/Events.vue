@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <header class="container">
+    <aside class="container">
       <section class="section">
         <div class="columns is-multiline is-mobile">
           <div
@@ -12,6 +12,7 @@
             <div class="is-pulled-right">
               <div class="select is-small" @change="sortingChanged()">
                 <select
+                  aria-label="Sorting"
                   v-model="$store.state.sorting"
                   class="is-borderless has-background-white"
                 >
@@ -44,8 +45,8 @@
           </div>
         </div>
       </section>
-    </header>
-    <div class="container">
+    </aside>
+    <div class="container" role="main">
       <section
         class="section is-size-1 is-size-5-mobile has-text-grey has-text-centered"
         v-if="noEvents"
@@ -97,7 +98,7 @@
                 <time class="has-text-weight-bold is-size-7-mobile">
                   {{ formatRange(event.startDate, event.endDate) }}
                   <span
-                    class="has-text-grey is-size-7 is-relative"
+                    class="has-text-grey-darker is-size-7 is-relative"
                     style="top: -5px"
                   >
                     {{ year(event.startDate) }}
@@ -137,7 +138,7 @@
                 </h2>
                 <h3 class="subtitle is-6">
                   <ManyTopics
-                    classes="has-text-grey has-text-weight-bold"
+                    classes="has-text-grey-dark has-text-weight-bold"
                     :topics="event.topics"
                   />
                   conference
@@ -148,13 +149,17 @@
                         (event.stateCode ? `, ${event.stateCode}` : "")
                     }},
                     <router-link
+                      class="has-text-grey-dark has-text-weight-bold"
                       :to="route('confs', { country: event.countryCode })"
                     >
                       {{ event.country }}
                     </router-link>
                   </span>
                 </h3>
-                <h3 class="title is-7 has-text-grey-light">
+                <h3
+                  class="title is-7 has-text-grey-light"
+                  v-if="event.free === true || event.free === false"
+                >
                   <span v-if="event.free === true">
                     FREE
                   </span>

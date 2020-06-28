@@ -61,7 +61,11 @@
           <div class="columns is-mobile">
             <div class="column is-narrow">
               <figure class="image is-96x96">
-                <img class="is-rounded" :src="course.trainer.avatar" />
+                <img
+                  class="is-rounded"
+                  :src="course.trainer.avatar"
+                  :alt="'face of ' + course.trainer.title"
+                />
               </figure>
             </div>
             <div class="column">

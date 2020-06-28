@@ -27,8 +27,8 @@ export default {
 </script>
 <style scoped lang="scss">
 .is-active a {
-  color: #42b983 !important;
-  border-color: #42b983 !important;
+  color: #4a4a4a !important;
+  border-color: #4a4a4a !important;
   font-weight: bold;
 }
 </style>

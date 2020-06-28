@@ -12,6 +12,7 @@
                   <div class="column is-narrow">
                     <figure class="image is-96x96" v-if="event.twitter">
                       <img
+                        alt="Conference logo fetched from Twitter"
                         class="is-rounded"
                         style="border: 3px solid white"
                         :src="'https://twitter-avatar.now.sh/' + event.twitter"
@@ -87,6 +88,7 @@
         :active="!frameLoaded"
       ></loading>
       <iframe
+        title="embedded conference's website"
         sandbox="allow-same-origin allow-popups allow-scripts"
         :src="normalized(event.url)"
         @load="iframeLoaded"

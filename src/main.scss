@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap');
 
 $orange: #ff851b;
-$green: #42b983;
+$green: #246145;
 $blue: #5bb7db;
 $red: #ff4136;
 
@@ -76,7 +76,7 @@ select {
 }
 
 .tag.is-light {
-  color: #7a7a7a !important;
+  color: hsl(0, 0%, 29%);
   background-color: #fff !important;
   border: 1px solid #f5f5f5 !important;
 }

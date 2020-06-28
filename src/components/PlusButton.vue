@@ -4,7 +4,7 @@
     :to="{ name: 'new', query: $route.params }"
     class="button has-background-success has-text-white"
   >
-    <font-awesome-icon icon="plus" />
+    <font-awesome-icon icon="plus" title="Add new event" />
   </router-link>
   <a
     v-else

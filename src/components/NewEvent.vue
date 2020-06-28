@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="container section">
+    <section class="container section" role="main">
       <h1 class="title">🚀 Add a conference</h1>
       <hr />
       <article class="message is-danger" v-if="globalError">
@@ -31,7 +31,7 @@
                     <div class="column is-narrow">
                       <img
                         :src="'/icons/topics/' + option.code + '.png'"
-                        :alt="option.code"
+                        :alt="option.code + ' conference'"
                         class="icon"
                       />
                     </div>
@@ -48,13 +48,14 @@
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Name</label>
+          <label class="label" for="conferenceName">Name</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control">
               <input
                 class="input is-shadowless"
+                id="conferenceName"
                 v-model="newEvent.name"
                 :class="{ 'is-danger': validationErrors.name }"
               />
@@ -65,12 +66,13 @@
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Website</label>
+          <label class="label" for="websiteUrl">Website</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control">
               <input
+                id="websiteUrl"
                 class="input is-shadowless"
                 placeholder="URL"
                 v-model="newEvent.url"
@@ -83,12 +85,13 @@
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Twitter</label>
+          <label class="label" for="twitterHandle">Twitter</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control has-icons-left">
               <input
+                id="twitterHandle"
                 placeholder="Can be a handle, @handle or a link"
                 class="input is-shadowless"
                 v-model="newEvent.twitter"
@@ -105,7 +108,7 @@
       <hr />
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Country</label>
+          <label class="label" for="country">Country</label>
         </div>
         <div class="field-body">
           <div class="field">
@@ -115,6 +118,7 @@
                 :class="{ 'is-danger': validationErrors.countryCode }"
               >
                 <select
+                  id="country"
                   v-model="newEvent.countryCode"
                   @change="countrySelected()"
                 >
@@ -133,7 +137,7 @@
 
       <div class="field is-horizontal" v-if="isUSA">
         <div class="field-label is-normal">
-          <label class="label">State</label>
+          <label class="label" for="state">State</label>
         </div>
         <div class="field-body">
           <div class="field">
@@ -144,6 +148,7 @@
               >
                 <select v-model="newEvent.stateCode" class="is-shadowless">
                   <option
+                    id="state"
                     v-for="(stateName, stateCode) in states"
                     :key="stateCode"
                     :value="stateCode"
@@ -158,7 +163,7 @@
 
       <div class="field is-horizontal" v-if="!isOnline">
         <div class="field-label is-normal">
-          <label class="label">City</label>
+          <label class="label" for="city">City</label>
         </div>
         <div class="field-body">
           <div class="field">
@@ -166,6 +171,7 @@
               <div class="field">
                 <p class="control">
                   <input
+                    id="city"
                     class="input is-shadowless"
                     :disabled="isOnline"
                     v-model="newEvent.city"
@@ -180,7 +186,7 @@
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Date</label>
+          <label class="label" for="dateFrom">Date (from)</label>
         </div>
         <div class="field-body">
           <div class="field">
@@ -196,6 +202,7 @@
                 :min-date="tomorrow()"
               >
                 <input
+                  id="dateFrom"
                   slot-scope="{ inputProps, inputEvents, isDragging }"
                   :class="[
                     'input is-shadowless',
@@ -207,6 +214,9 @@
                 />
               </DatePicker>
             </p>
+          </div>
+          <div class="field-label is-normal">
+            <label class="label" for="dateTo">Date (to)</label>
           </div>
           <div class="field">
             <p class="control">
@@ -221,6 +231,7 @@
                 :min-date="newEvent.dates.start"
               >
                 <input
+                  id="dateTo"
                   slot-scope="{ inputProps, inputEvents, isDragging }"
                   :class="[
                     'input is-shadowless',
@@ -348,12 +359,12 @@
           Submit
         </button>
       </div>
+      <button
+        @click="close()"
+        class="modal-close is-large"
+        aria-label="close"
+      ></button>
     </section>
-    <button
-      @click="close()"
-      class="modal-close is-large"
-      aria-label="close"
-    ></button>
   </div>
 </template>
 <script>

@@ -3,12 +3,16 @@
     <button
       class="button is-small is-outlined"
       aria-haspopup="true"
-      aria-controls="dropdown-menu"
+      aria-controls="share-buttons-menu"
     >
       <span class="icon"><font-awesome-icon :icon="['fas', 'share']"/></span>
       <span>Share</span>
     </button>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div
+      class="dropdown-menu share-buttons-menu"
+      id="share-buttons-menu"
+      role="menu"
+    >
       <div class="dropdown-content">
         <ShareNetwork
           class="dropdown-item"
