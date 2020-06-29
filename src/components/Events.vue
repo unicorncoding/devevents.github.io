@@ -25,7 +25,7 @@
             <div class="is-pulled-left">
               <div class="is-hidden-tablet is-size-7">
                 <a
-                  class="has-text-grey"
+                  class="has-text-grey-dark"
                   @click="toggleCategories()"
                   v-if="categoriesVisible"
                 >
@@ -35,7 +35,7 @@
               </div>
               <div class="is-hidden-tablet is-size-7">
                 <a
-                  class="has-text-grey"
+                  class="has-text-grey-dark"
                   @click="toggleCategories()"
                   v-if="!categoriesVisible"
                   ><font-awesome-icon icon="eye" /> Show categories
