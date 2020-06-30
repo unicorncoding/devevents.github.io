@@ -37,6 +37,7 @@
       v-for="course in courses"
       v-bind:key="course.title"
     >
+      <JsonLd :course="course" />
       <div class="columns is-multiline is-mobile">
         <div class="column is-full">
           <h1 class="course title is-1 has-text-weight-normal">
@@ -176,6 +177,7 @@
 import { years } from "@/utils/dates";
 import mixins from "@/mixins/navigation";
 import Header from "./Header";
+import JsonLd from "./TrainingJsonLd";
 import Offers from "./Offers";
 import { courses } from "../courses";
 export default {
@@ -194,7 +196,7 @@ export default {
       };
     }
   },
-  components: { Header, Offers }
+  components: { Header, Offers, JsonLd }
 };
 </script>
 <style lang="scss" scoped></style>
