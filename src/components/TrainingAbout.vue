@@ -1,5 +1,6 @@
 <template>
   <div class="training-about">
+    <JsonLd :course="course" />
     <Header />
     <section class="hero is-medium is-black">
       <div class="hero-body">
@@ -171,6 +172,7 @@
 import Header from "./Header";
 import Offers from "./Offers";
 import FiveStars from "./FiveStars";
+import JsonLd from "./TrainingJsonLd";
 import mixins from "@/mixins/navigation";
 import { courseByCodename } from "../courses";
 export default {
@@ -208,7 +210,7 @@ export default {
       };
     }
   },
-  components: { Header, FiveStars, Offers }
+  components: { Header, FiveStars, Offers, JsonLd }
 };
 </script>
 <style lang="scss" scoped>
