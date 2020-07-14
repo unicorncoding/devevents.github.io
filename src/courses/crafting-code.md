@@ -7,9 +7,9 @@ tags:
     - Test-Driven Development
 offers:
     - name: Riga, Latvia
-      date: 1 day, 4 Dec 2020
+      date: 1 day, 11 Dec 2021
       bookingLink: https://devternity.com
-      price: 300
+      price: 399
       priceHint: per person
     - name: Private training (online)
       date: 2 days, 9:00 – 18:00

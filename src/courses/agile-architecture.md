@@ -9,8 +9,8 @@ lang:
     - us
 offers:
     - name: Riga, Latvia
-      date: 1 day, 4 Dec 2020
-      price: 300
+      date: 1 day, 11 Dec 2021
+      price: 399
       priceHint: per person
       bookingLink: https://devternity.com
     - name: Private training (online)
