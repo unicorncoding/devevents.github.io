@@ -8,12 +8,12 @@ tags:
 offers:
     - name: Private training (online)
       date: 2 days, 9:00 – 18:00
-      price: 14500
-      priceHint: or just € 725 / person (20 people group)      
+      price: 12000
+      priceHint: or just € 600 / person (20 people group)
     - name: Private training in your office
       date: 2 days, 9:00 – 18:00
-      price: 18000
-      priceHint: or just € 900 / person (20 people group)
+      price: 15000
+      priceHint: or just € 750 / person (20 people group)
 recommendations:
     - title: Jeremy G. Software Architect
       head:  /endorsers/jeremy.jpg

@@ -11,7 +11,7 @@ lang:
 offers:
     - name: Online
       date: 3 days, 1-3 July 2020, 9:00 BST
-      price: 600
+      price: 499
       priceHint: per person
     - name: Private training (online)
       date: 2 days, 9:00 – 18:00
