@@ -15,12 +15,12 @@ offers:
       priceHint: per person
     - name: Private training (online)
       date: 2 days, 9:00 – 18:00
-      price: 7500
-      priceHint: or just € 375 / person (20 people group)      
+      price: 5000
+      priceHint: or just € 250 / person (20 people group)      
     - name: Private training in your office
       date: 2 days, 9:00 – 18:00
-      price: 9500
-      priceHint: or just € 475 / person (20 people group)
+      price: 7500
+      priceHint: or just € 375 / person (20 people group)
 tldr: This workshop focuses on solving challenges that organizations face when implementing DevOps initiatives. It introduces principles of DevOps and tools that help reach full automation of infrastructure provisioning and software delivery. Theoretical background as well as practical hands-on examples of tools like AWS/GCP, Ansible, Terraform, Docker, Kubernetes, Helm, Prometheus, Grafana, Linkerd, KNative, Serverless and many others are given during this workshop.
 recommendations:
     - title: Eliana N. Configuration Manager

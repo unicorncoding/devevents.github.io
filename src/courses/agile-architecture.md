@@ -15,12 +15,12 @@ offers:
       bookingLink: https://devternity.com
     - name: Private training (online)
       date: 2 days, 9:00 – 18:00
-      price: 7500
-      priceHint: or just € 375 / person (20 people group)
+      price: 5000
+      priceHint: or just € 250 / person (20 people group)
     - name: Private training in your office
       date: 2 days, 9:00 – 18:00
-      price: 9500
-      priceHint: or just € 475 / person (20 people group)
+      price: 7500
+      priceHint: or just € 375 / person (20 people group)
 recommendations:
     - title: Stef S. Software Architect
       head: /endorsers/stef.png

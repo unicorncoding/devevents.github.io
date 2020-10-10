@@ -5,6 +5,7 @@ const courses = [
   "crafted-design",
   "cpp-tests",
   "effective-java",
+  "soft-skills-and-leadership-for-developers",
   "xa"
 ];
 

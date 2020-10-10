@@ -21,8 +21,8 @@ offers:
       soldOut: true
     - name: Private training in your office
       date: 2 days, 9:00 – 18:00
-      price: 9500
-      priceHint: or just € 475 / person (20 people group)
+      price: 7500
+      priceHint: or just € 500 / person (15 people group)
 recommendations:
     - title: Marcin G. Principal Engineer @ Pivotal
       head: /endorsers/mgrzejszczak.jpg
@@ -60,7 +60,7 @@ recommendations:
     - title: Liga I. Software Dev @ Visma
       head: /endorsers/liga.png
       text: Huge thanks for the course! A lot of things to re-consider. I expected this course to only fill gaps in my knowledge, but it provided me with a completely new perspective on my daily work. Loved it!
-tldr: The Principal Developer is a two-day masterclass for experienced software developers. Here we develop skills that every successful, effective, and trusted software development team leader needs.
+tldr: The Principal Developer is a two-day leadership masterclass for software developers. Here we develop skills that every successful, effective, and trusted software development team leader needs.
 trainer:
     title: Eduards Sizovs
     subtitle: Trainer, CSM, CSPO, Project Management Professional (PMP), and ICF certified coach.

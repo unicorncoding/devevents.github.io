@@ -1,5 +1,5 @@
 ---
-title: Effective Coding Principles and Patterns in Java 14
+title: Effective Coding Principles and Patterns in Java 15
 subtitle: 2-day certification training for Java developers, team leaders and architects.
 tags:
     - Java
@@ -19,10 +19,10 @@ offers:
       price: 950
       priceHint: per person
       soldOut: true
-    - name: Private training in your office
+    - name: Private training (online or in your office)
       date: 2 days, 9:00 – 18:00
-      price: 9500
-      priceHint: or just € 475 / person (20 people group)
+      price: 7500
+      priceHint: or just € 500 / person (15 people group)
 recommendations:
     - title: Marcin G. Principal Engineer @ Pivotal
       head: /endorsers/mgrzejszczak.jpg
