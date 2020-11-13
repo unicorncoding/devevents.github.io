@@ -7,12 +7,14 @@
       :key="country.code"
     >
       <img :src="icon(country.code)" :alt="country.code" />
-      <router-link class="has-text-primary" :to="hover(country.code)">{{
-        country.name
-      }}</router-link>
+      <router-link
+        class="has-text-primary"
+        :to="hover(country.code, country.continent)"
+        >{{ country.name }}</router-link
+      >
       &nbsp;
       <router-link
-        :to="hover(country.code)"
+        :to="hover(country.code, country.continent)"
         class="has-text-danger"
         v-if="isActive(country.code)"
       >
@@ -35,12 +37,12 @@ export default {
     isActive(country) {
       return country == this.$route.params.country;
     },
-    hover(country) {
+    hover(country, continent) {
       if (this.isActive(country)) {
         const params = { ...this.$route.params, country: undefined };
         return { params };
       } else {
-        const params = { ...this.$route.params, country };
+        const params = { ...this.$route.params, country, continent };
         return { params };
       }
     },

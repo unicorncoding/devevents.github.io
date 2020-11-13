@@ -25,8 +25,7 @@ const routes = [
     component: TrainingAbout
   },
   {
-    path:
-      "/:cfp(cfp)?/:continent([A-Z]{2})/:country([A-Z]{2})?/:topic([a-z0-9]+)?",
+    path: "/:continent([A-Z]{2})?/:country([A-Z]{2})?/:topic([a-z0-9]+)?",
     caseSensitive: true,
     name: "confs",
     component: Events
@@ -35,10 +34,6 @@ const routes = [
     path: "/conferences/:id",
     name: "conf",
     component: ConferenceAbout
-  },
-  {
-    path: "/",
-    redirect: "/AM"
   }
 ];
 

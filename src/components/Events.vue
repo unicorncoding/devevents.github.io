@@ -150,28 +150,20 @@
                     }},
                     <router-link
                       class="has-text-grey-dark has-text-weight-bold"
-                      :to="route('confs', { country: event.countryCode })"
+                      :to="
+                        route('confs', {
+                          country: event.countryCode,
+                          continent: event.continentCode
+                        })
+                      "
                     >
                       {{ event.country }}
                     </router-link>
                   </span>
                 </h3>
-                <h3
-                  class="title is-7 has-text-grey-light"
-                  v-if="event.free === true || event.free === false"
-                >
-                  <span v-if="event.free === true">
+                <h3 class="title is-7 has-text-grey-light" v-if="event.free">
+                  <span>
                     FREE
-                  </span>
-                  <span v-if="event.free === false && event.localPrice">
-                    {{ event.localPrice.curr }}
-                    {{ event.localPrice.from }}
-                    {{
-                      !event.localPrice.to ||
-                      event.localPrice.from === event.localPrice.to
-                        ? ""
-                        : ` — ${event.localPrice.to}`
-                    }}
                   </span>
                 </h3>
               </div>
@@ -244,23 +236,29 @@ export default {
     }
   },
   head: {
+    meta: function() {
+      return [{ name: "description", content: this.title(), id: "desc" }];
+    },
     title: function() {
       return {
         separator: " ",
         complement: " ",
-        inner: !this.isOnline
-          ? (this.topicName() ? this.topicName() : "Developer") +
-            " conferences in " +
-            this.locationName() +
-            ` ${years()}`
-          : "Online " +
-            (this.topicName() ? this.topicName() : "developer") +
-            " conferences" +
-            ` ${years()}`
+        inner: this.title()
       };
     }
   },
   methods: {
+    title() {
+      return !this.isOnline
+        ? (this.topicName() ? this.topicName() : "Developer") +
+            " conferences in " +
+            this.locationName() +
+            ` ${years()}`
+        : "Online " +
+            (this.topicName() ? this.topicName() : "developer") +
+            " conferences" +
+            ` ${years()}`;
+    },
     year(date) {
       return dayjs(date).year();
     },

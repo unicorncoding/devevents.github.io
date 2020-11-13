@@ -13,16 +13,6 @@ export default {
     }
   },
   created() {
-    const offers = this.event.priceFrom
-      ? {
-          "@type": "Offer",
-          price: this.event.priceFrom,
-          priceCurrency: this.event.priceCurrency,
-          validFrom: this.event.creationDate,
-          availability: "https://schema.org/InStock",
-          url: this.event.url
-        }
-      : undefined;
     const image = this.event.twitter
       ? [`https://twitter-avatar.now.sh/${this.event.twitter}`]
       : undefined;
@@ -51,7 +41,6 @@ export default {
       endDate: this.event.endDate,
       image,
       organizer,
-      offers,
       isAccessibleForFree: this.event.free === true,
       performer: {
         "@type": "Organization",

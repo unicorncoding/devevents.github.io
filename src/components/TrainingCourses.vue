@@ -188,6 +188,15 @@ export default {
     };
   },
   head: {
+    meta: function() {
+      return [
+        {
+          name: "description",
+          content: "Training courses for software developers",
+          id: "desc"
+        }
+      ];
+    },
     title: function() {
       return {
         separator: "|",

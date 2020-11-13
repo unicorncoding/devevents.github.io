@@ -9,9 +9,7 @@
         <section class="section">
           <div class="columns is-vcentered is-mobile">
             <div class="column is-narrow">
-              <router-link
-                :to="{ path: '/' + ($route.params.continent || '') }"
-              >
+              <router-link :to="{ path: '/' }">
                 <h1
                   class="title is-size-4 is-size-6-mobile"
                   style="letter-spacing: -2px"
@@ -33,7 +31,7 @@
                   'has-text-weight-bold':
                     $route.name === 'confs' || $route.name === 'conf'
                 }"
-                :to="{ path: '/' + ($route.params.continent || '') }"
+                :to="{ path: '/' }"
                 >Conferences</router-link
               >
             </div>

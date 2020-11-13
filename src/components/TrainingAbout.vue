@@ -202,11 +202,20 @@ export default {
     }
   },
   head: {
+    meta: function() {
+      return [
+        {
+          name: "description",
+          content: `${this.course.title} training by ${this.course.trainer.title}`,
+          id: "desc"
+        }
+      ];
+    },
     title: function() {
       return {
         separator: "|",
         complement: "Training and certification course",
-        inner: `${this.course.title} by ${this.course.trainer.title}`
+        inner: `${this.course.title} training by ${this.course.trainer.title}`
       };
     }
   },
