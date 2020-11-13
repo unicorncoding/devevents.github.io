@@ -64,7 +64,7 @@ export default {
 img {
   height: 0.7em;
   margin-right: 5px;
-  filter: grayscale(40%) opacity(50%);
+  filter: opacity(50%);
 }
 
 .country {
