@@ -17,7 +17,7 @@
                   class="is-borderless has-background-white"
                 >
                   <option value="newestFirst">Newest first</option>
-                  <option value="cheapestFirst">Cheapest first</option>
+                  <option value="cheapestFirst">Free first</option>
                   <option value="startDate">Sort by date</option>
                 </select>
               </div>
@@ -106,7 +106,16 @@
                 <br />
               </div>
               <div class="column is-narrow">
-                <figure class="image is-32x32">
+                <figure class="image is-32x32" v-if="event.top">
+                  <router-link :to="{ name: 'conf', params: { id: event.id } }">
+                    <img
+                      :src="'https://twitter-avatar.now.sh/' + event.twitter"
+                      :alt="'Twitter icon for ' + event.name"
+                      class="icon"
+                    />
+                  </router-link>
+                </figure>
+                <figure v-else class="image is-32x32">
                   <img
                     :src="'/icons/topics/' + event.topics[0] + '.png'"
                     :alt="event.topics[0]"
