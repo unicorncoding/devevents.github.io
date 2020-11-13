@@ -52,7 +52,6 @@
         v-if="noEvents"
       >
         ¯\_(ツ)_/¯ <br />There are no events matching your criteria. Try
-        adjusting or
         <router-link
           :to="{
             params: {

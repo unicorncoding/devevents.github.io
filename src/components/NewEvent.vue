@@ -313,8 +313,7 @@ export default {
       newEvent: {
         topics: [],
         price: {
-          free: true,
-          currency: undefined
+          free: true
         },
         dates: {
           start: undefined,
@@ -388,8 +387,7 @@ export default {
     })
   },
   mounted() {
-    const that = this;
-    this.fetchInfo().then(() => that.preselectCurrency());
+    this.fetchInfo();
   },
   head: {
     title: function() {
@@ -405,27 +403,13 @@ export default {
     isDescriptionTooLong() {
       return this.newEvent.description.length > this.descriptionLimit;
     },
-    toggleFree() {
-      delete this.newEvent.price.from;
-      delete this.newEvent.price.to;
-    },
     countrySelected() {
       delete this.newEvent.stateCode;
       delete this.newEvent.city;
 
-      this.preselectCurrency();
-
       if (this.isOnline) {
         this.newEvent.city = "Online";
       }
-    },
-    preselectCurrency() {
-      const countrySpecificCurrency = this.countries.find(
-        ({ code }) => code === this.newEvent.countryCode
-      )?.currency;
-
-      this.newEvent.price.currency =
-        countrySpecificCurrency || (this.continent === "EU" ? "EUR" : "USD");
     },
     submitForm() {
       this.createNew(this.newEvent);

@@ -97,7 +97,7 @@ export default {
         startDate,
         endDate
       } = this.event;
-      const what = `${name} is a conference about ${this.topicName()}`;
+      const what = `${this.topicName()} conference ${name} is coming`;
       const when = `${formatRange(startDate, endDate)}, ${dayjs(
         startDate
       ).year()}`;
