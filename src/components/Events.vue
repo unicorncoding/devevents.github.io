@@ -168,8 +168,8 @@
                       {{ event.country }}
                     </router-link>
                   </span>
-                  <span v-else
-                    >in
+                  <span v-else>
+                    in
                     {{
                       event.city +
                         (event.stateCode ? `, ${event.stateCode}` : "")
