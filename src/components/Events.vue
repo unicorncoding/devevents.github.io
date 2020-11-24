@@ -155,8 +155,20 @@
                     classes="has-text-grey-dark has-text-weight-bold"
                     :topics="event.topics"
                   />
-                  conference
-                  <span v-if="!isOnline"
+                  conference<span v-if="event.countryCode === 'ON'"
+                    >,<router-link
+                      class="has-text-grey-dark has-text-weight-bold"
+                      :to="
+                        route('confs', {
+                          country: undefined,
+                          continent: event.continentCode
+                        })
+                      "
+                    >
+                      {{ event.country }}
+                    </router-link>
+                  </span>
+                  <span v-else
                     >in
                     {{
                       event.city +
