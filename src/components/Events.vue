@@ -111,7 +111,7 @@
                     <img
                       :src="'https://twitter-avatar.now.sh/' + event.twitter"
                       :alt="'Twitter icon for ' + event.name"
-                      class="icon"
+                      class="icon is-rounded"
                     />
                   </router-link>
                 </figure>

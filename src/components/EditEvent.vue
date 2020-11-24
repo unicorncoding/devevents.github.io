@@ -37,11 +37,35 @@ export default {
     const id = this.$route.params.id;
     lazyAxios()
       .then(axios => axios.get(`/events/fetch/${id}`))
-      .then(({ data }) => (this.json = JSON.stringify(data, undefined, 2)));
+      .then(({ data }) => data)
+      .then(
+        ({
+          startDate,
+          continentCode,
+          topicCode,
+          endDate,
+          id,
+          topics,
+          top,
+          countryCode,
+          name
+        }) => ({
+          startDate,
+          endDate,
+          id,
+          topicCode: topicCode || undefined,
+          continentCode,
+          topics,
+          top,
+          countryCode,
+          name
+        })
+      )
+      .then(data => (this.json = JSON.stringify(data, undefined, 2)));
   },
   data: () => {
     return {
-      json: undefined
+      json: ""
     };
   },
   methods: {
@@ -49,8 +73,8 @@ export default {
       this.$router.go(-1);
     },
     save() {
-      let json = JSON.parse(this.json);
-      this.updateEvent(json);
+      let eventJson = JSON.parse(this.json);
+      this.updateEvent(eventJson);
     },
     ...mapActions(["updateEvent"])
   }
