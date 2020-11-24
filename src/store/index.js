@@ -6,6 +6,7 @@ import auth from "./auth";
 import karma from "./karma";
 import creation from "./creation";
 import fetching from "./fetching";
+import router from "../router";
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -82,6 +83,25 @@ export default new Vuex.Store({
       return axios
         .post(`/admin/${eventId}/delete`)
         .then(() => commit("excludeOne", eventId));
+    },
+    async updateEvent(undefined, { id, ...event }) {
+      if (!id) {
+        throw new Error("No ID provided.");
+      }
+      const goToNewEvent = () => {
+        router.push({
+          name: "confs",
+          params: {
+            continent: event.continentCode,
+            country: event.countryCode,
+            topic: event.topics[0]
+          }
+        });
+      };
+      const axios = await lazyAxios();
+      return axios
+        .post(`/admin/${id}/update`, event)
+        .then(() => goToNewEvent());
     }
   },
   mutations: {

@@ -132,6 +132,12 @@
                   >
 
                   <span v-if="isAdmin">
+                    <router-link
+                      class="tag is-borderless"
+                      :to="{ name: 'edit', params: { id: event.id } }"
+                    >
+                      <font-awesome-icon icon="edit" />
+                    </router-link>
                     <a class="tag is-borderless" @click="deleteEvent(event.id)">
                       <font-awesome-icon icon="times" class="has-text-danger" />
                     </a>

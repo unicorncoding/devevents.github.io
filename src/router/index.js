@@ -3,8 +3,9 @@ import VueRouter from "vue-router";
 import Events from "../components/Events";
 import TrainingCourses from "../components/TrainingCourses";
 import TrainingAbout from "../components/TrainingAbout";
-import ConferenceAbout from "../components/ConferenceAbout";
+import EventAbout from "../components/EventAbout";
 import NewEvent from "../components/NewEvent";
+import EditEvent from "../components/EditEvent";
 
 Vue.use(VueRouter);
 
@@ -31,9 +32,14 @@ const routes = [
     component: Events
   },
   {
+    path: "/conferences/:id/edit",
+    name: "edit",
+    component: EditEvent
+  },
+  {
     path: "/conferences/:id",
     name: "conf",
-    component: ConferenceAbout
+    component: EventAbout
   }
 ];
 
