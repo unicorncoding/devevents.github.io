@@ -9,16 +9,16 @@ lang:
     - us
     - ru
 offers:
-    - name: Amsterdam, Netherlands
-      date: 2 days, 26-27 Sept 2020
-      price: 950
-      priceHint: per person
-      soldOut: true
     - name: Berlin, Germany
       date: 2 days, 28-29 Sept 2020
-      price: 950
+      price: 999
       priceHint: per person
       soldOut: true
+    - name: Amsterdam, Netherlands
+      date: 2 days, 25-26 March 2021
+      price: 999
+      priceHint: per person
+      soldOut: false
     - name: Private training in your office
       date: 2 days, 9:00 – 18:00
       price: 7500
