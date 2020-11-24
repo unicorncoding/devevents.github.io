@@ -120,7 +120,7 @@ export default new Vuex.Store({
       const [events, meta] = data;
       state.events = merge ? state.events.concat(events) : events;
       state.topics = meta.topics;
-      state.countries = meta.countries;
+      state.countries = meta.countries.filter(({ code }) => code !== "ON");
       state.free = meta.free;
       state.doneFetching = true;
       state.countryName = meta.countryName;

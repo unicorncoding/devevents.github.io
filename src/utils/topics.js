@@ -3,7 +3,7 @@ const topics = {
     name: "Soft skills"
   },
   it: {
-    name: "General IT/Tech"
+    name: "IT"
   },
   clojure: {
     name: "Clojure"

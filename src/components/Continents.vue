@@ -2,8 +2,9 @@
   <div class="tabs is-centered is-fullwidth is-size-7-mobile">
     <ul>
       <li :class="{ 'is-active': !$route.params.continent }">
-        <router-link :to="{ params: { continent: undefined } }"
-          >World</router-link
+        <router-link
+          :to="{ params: { continent: undefined, country: undefined } }"
+          >All</router-link
         >
       </li>
       <li
