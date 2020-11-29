@@ -1,3 +1,6 @@
+// !!!
+// Don't fotget to update topics in devevents-api
+// !!!
 const topics = {
   softskills: {
     name: "Soft skills"

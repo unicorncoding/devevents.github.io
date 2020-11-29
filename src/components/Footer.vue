@@ -35,6 +35,15 @@
         <font-awesome-icon :icon="['fab', 'twitter']" />
         follow
       </a>
+      <a
+        class="has-text-primary"
+        style="margin-left: 1em"
+        href="https://dev.events/rss.xml"
+        rel="nofollow noopener noreferrer"
+      >
+        <font-awesome-icon :icon="['fa', 'rss']" />
+        subscribe
+      </a>
     </div>
   </footer>
 </template>
