@@ -14,7 +14,7 @@ export default {
   },
   created() {
     const image = this.event.twitter
-      ? [`https://twitter-avatar.now.sh/${this.event.twitter}`]
+      ? [`https://unavatar.now.sh/twitter/${this.event.twitter}`]
       : undefined;
     const organizer = this.event.twitter
       ? {

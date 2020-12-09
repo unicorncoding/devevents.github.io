@@ -15,7 +15,9 @@
                         alt="Conference logo fetched from Twitter"
                         class="is-rounded"
                         style="border: 3px solid white"
-                        :src="'https://twitter-avatar.now.sh/' + event.twitter"
+                        :src="
+                          'https://unavatar.now.sh/twitter/' + event.twitter
+                        "
                       />
                     </figure>
                     <avatar
