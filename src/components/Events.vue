@@ -109,7 +109,9 @@
                 <figure class="image is-32x32" v-if="event.top">
                   <router-link :to="{ name: 'conf', params: { id: event.id } }">
                     <img
-                      :src="'https://unavatar.now.sh/twitter/' + event.twitter"
+                      :src="
+                        'https://pbs.twimg.com/profile_images/1109010258335285250/5TdYTDZg_400x400.png'
+                      "
                       :alt="'Twitter icon for ' + event.name"
                       class="icon is-rounded"
                     />
