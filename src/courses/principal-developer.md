@@ -14,7 +14,7 @@ offers:
       price: 999
       priceHint: per person
       soldOut: true
-    - name: Amsterdam, Netherlands
+    - name: Online, Zoom
       date: 2 days, 25-26 March 2021
       price: 999
       priceHint: per person
