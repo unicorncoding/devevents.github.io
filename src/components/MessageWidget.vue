@@ -9,7 +9,7 @@
       <a :href="'https://twitter.com/devternity'">
         <img
           class="agent"
-          src="https://unavatar.now.sh/twitter/devternity"
+          src="https://dossier.glitch.me/avatar/devternity"
           alt="DevTernity avatar"
         />
       </a>

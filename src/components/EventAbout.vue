@@ -16,7 +16,7 @@
                         class="is-rounded"
                         style="border: 3px solid white"
                         :src="
-                          'https://unavatar.now.sh/twitter/' + event.twitter
+                          'https://dossier.glitch.me/avatar/' + event.twitter
                         "
                       />
                     </figure>
